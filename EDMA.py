@@ -11,3 +11,6 @@ print(df.head())
 
 #Informazioni generali
 print(df.info())
+
+#Eliminiamo colonna "Flags"
+df = df.drop(columns=['Flags'])
