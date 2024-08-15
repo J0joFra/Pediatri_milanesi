@@ -21,3 +21,4 @@ print(df.shape)
 #Valori unici Prima Colonna
 valori_unici = df['Dataset'].unique()
 print("Valori unici:", valori_unici)
+print(df.head(20))
