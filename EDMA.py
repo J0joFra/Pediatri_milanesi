@@ -17,3 +17,7 @@ df = df.drop(columns=['Flags'])
 
 #Dimensione dataset Aggoirnato
 print(df.shape)
+
+#Valori unici Prima Colonna
+valori_unici = df['Dataset'].unique()
+print("Valori unici:", valori_unici)
