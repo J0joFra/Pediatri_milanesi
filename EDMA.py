@@ -14,3 +14,6 @@ print(df.info())
 
 #Eliminiamo colonna "Flags"
 df = df.drop(columns=['Flags'])
+
+#Dimensione dataset Aggoirnato
+print(df.shape)
