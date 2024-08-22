@@ -45,17 +45,20 @@ df['nome_completo'] = df['nomeMedico'].astype(str) + ' ' + df['cognomeMedico'].a
 text_columns = ['nomeMedico', 'cognomeMedico', 'comune_medico', 'aft', 'via', 'luogo_ambulatorio', 'NIL']
 for col in text_columns:
     if col in df.columns:
-        df[col] = df[col].str.strip()
+        df[col] = df[col].str.strip().str.title()  # Trasforma in Title Case
 
 # Converti le coordinate in float
 df['LONG_X_4326'] = pd.to_numeric(df['LONG_X_4326'], errors='coerce')
 df['LAT_Y_4326'] = pd.to_numeric(df['LAT_Y_4326'], errors='coerce')
 
+# Trasforma i nomi delle colonne in "Title Case"
+df.columns = df.columns.str.replace('_', ' ').str.title().str.replace(' ', '')
+
 # Riordina le colonne
-columns_order = ['idMedico', 'nome_completo', 'nomeMedico', 'cognomeMedico', 'codice_regionale_medico', 
-                 'dataNascita', 'età', 'tipoMedico', 'attivo', 'ambulatorioPrincipale', 'comune_medico', 
-                 'aft', 'via', 'civico', 'luogo_ambulatorio', 'CAP', 'MUNICIPIO', 'ID_NIL', 'NIL', 
-                 'LONG_X_4326', 'LAT_Y_4326', 'Location']
+columns_order = ['IdMedico', 'NomeCompleto', 'NomeMedico', 'CognomeMedico', 'CodiceRegionaleMedico', 
+                 'DataNascita', 'Età', 'TipoMedico', 'Attivo', 'AmbulatorioPrincipale', 'ComuneMedico', 
+                 'Aft', 'Via', 'Civico', 'LuogoAmbulatorio', 'Cap', 'Municipio', 'IdNil', 'Nil', 
+                 'LongX4326', 'LatY4326', 'Location']
 
 # Assicurati che tutte le colonne da ordinare siano presenti
 existing_columns_order = [col for col in columns_order if col in df.columns]
