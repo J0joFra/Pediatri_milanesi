@@ -39,7 +39,7 @@ df['attivo'] = df['attivo'].astype(bool, errors='ignore')
 df['ambulatorioPrincipale'] = df['ambulatorioPrincipale'].astype(bool, errors='ignore')
 
 # Crea una colonna 'nome_completo' combinando nome e cognome
-df['nome_completo'] = df['nomeMedico'].astype(str) + ' ' + df['cognomeMedico'].astype(str)
+df['nome_completo'] = (df['nomeMedico'].astype(str) + ' ' + df['cognomeMedico'].astype(str)).str.title()
 
 # Rimuovi spazi extra dalle colonne di testo e trasforma in Title Case
 text_columns = ['nomeMedico', 'cognomeMedico', 'comune_medico', 'aft', 'via', 'luogo_ambulatorio', 'NIL']
