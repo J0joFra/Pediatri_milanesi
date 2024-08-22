@@ -10,6 +10,6 @@ response = requests.get(url)
 # Verifichiamo che la richiesta sia stata completata con successo 
 if response.status_code == 200:
     data = response.json()
-    print("Dati estratto correttamente")
+    print("Dati estratti correttamente")
 else:
     print(f"Errore durante l'estrazione:\n{response.status_code}")
