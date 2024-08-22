@@ -3,10 +3,10 @@ import pymysql
 from sqlalchemy import create_engine
 
 # Dettagli della connessione al database
-db_host = 'localhost'      # Indirizzo del server MySQL
-db_user = 'tuo_utente'     # Nome utente del database
-db_password = 'tua_password' # Password del database
-db_name = 'nome_del_database' # Nome del database
+db_host = '127.0.0.1'      # Indirizzo del server MySQL
+db_user = 'root'     # Nome utente del database
+db_password = 'GigiTrottolino24' # Password del database
+db_name = 'pediatri' # Nome del database
 
 # Percorso del file CSV
 file_csv_path = 'medici_pulito.csv'
