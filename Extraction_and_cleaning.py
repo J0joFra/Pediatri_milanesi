@@ -70,3 +70,7 @@ df = df[existing_columns_order]
 # Stampa le prime righe del DataFrame pulito
 print("\nPrime righe del DataFrame pulito:")
 print(df.head())
+
+# Esporta il DataFrame in un file CSV
+export_csv_path = 'medici_pulito.csv'
+df.to_csv(export_csv_path, index=False)
