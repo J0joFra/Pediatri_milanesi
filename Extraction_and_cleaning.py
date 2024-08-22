@@ -41,7 +41,7 @@ df['ambulatorioPrincipale'] = df['ambulatorioPrincipale'].astype(bool, errors='i
 # Crea una colonna 'nome_completo' combinando nome e cognome
 df['nome_completo'] = df['nomeMedico'].astype(str) + ' ' + df['cognomeMedico'].astype(str)
 
-# Rimuovi spazi extra dalle colonne di testo
+# Rimuovi spazi extra dalle colonne di testo e trasforma in Title Case
 text_columns = ['nomeMedico', 'cognomeMedico', 'comune_medico', 'aft', 'via', 'luogo_ambulatorio', 'NIL']
 for col in text_columns:
     if col in df.columns:
@@ -51,11 +51,14 @@ for col in text_columns:
 df['LONG_X_4326'] = pd.to_numeric(df['LONG_X_4326'], errors='coerce')
 df['LAT_Y_4326'] = pd.to_numeric(df['LAT_Y_4326'], errors='coerce')
 
+# Rimuovi le colonne 'NomeMedico' e 'CognomeMedico'
+df = df.drop(columns=['nomeMedico', 'cognomeMedico'], errors='ignore')
+
 # Trasforma i nomi delle colonne in "Title Case"
 df.columns = df.columns.str.replace('_', ' ').str.title().str.replace(' ', '')
 
 # Riordina le colonne
-columns_order = ['IdMedico', 'NomeCompleto', 'NomeMedico', 'CognomeMedico', 'CodiceRegionaleMedico', 
+columns_order = ['IdMedico', 'NomeCompleto', 'CodiceRegionaleMedico', 
                  'DataNascita', 'Età', 'TipoMedico', 'Attivo', 'AmbulatorioPrincipale', 'ComuneMedico', 
                  'Aft', 'Via', 'Civico', 'LuogoAmbulatorio', 'Cap', 'Municipio', 'IdNil', 'Nil', 
                  'LongX4326', 'LatY4326', 'Location']
