@@ -1,20 +1,28 @@
 # Librerie da importare
 import urllib.request
 import json
-import pandas
+import pandas as pd
 
-# Url dell'Api
+# URL dell'API
 url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5&q=title:jones'
 
-# Richiesta GET dell'API
+# Richiesta GET all'API
 with urllib.request.urlopen(url) as response:
     # Leggi la risposta e decodificala
     data = response.read().decode()
 
-    # Converti il contenuto in JSON
+    # Converti il contenuto in formato JSON
     json_data = json.loads(data)
 
-    # Stampa i dati JSON
-    print(json_data)
+    # Stampa i dati JSON in formato leggibile
+    print(json.dumps(json_data, indent=4))
 
+# Estrai i record dalla risposta JSON
+records = json_data['result']['records']
 
+# Converti i record in un DataFrame Pandas
+df = pd.DataFrame(records)
+
+# Stampa il DataFrame
+print("\nDataFrame:")
+print(df.head())
