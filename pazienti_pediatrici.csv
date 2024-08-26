@@ -1,0 +1,946 @@
+ID_Paziente,Età_Paziente,Sintomo/Malattia,Genere,Codice_Medico,Data_Visita,Severità
+8391,11,Asma,Femmina,30648,2024-8-28,Grave
+3470,7,Influenza,Maschio,50954,2024-8-08,Moderata
+6188,12,Varicella,Maschio,22701,2024-8-06,Leggera
+8625,12,Varicella,Maschio,34609,2024-8-08,Moderata
+9762,9,Diarrea,Maschio,19782,2024-8-05,Leggera
+9396,0,Bronchite,Femmina,22684,2024-8-11,Leggera
+3419,15,Influenza,Maschio,42814,2024-8-08,Leggera
+1338,2,Bronchite,Maschio,20447,2024-8-06,Grave
+7366,1,Raffreddore,Femmina,30648,2024-8-28,Moderata
+2989,7,Raffreddore,Maschio,24470,2024-8-06,Moderata
+2253,12,Raffreddore,Maschio,24027,2024-8-13,Moderata
+3690,11,Diarrea,Maschio,41514,2024-8-25,Grave
+7986,12,Mal di gola,Maschio,37922,2024-8-19,Leggera
+4576,13,Febbre,Femmina,45165,2024-8-03,Moderata
+5894,4,Mal di gola,Maschio,41350,2024-8-02,Leggera
+4495,7,Raffreddore,Femmina,18347,2024-8-05,Grave
+6206,14,Raffreddore,Femmina,39743,2024-8-06,Leggera
+9871,9,Diarrea,Maschio,20404,2024-8-14,Moderata
+8547,6,Allergia,Femmina,24183,2024-8-02,Moderata
+7384,0,Diarrea,Femmina,24470,2024-8-29,Grave
+6188,7,Bronchite,Femmina,24165,2024-8-26,Moderata
+2748,4,Allergia,Femmina,7388,2024-8-11,Grave
+8176,11,Varicella,Femmina,40090,2024-8-02,Leggera
+4088,10,Diarrea,Femmina,2821,2024-8-17,Grave
+3243,10,Otite,Femmina,35387,2024-8-08,Grave
+7536,13,Bronchite,Maschio,44816,2024-8-12,Grave
+7340,7,Influenza,Femmina,50954,2024-8-31,Leggera
+4997,7,Bronchite,Femmina,47338,2024-8-24,Leggera
+9330,0,Febbre,Maschio,45631,2024-8-18,Moderata
+6509,12,Diarrea,Femmina,24165,2024-8-01,Moderata
+7248,14,Allergia,Femmina,49743,2024-8-21,Leggera
+6469,10,Otite,Femmina,41350,2024-8-05,Leggera
+9922,0,Varicella,Maschio,45631,2024-8-28,Moderata
+5309,3,Diarrea,Maschio,4926,2024-8-05,Moderata
+1156,5,Diarrea,Maschio,48208,2024-8-12,Leggera
+7922,12,Varicella,Femmina,24183,2024-8-19,Moderata
+1820,6,Varicella,Maschio,7388,2024-8-16,Moderata
+2922,14,Febbre,Femmina,50954,2024-8-02,Moderata
+8421,13,Allergia,Femmina,47659,2024-8-19,Grave
+2481,15,Asma,Maschio,42767,2024-8-13,Moderata
+6539,4,Otite,Maschio,7004,2024-8-06,Grave
+3662,9,Diarrea,Maschio,25027,2024-8-22,Grave
+4925,13,Allergia,Maschio,19782,2024-8-05,Leggera
+3468,14,Bronchite,Femmina,41514,2024-8-26,Grave
+9689,1,Influenza,Maschio,24490,2024-8-06,Leggera
+5510,14,Allergia,Maschio,34609,2024-8-12,Grave
+3451,5,Varicella,Maschio,41350,2024-8-28,Grave
+4595,3,Raffreddore,Femmina,31249,2024-8-05,Grave
+1524,5,Influenza,Femmina,9879,2024-8-19,Grave
+5571,11,Mal di gola,Femmina,50954,2024-8-13,Leggera
+9874,5,Mal di gola,Femmina,48121,2024-8-24,Grave
+4598,14,Varicella,Femmina,46906,2024-8-18,Moderata
+3832,0,Raffreddore,Maschio,7004,2024-8-17,Grave
+2948,7,Allergia,Femmina,41514,2024-8-12,Moderata
+9202,12,Varicella,Femmina,45244,2024-8-10,Grave
+4602,10,Influenza,Maschio,41514,2024-8-12,Moderata
+8595,13,Asma,Maschio,22708,2024-8-16,Grave
+3253,3,Influenza,Maschio,50954,2024-8-23,Moderata
+5444,7,Otite,Femmina,48208,2024-8-06,Moderata
+7839,0,Diarrea,Maschio,26002,2024-8-16,Grave
+3561,14,Bronchite,Femmina,25027,2024-8-10,Leggera
+3969,9,Diarrea,Maschio,32437,2024-8-05,Grave
+7601,2,Allergia,Femmina,19679,2024-8-14,Moderata
+9499,4,Diarrea,Maschio,2170,2024-8-23,Moderata
+2687,5,Varicella,Maschio,24572,2024-8-03,Leggera
+6627,11,Asma,Maschio,2323,2024-8-26,Grave
+6594,13,Influenza,Femmina,24470,2024-8-07,Grave
+5773,15,Allergia,Femmina,477,2024-8-06,Grave
+2607,8,Varicella,Maschio,6186,2024-8-13,Moderata
+5499,9,Allergia,Femmina,1870,2024-8-01,Leggera
+9288,13,Bronchite,Maschio,48191,2024-8-22,Moderata
+9047,4,Febbre,Maschio,18419,2024-8-24,Grave
+2036,8,Influenza,Femmina,9632,2024-8-12,Grave
+1438,7,Influenza,Femmina,7004,2024-8-04,Leggera
+9043,13,Bronchite,Maschio,22637,2024-8-26,Leggera
+8800,11,Diarrea,Maschio,26027,2024-8-28,Moderata
+5651,14,Mal di gola,Femmina,2170,2024-8-02,Leggera
+5821,3,Asma,Femmina,48191,2024-8-24,Moderata
+7871,5,Bronchite,Femmina,48191,2024-8-26,Grave
+7614,4,Febbre,Maschio,45032,2024-8-06,Leggera
+3394,2,Diarrea,Femmina,38048,2024-8-16,Moderata
+2351,1,Varicella,Femmina,26027,2024-8-06,Moderata
+5211,4,Influenza,Maschio,27374,2024-8-15,Grave
+7010,8,Influenza,Maschio,24027,2024-8-01,Moderata
+3526,6,Varicella,Maschio,30648,2024-8-13,Moderata
+5377,3,Diarrea,Maschio,824,2024-8-14,Leggera
+8082,7,Febbre,Maschio,22662,2024-8-24,Leggera
+3497,11,Diarrea,Maschio,18419,2024-8-16,Grave
+3776,0,Allergia,Maschio,50481,2024-8-03,Grave
+9402,9,Allergia,Maschio,5290,2024-8-04,Moderata
+4658,10,Febbre,Femmina,26002,2024-8-18,Leggera
+6537,10,Influenza,Femmina,50762,2024-8-26,Moderata
+2389,6,Otite,Femmina,99123,2024-8-02,Moderata
+3221,12,Asma,Femmina,7388,2024-8-26,Grave
+7180,6,Varicella,Maschio,36776,2024-8-22,Leggera
+3995,10,Varicella,Femmina,27538,2024-8-08,Grave
+8930,12,Influenza,Maschio,7004,2024-8-29,Leggera
+6868,9,Influenza,Maschio,38048,2024-8-24,Moderata
+7430,6,Otite,Maschio,477,2024-8-27,Moderata
+6174,5,Allergia,Maschio,25027,2024-8-30,Grave
+3868,8,Mal di gola,Maschio,25763,2024-8-24,Moderata
+2971,12,Diarrea,Femmina,22708,2024-8-17,Grave
+5084,12,Allergia,Femmina,48324,2024-8-23,Moderata
+1910,0,Allergia,Femmina,7388,2024-8-24,Grave
+5457,2,Otite,Femmina,973,2024-8-13,Grave
+7655,4,Mal di gola,Femmina,25763,2024-8-25,Moderata
+2955,8,Diarrea,Maschio,40583,2024-8-29,Moderata
+8277,12,Influenza,Femmina,22701,2024-8-23,Moderata
+2582,0,Febbre,Maschio,7004,2024-8-26,Grave
+3695,12,Raffreddore,Maschio,50954,2024-8-20,Moderata
+5723,7,Mal di gola,Maschio,46736,2024-8-16,Moderata
+7724,9,Raffreddore,Femmina,6306,2024-8-17,Moderata
+6627,9,Allergia,Femmina,24534,2024-8-02,Moderata
+1173,8,Diarrea,Femmina,36776,2024-8-04,Grave
+3329,14,Bronchite,Maschio,46906,2024-8-23,Grave
+8225,0,Raffreddore,Femmina,48113,2024-8-24,Leggera
+8919,13,Varicella,Maschio,6160,2024-8-27,Grave
+1381,6,Influenza,Femmina,22701,2024-8-29,Leggera
+3499,10,Influenza,Femmina,37922,2024-8-25,Moderata
+3097,12,Diarrea,Maschio,24165,2024-8-15,Moderata
+2626,6,Otite,Maschio,45369,2024-8-30,Moderata
+2766,3,Diarrea,Femmina,39743,2024-8-04,Grave
+8544,13,Diarrea,Femmina,21168,2024-8-25,Grave
+2043,2,Raffreddore,Maschio,39761,2024-8-01,Leggera
+6913,2,Allergia,Maschio,24470,2024-8-04,Grave
+6972,6,Raffreddore,Femmina,6186,2024-8-21,Leggera
+1120,2,Influenza,Femmina,19679,2024-8-16,Grave
+4603,8,Otite,Femmina,48191,2024-8-27,Moderata
+9209,13,Diarrea,Femmina,50762,2024-8-19,Grave
+6607,8,Raffreddore,Femmina,47659,2024-8-23,Moderata
+3729,2,Bronchite,Maschio,2170,2024-8-07,Moderata
+8458,10,Asma,Maschio,25763,2024-8-25,Leggera
+4416,5,Febbre,Femmina,42526,2024-8-03,Grave
+4330,0,Otite,Femmina,40090,2024-8-31,Leggera
+4987,1,Influenza,Femmina,1870,2024-8-18,Leggera
+9740,11,Bronchite,Femmina,26330,2024-8-23,Leggera
+4812,9,Allergia,Maschio,27538,2024-8-14,Grave
+6283,12,Raffreddore,Maschio,41514,2024-8-12,Grave
+9995,6,Raffreddore,Femmina,49743,2024-8-22,Grave
+2437,1,Influenza,Femmina,25027,2024-8-13,Grave
+7387,6,Raffreddore,Maschio,42810,2024-8-09,Grave
+5397,6,Mal di gola,Femmina,1456,2024-8-11,Moderata
+8688,4,Raffreddore,Femmina,50954,2024-8-10,Moderata
+6246,4,Diarrea,Maschio,37061,2024-8-31,Grave
+1109,8,Asma,Maschio,35387,2024-8-28,Moderata
+7889,11,Influenza,Femmina,22662,2024-8-01,Grave
+7689,15,Bronchite,Maschio,45369,2024-8-25,Leggera
+6241,1,Mal di gola,Femmina,41481,2024-8-13,Leggera
+7069,7,Mal di gola,Femmina,47659,2024-8-09,Grave
+7386,10,Febbre,Femmina,7004,2024-8-04,Grave
+8459,15,Varicella,Femmina,51207,2024-8-28,Grave
+5402,7,Diarrea,Maschio,24183,2024-8-02,Leggera
+4170,14,Otite,Femmina,28378,2024-8-17,Moderata
+1108,5,Varicella,Maschio,42810,2024-8-09,Grave
+2744,5,Diarrea,Maschio,35387,2024-8-30,Grave
+7275,14,Asma,Femmina,22684,2024-8-09,Leggera
+1837,10,Mal di gola,Femmina,22740,2024-8-02,Leggera
+6693,1,Diarrea,Maschio,36650,2024-8-27,Grave
+3496,5,Varicella,Maschio,22701,2024-8-16,Moderata
+2358,10,Otite,Maschio,22740,2024-8-19,Leggera
+2029,14,Diarrea,Femmina,973,2024-8-06,Moderata
+1100,3,Asma,Maschio,22684,2024-8-23,Grave
+9514,2,Allergia,Femmina,38097,2024-8-19,Grave
+6868,3,Allergia,Maschio,45631,2024-8-06,Moderata
+7234,7,Otite,Maschio,19782,2024-8-08,Grave
+4827,2,Bronchite,Maschio,46416,2024-8-06,Grave
+5618,3,Allergia,Femmina,43409,2024-8-01,Grave
+4448,13,Varicella,Femmina,22740,2024-8-28,Leggera
+9713,5,Bronchite,Femmina,38048,2024-8-19,Leggera
+9775,4,Raffreddore,Femmina,38048,2024-8-11,Grave
+5551,1,Otite,Maschio,42810,2024-8-02,Leggera
+8155,2,Bronchite,Femmina,21168,2024-8-10,Leggera
+9711,10,Varicella,Maschio,16643,2024-8-18,Moderata
+1107,12,Bronchite,Femmina,39828,2024-8-25,Moderata
+2109,8,Influenza,Maschio,25763,2024-8-13,Moderata
+4356,3,Diarrea,Femmina,37042,2024-8-13,Leggera
+4608,13,Allergia,Femmina,2821,2024-8-01,Moderata
+9413,2,Raffreddore,Maschio,46875,2024-8-10,Leggera
+3326,15,Allergia,Femmina,46736,2024-8-13,Leggera
+6371,4,Bronchite,Maschio,7388,2024-8-15,Leggera
+5832,6,Allergia,Femmina,18419,2024-8-03,Grave
+4604,8,Otite,Maschio,24027,2024-8-29,Moderata
+5584,6,Otite,Femmina,39743,2024-8-17,Leggera
+8490,1,Mal di gola,Femmina,1870,2024-8-04,Leggera
+4572,6,Febbre,Maschio,24534,2024-8-26,Grave
+8440,11,Otite,Femmina,824,2024-8-04,Leggera
+3309,11,Diarrea,Maschio,7906,2024-8-28,Leggera
+9883,4,Asma,Femmina,24534,2024-8-19,Leggera
+6314,10,Influenza,Maschio,50387,2024-8-04,Moderata
+3937,7,Influenza,Maschio,41514,2024-8-01,Grave
+6287,10,Otite,Maschio,42728,2024-8-10,Grave
+6004,9,Allergia,Maschio,5290,2024-8-13,Moderata
+6645,11,Mal di gola,Maschio,22662,2024-8-19,Moderata
+6296,6,Mal di gola,Femmina,46906,2024-8-03,Moderata
+9144,4,Mal di gola,Femmina,25027,2024-8-17,Leggera
+9276,3,Influenza,Maschio,37922,2024-8-27,Grave
+2465,5,Diarrea,Femmina,7004,2024-8-14,Grave
+1202,0,Allergia,Maschio,36776,2024-8-20,Moderata
+1403,3,Diarrea,Maschio,46906,2024-8-06,Moderata
+1552,13,Influenza,Maschio,24490,2024-8-02,Grave
+9511,2,Diarrea,Femmina,31249,2024-8-07,Grave
+7386,5,Raffreddore,Femmina,24470,2024-8-06,Moderata
+3041,2,Febbre,Maschio,24183,2024-8-21,Moderata
+1616,3,Otite,Femmina,16643,2024-8-25,Grave
+5544,1,Mal di gola,Maschio,26330,2024-8-07,Moderata
+1792,6,Varicella,Femmina,24183,2024-8-17,Leggera
+6350,3,Mal di gola,Femmina,99123,2024-8-24,Grave
+1095,8,Varicella,Maschio,20423,2024-8-24,Moderata
+4494,15,Influenza,Femmina,7527,2024-8-28,Moderata
+9088,12,Otite,Femmina,48191,2024-8-25,Moderata
+8487,13,Otite,Maschio,46906,2024-8-12,Grave
+3671,3,Febbre,Femmina,42526,2024-8-10,Grave
+4430,14,Otite,Femmina,16643,2024-8-20,Grave
+4880,10,Otite,Maschio,6160,2024-8-03,Grave
+4546,13,Raffreddore,Maschio,22713,2024-8-03,Leggera
+7339,5,Diarrea,Maschio,20423,2024-8-12,Grave
+5082,10,Mal di gola,Maschio,36650,2024-8-04,Moderata
+4237,7,Varicella,Femmina,22713,2024-8-06,Moderata
+3955,12,Mal di gola,Femmina,36527,2024-8-25,Grave
+1625,13,Raffreddore,Maschio,7004,2024-8-29,Leggera
+3438,5,Raffreddore,Femmina,24166,2024-8-16,Leggera
+4673,1,Asma,Maschio,40126,2024-8-16,Leggera
+6959,15,Raffreddore,Maschio,973,2024-8-10,Moderata
+5265,2,Diarrea,Femmina,48208,2024-8-05,Grave
+7268,11,Allergia,Maschio,7906,2024-8-10,Leggera
+6703,3,Mal di gola,Maschio,9879,2024-8-04,Grave
+5073,5,Influenza,Maschio,16643,2024-8-01,Moderata
+1912,9,Asma,Femmina,51207,2024-8-17,Moderata
+9557,12,Bronchite,Maschio,18419,2024-8-29,Moderata
+4732,1,Raffreddore,Femmina,16249,2024-8-04,Leggera
+1159,9,Raffreddore,Maschio,24572,2024-8-10,Grave
+9115,7,Allergia,Maschio,7906,2024-8-10,Moderata
+1977,8,Febbre,Maschio,22740,2024-8-01,Moderata
+3114,7,Bronchite,Femmina,2170,2024-8-24,Leggera
+8584,12,Bronchite,Femmina,19782,2024-8-25,Grave
+6800,11,Febbre,Maschio,19782,2024-8-12,Leggera
+6050,3,Diarrea,Femmina,37061,2024-8-17,Grave
+9696,10,Febbre,Maschio,25027,2024-8-25,Grave
+8946,12,Otite,Femmina,50954,2024-8-29,Grave
+7271,8,Asma,Femmina,2323,2024-8-22,Leggera
+3666,11,Allergia,Maschio,18347,2024-8-14,Moderata
+5815,9,Influenza,Femmina,48113,2024-8-17,Leggera
+2106,4,Influenza,Maschio,46906,2024-8-30,Moderata
+5723,6,Diarrea,Maschio,22713,2024-8-17,Moderata
+4239,6,Raffreddore,Maschio,19782,2024-8-10,Moderata
+6763,1,Mal di gola,Maschio,22740,2024-8-02,Grave
+4110,2,Raffreddore,Maschio,36776,2024-8-03,Grave
+2030,15,Influenza,Femmina,45369,2024-8-24,Grave
+6320,1,Asma,Maschio,24164,2024-8-05,Moderata
+4845,6,Mal di gola,Maschio,48208,2024-8-29,Grave
+8745,0,Asma,Femmina,38097,2024-8-15,Moderata
+7096,14,Febbre,Maschio,7004,2024-8-31,Leggera
+7838,0,Bronchite,Maschio,22637,2024-8-21,Moderata
+8629,14,Bronchite,Maschio,39761,2024-8-26,Leggera
+6927,9,Asma,Maschio,40583,2024-8-25,Moderata
+7418,10,Allergia,Femmina,7527,2024-8-11,Leggera
+6090,15,Asma,Femmina,5290,2024-8-04,Grave
+4334,13,Febbre,Maschio,26125,2024-8-04,Moderata
+3109,3,Mal di gola,Maschio,2170,2024-8-14,Moderata
+4832,4,Asma,Femmina,41514,2024-8-12,Moderata
+6743,7,Diarrea,Femmina,24183,2024-8-22,Grave
+4154,0,Otite,Maschio,45032,2024-8-27,Leggera
+4927,14,Mal di gola,Maschio,42728,2024-8-14,Grave
+1496,8,Allergia,Maschio,5290,2024-8-09,Leggera
+1954,10,Febbre,Femmina,22708,2024-8-23,Leggera
+9939,11,Asma,Maschio,20404,2024-8-05,Leggera
+4657,13,Varicella,Maschio,9879,2024-8-01,Grave
+7162,8,Mal di gola,Femmina,24165,2024-8-15,Moderata
+8441,14,Influenza,Maschio,48208,2024-8-23,Leggera
+6587,10,Diarrea,Maschio,24470,2024-8-23,Moderata
+5257,11,Allergia,Femmina,7906,2024-8-09,Leggera
+9018,9,Allergia,Maschio,24165,2024-8-01,Grave
+9728,12,Mal di gola,Maschio,21168,2024-8-29,Grave
+2433,15,Raffreddore,Maschio,41481,2024-8-24,Leggera
+1906,14,Febbre,Maschio,7527,2024-8-13,Leggera
+1881,3,Febbre,Maschio,7906,2024-8-10,Leggera
+6070,13,Influenza,Femmina,38012,2024-8-13,Leggera
+4128,4,Asma,Maschio,9879,2024-8-31,Grave
+3301,7,Allergia,Maschio,7527,2024-8-26,Moderata
+3158,1,Raffreddore,Femmina,51207,2024-8-30,Grave
+1766,3,Diarrea,Maschio,24183,2024-8-14,Grave
+3419,10,Raffreddore,Maschio,19782,2024-8-23,Moderata
+4768,0,Allergia,Maschio,41350,2024-8-14,Leggera
+3963,2,Mal di gola,Maschio,46416,2024-8-20,Grave
+4830,10,Diarrea,Femmina,38012,2024-8-04,Moderata
+9631,8,Varicella,Maschio,46906,2024-8-19,Grave
+1936,14,Mal di gola,Maschio,22708,2024-8-28,Moderata
+9409,1,Allergia,Maschio,41514,2024-8-03,Leggera
+4088,6,Varicella,Maschio,40090,2024-8-24,Moderata
+1288,9,Raffreddore,Femmina,24534,2024-8-12,Grave
+7248,0,Asma,Femmina,42526,2024-8-06,Leggera
+5246,6,Otite,Maschio,49743,2024-8-12,Grave
+3865,13,Allergia,Maschio,45369,2024-8-17,Leggera
+4412,11,Bronchite,Femmina,50762,2024-8-19,Leggera
+5721,5,Asma,Femmina,45165,2024-8-07,Leggera
+1964,7,Raffreddore,Femmina,41481,2024-8-04,Grave
+2670,7,Influenza,Maschio,973,2024-8-16,Leggera
+8319,14,Otite,Femmina,39828,2024-8-17,Leggera
+1626,6,Raffreddore,Maschio,37922,2024-8-07,Leggera
+2821,12,Mal di gola,Maschio,50762,2024-8-03,Leggera
+4039,6,Otite,Maschio,46906,2024-8-10,Leggera
+9967,10,Diarrea,Maschio,20447,2024-8-31,Leggera
+9715,2,Raffreddore,Femmina,2323,2024-8-10,Leggera
+5728,11,Diarrea,Femmina,24183,2024-8-31,Moderata
+6489,13,Bronchite,Maschio,5290,2024-8-12,Grave
+8343,12,Varicella,Femmina,6306,2024-8-16,Grave
+4573,6,Asma,Maschio,21168,2024-8-07,Moderata
+4045,1,Raffreddore,Maschio,44816,2024-8-13,Leggera
+8178,7,Influenza,Maschio,16249,2024-8-07,Grave
+5461,11,Mal di gola,Femmina,7004,2024-8-05,Moderata
+9824,2,Asma,Femmina,49743,2024-8-07,Moderata
+8133,0,Allergia,Femmina,45032,2024-8-05,Leggera
+5430,15,Otite,Maschio,41481,2024-8-12,Leggera
+7517,8,Bronchite,Femmina,48113,2024-8-14,Moderata
+1788,4,Bronchite,Femmina,7527,2024-8-14,Moderata
+6815,11,Diarrea,Femmina,51207,2024-8-08,Moderata
+5367,3,Diarrea,Maschio,22701,2024-8-21,Grave
+7023,4,Mal di gola,Femmina,42728,2024-8-14,Grave
+5243,7,Asma,Maschio,46736,2024-8-16,Grave
+7305,1,Asma,Maschio,20447,2024-8-10,Leggera
+1981,14,Varicella,Maschio,26330,2024-8-10,Grave
+5376,1,Influenza,Maschio,2323,2024-8-05,Moderata
+8378,10,Febbre,Femmina,41350,2024-8-03,Leggera
+1964,5,Asma,Maschio,24164,2024-8-02,Moderata
+5223,9,Otite,Maschio,50762,2024-8-03,Moderata
+3755,9,Mal di gola,Femmina,40090,2024-8-23,Grave
+1150,12,Influenza,Femmina,21168,2024-8-16,Grave
+9067,5,Febbre,Maschio,6186,2024-8-23,Moderata
+6662,3,Varicella,Maschio,24027,2024-8-07,Leggera
+9756,12,Bronchite,Maschio,5290,2024-8-31,Moderata
+8689,2,Asma,Femmina,6160,2024-8-05,Moderata
+3186,11,Otite,Femmina,37042,2024-8-16,Grave
+9925,15,Mal di gola,Femmina,20404,2024-8-02,Moderata
+6492,1,Mal di gola,Maschio,42767,2024-8-05,Grave
+2903,13,Varicella,Femmina,46909,2024-8-13,Grave
+1571,5,Asma,Maschio,6160,2024-8-30,Grave
+9079,14,Diarrea,Maschio,49743,2024-8-23,Grave
+1990,7,Febbre,Maschio,46416,2024-8-27,Grave
+8010,0,Febbre,Femmina,42971,2024-8-31,Leggera
+9134,10,Varicella,Femmina,9879,2024-8-22,Grave
+2339,14,Allergia,Femmina,7004,2024-8-16,Moderata
+2698,0,Asma,Femmina,9879,2024-8-13,Moderata
+7933,9,Raffreddore,Femmina,45165,2024-8-10,Grave
+3077,13,Bronchite,Maschio,24166,2024-8-11,Leggera
+5233,8,Asma,Femmina,19782,2024-8-06,Moderata
+1475,7,Asma,Femmina,9632,2024-8-17,Grave
+3068,6,Diarrea,Femmina,45032,2024-8-18,Leggera
+1486,0,Bronchite,Femmina,24534,2024-8-17,Leggera
+3424,7,Asma,Femmina,31249,2024-8-21,Leggera
+7559,10,Otite,Maschio,28378,2024-8-17,Leggera
+5599,9,Raffreddore,Femmina,24165,2024-8-03,Leggera
+2168,7,Febbre,Maschio,41481,2024-8-18,Leggera
+6256,7,Influenza,Femmina,24164,2024-8-28,Moderata
+8856,6,Varicella,Femmina,18419,2024-8-26,Moderata
+8658,13,Raffreddore,Femmina,24534,2024-8-24,Leggera
+2066,3,Allergia,Maschio,25763,2024-8-12,Grave
+3956,3,Asma,Maschio,25027,2024-8-12,Grave
+3846,13,Febbre,Femmina,45631,2024-8-23,Grave
+6235,11,Febbre,Maschio,30648,2024-8-28,Moderata
+8610,4,Bronchite,Maschio,39828,2024-8-19,Leggera
+2578,2,Bronchite,Maschio,3875,2024-8-14,Grave
+6538,1,Otite,Maschio,46906,2024-8-06,Grave
+2735,12,Otite,Femmina,50857,2024-8-25,Leggera
+4419,10,Bronchite,Femmina,26002,2024-8-07,Moderata
+3582,2,Raffreddore,Maschio,5290,2024-8-07,Grave
+5007,3,Febbre,Maschio,51207,2024-8-21,Leggera
+3815,0,Influenza,Maschio,19679,2024-8-12,Grave
+6736,8,Allergia,Femmina,39743,2024-8-04,Leggera
+2926,8,Otite,Femmina,2170,2024-8-29,Grave
+3060,9,Diarrea,Femmina,26002,2024-8-25,Leggera
+3626,11,Bronchite,Femmina,22637,2024-8-20,Moderata
+5719,14,Otite,Maschio,39828,2024-8-26,Grave
+1464,14,Febbre,Maschio,2170,2024-8-04,Leggera
+2640,6,Allergia,Femmina,7527,2024-8-15,Moderata
+8550,11,Allergia,Femmina,28378,2024-8-07,Moderata
+2101,12,Influenza,Femmina,824,2024-8-30,Leggera
+4140,7,Mal di gola,Maschio,49743,2024-8-20,Moderata
+4938,2,Otite,Maschio,42526,2024-8-12,Moderata
+7436,1,Asma,Femmina,6160,2024-8-13,Leggera
+4629,13,Febbre,Maschio,42810,2024-8-17,Leggera
+4964,0,Varicella,Femmina,7388,2024-8-26,Leggera
+1664,1,Mal di gola,Femmina,41481,2024-8-18,Moderata
+3952,9,Bronchite,Femmina,50387,2024-8-13,Grave
+2143,3,Varicella,Maschio,42526,2024-8-06,Grave
+2854,4,Diarrea,Femmina,48683,2024-8-18,Grave
+6160,14,Asma,Maschio,19679,2024-8-15,Moderata
+7316,7,Bronchite,Maschio,477,2024-8-09,Moderata
+2963,15,Raffreddore,Maschio,9879,2024-8-24,Moderata
+5007,14,Influenza,Maschio,41350,2024-8-22,Moderata
+1007,14,Varicella,Femmina,22617,2024-8-07,Leggera
+4101,13,Raffreddore,Maschio,45032,2024-8-19,Leggera
+2338,12,Asma,Femmina,21168,2024-8-08,Leggera
+9412,10,Diarrea,Maschio,9879,2024-8-04,Moderata
+9711,15,Varicella,Maschio,39828,2024-8-28,Moderata
+7087,0,Varicella,Maschio,37042,2024-8-12,Leggera
+2056,12,Mal di gola,Maschio,7004,2024-8-09,Leggera
+6353,15,Varicella,Femmina,24572,2024-8-17,Grave
+7303,4,Influenza,Maschio,41481,2024-8-07,Leggera
+8040,2,Raffreddore,Maschio,24470,2024-8-24,Moderata
+7847,6,Influenza,Femmina,7388,2024-8-29,Leggera
+1618,6,Diarrea,Femmina,29803,2024-8-11,Leggera
+7671,15,Mal di gola,Femmina,50387,2024-8-04,Moderata
+5739,12,Mal di gola,Femmina,40090,2024-8-13,Leggera
+6195,5,Diarrea,Maschio,24027,2024-8-22,Grave
+8244,9,Influenza,Maschio,39828,2024-8-11,Grave
+7866,13,Mal di gola,Maschio,48208,2024-8-11,Leggera
+2532,1,Asma,Maschio,46736,2024-8-05,Leggera
+8944,2,Asma,Femmina,50387,2024-8-13,Moderata
+2815,13,Influenza,Femmina,41584,2024-8-25,Moderata
+5596,1,Varicella,Femmina,824,2024-8-29,Grave
+6036,3,Bronchite,Maschio,34609,2024-8-28,Grave
+8977,0,Asma,Maschio,7004,2024-8-03,Grave
+7333,7,Otite,Femmina,25763,2024-8-18,Grave
+7564,9,Influenza,Femmina,19679,2024-8-04,Moderata
+3152,4,Diarrea,Maschio,41584,2024-8-31,Moderata
+2896,12,Influenza,Maschio,42767,2024-8-15,Leggera
+3183,9,Mal di gola,Femmina,22617,2024-8-30,Moderata
+9987,1,Raffreddore,Maschio,2323,2024-8-12,Moderata
+4799,5,Asma,Maschio,50857,2024-8-02,Moderata
+4437,4,Varicella,Maschio,24166,2024-8-09,Leggera
+2986,5,Febbre,Femmina,16643,2024-8-11,Moderata
+5945,10,Bronchite,Maschio,31249,2024-8-26,Grave
+1186,15,Varicella,Maschio,16643,2024-8-28,Moderata
+8294,11,Mal di gola,Maschio,50387,2024-8-27,Grave
+6201,7,Febbre,Femmina,25027,2024-8-31,Leggera
+7722,9,Asma,Maschio,36527,2024-8-07,Grave
+6195,0,Influenza,Maschio,22713,2024-8-05,Leggera
+7125,0,Varicella,Femmina,36650,2024-8-27,Leggera
+1906,7,Bronchite,Maschio,27538,2024-8-13,Moderata
+1272,1,Raffreddore,Maschio,36776,2024-8-26,Grave
+2442,4,Varicella,Maschio,24534,2024-8-08,Moderata
+5349,13,Diarrea,Maschio,46736,2024-8-24,Moderata
+3720,4,Varicella,Femmina,20404,2024-8-04,Moderata
+4763,7,Febbre,Maschio,39743,2024-8-18,Grave
+3118,11,Asma,Maschio,2821,2024-8-26,Moderata
+4346,6,Varicella,Maschio,99123,2024-8-08,Grave
+6851,4,Allergia,Maschio,19782,2024-8-16,Grave
+4026,4,Allergia,Maschio,5290,2024-8-23,Leggera
+4757,3,Febbre,Femmina,24470,2024-8-03,Grave
+2681,0,Diarrea,Femmina,24183,2024-8-23,Grave
+7024,14,Varicella,Maschio,19679,2024-8-04,Grave
+5419,8,Diarrea,Femmina,24470,2024-8-16,Moderata
+8004,3,Varicella,Maschio,26330,2024-8-19,Leggera
+2553,13,Otite,Maschio,6306,2024-8-30,Leggera
+8606,12,Mal di gola,Femmina,41565,2024-8-25,Leggera
+8539,5,Mal di gola,Femmina,49743,2024-8-26,Leggera
+5625,9,Varicella,Maschio,42814,2024-8-25,Moderata
+1233,11,Influenza,Femmina,7004,2024-8-14,Grave
+7728,8,Influenza,Femmina,19782,2024-8-18,Grave
+3564,12,Diarrea,Maschio,50762,2024-8-20,Moderata
+8192,1,Varicella,Femmina,26002,2024-8-29,Grave
+7036,9,Otite,Femmina,24490,2024-8-25,Leggera
+7447,8,Raffreddore,Maschio,26027,2024-8-02,Moderata
+8547,6,Raffreddore,Maschio,5290,2024-8-25,Moderata
+5443,6,Diarrea,Femmina,41514,2024-8-25,Leggera
+2445,2,Influenza,Femmina,45631,2024-8-15,Grave
+3560,11,Otite,Maschio,26002,2024-8-19,Leggera
+9332,2,Bronchite,Maschio,38012,2024-8-26,Grave
+9942,2,Otite,Femmina,7004,2024-8-31,Moderata
+7311,2,Varicella,Maschio,36650,2024-8-24,Grave
+2207,3,Raffreddore,Femmina,36650,2024-8-06,Grave
+3761,15,Raffreddore,Femmina,37042,2024-8-03,Moderata
+9246,15,Allergia,Maschio,7388,2024-8-26,Leggera
+2306,1,Febbre,Maschio,6306,2024-8-22,Grave
+8541,9,Asma,Femmina,39743,2024-8-28,Moderata
+4039,7,Febbre,Femmina,42767,2024-8-06,Moderata
+4390,0,Allergia,Maschio,29803,2024-8-11,Leggera
+4449,7,Mal di gola,Femmina,477,2024-8-21,Moderata
+8511,12,Bronchite,Femmina,50762,2024-8-05,Leggera
+5673,15,Allergia,Femmina,28378,2024-8-21,Moderata
+7203,11,Allergia,Femmina,39761,2024-8-27,Leggera
+9452,9,Influenza,Femmina,5290,2024-8-26,Grave
+7745,8,Diarrea,Femmina,22713,2024-8-06,Moderata
+3758,14,Diarrea,Maschio,24470,2024-8-07,Grave
+4725,13,Bronchite,Femmina,35387,2024-8-18,Moderata
+2435,6,Mal di gola,Femmina,48121,2024-8-25,Grave
+4328,0,Allergia,Maschio,48324,2024-8-06,Leggera
+9000,1,Febbre,Maschio,50954,2024-8-06,Leggera
+2765,2,Otite,Femmina,42971,2024-8-19,Leggera
+1451,6,Febbre,Femmina,20423,2024-8-17,Leggera
+5258,9,Varicella,Maschio,26027,2024-8-11,Grave
+5256,11,Allergia,Maschio,7087,2024-8-13,Grave
+9031,9,Bronchite,Maschio,48191,2024-8-17,Grave
+3204,12,Mal di gola,Maschio,7388,2024-8-14,Leggera
+8314,3,Febbre,Femmina,36650,2024-8-14,Grave
+5785,14,Otite,Femmina,48324,2024-8-18,Moderata
+9349,9,Raffreddore,Maschio,18347,2024-8-12,Moderata
+7584,5,Diarrea,Femmina,42971,2024-8-20,Grave
+2011,11,Raffreddore,Maschio,22617,2024-8-16,Moderata
+2524,9,Otite,Maschio,37042,2024-8-21,Moderata
+9063,13,Otite,Maschio,45369,2024-8-09,Moderata
+7262,2,Diarrea,Femmina,24490,2024-8-28,Moderata
+8790,2,Influenza,Femmina,1870,2024-8-09,Grave
+6475,11,Asma,Maschio,24490,2024-8-11,Grave
+2629,12,Bronchite,Femmina,48683,2024-8-16,Leggera
+1897,7,Asma,Femmina,39761,2024-8-11,Leggera
+8242,1,Bronchite,Femmina,22684,2024-8-31,Grave
+7597,4,Raffreddore,Femmina,45165,2024-8-04,Moderata
+5198,9,Raffreddore,Maschio,40583,2024-8-06,Grave
+3863,15,Influenza,Maschio,41514,2024-8-25,Grave
+4191,11,Mal di gola,Maschio,26002,2024-8-26,Moderata
+2914,13,Varicella,Maschio,41565,2024-8-15,Leggera
+3809,4,Febbre,Femmina,36776,2024-8-06,Moderata
+4519,11,Varicella,Femmina,16249,2024-8-08,Leggera
+7368,3,Mal di gola,Femmina,48324,2024-8-01,Moderata
+6624,6,Mal di gola,Maschio,22740,2024-8-19,Moderata
+2231,9,Bronchite,Femmina,48121,2024-8-02,Grave
+7634,2,Influenza,Maschio,24183,2024-8-25,Moderata
+6499,14,Bronchite,Femmina,36650,2024-8-08,Grave
+9013,15,Bronchite,Maschio,51207,2024-8-18,Moderata
+6770,9,Asma,Femmina,24165,2024-8-16,Moderata
+4836,10,Febbre,Femmina,50857,2024-8-22,Moderata
+9104,0,Otite,Maschio,25027,2024-8-06,Moderata
+2834,12,Varicella,Femmina,27538,2024-8-07,Moderata
+3210,11,Raffreddore,Maschio,50954,2024-8-22,Grave
+7777,11,Allergia,Maschio,40583,2024-8-22,Moderata
+7823,15,Varicella,Femmina,7388,2024-8-05,Moderata
+1489,8,Mal di gola,Femmina,45032,2024-8-31,Moderata
+8283,3,Mal di gola,Maschio,26125,2024-8-14,Grave
+3696,5,Otite,Femmina,24572,2024-8-27,Leggera
+2179,4,Diarrea,Maschio,41514,2024-8-02,Leggera
+2359,5,Mal di gola,Femmina,42814,2024-8-25,Leggera
+1111,7,Varicella,Femmina,2170,2024-8-16,Leggera
+7938,2,Influenza,Maschio,46416,2024-8-20,Moderata
+6906,8,Varicella,Femmina,47338,2024-8-27,Grave
+2731,1,Allergia,Femmina,39828,2024-8-06,Grave
+5121,10,Otite,Femmina,7527,2024-8-18,Grave
+7066,8,Febbre,Maschio,36650,2024-8-07,Leggera
+8011,9,Raffreddore,Maschio,45631,2024-8-18,Grave
+3433,4,Influenza,Maschio,7087,2024-8-16,Moderata
+4279,3,Diarrea,Maschio,25027,2024-8-19,Grave
+9432,6,Varicella,Femmina,42814,2024-8-20,Grave
+6128,15,Mal di gola,Femmina,46906,2024-8-07,Leggera
+3098,14,Bronchite,Maschio,47748,2024-8-09,Grave
+4818,15,Influenza,Maschio,25763,2024-8-04,Leggera
+8727,4,Otite,Femmina,51207,2024-8-18,Grave
+2738,6,Diarrea,Femmina,48191,2024-8-03,Grave
+1826,12,Bronchite,Femmina,37922,2024-8-19,Leggera
+8101,1,Asma,Maschio,38097,2024-8-28,Grave
+4507,8,Febbre,Femmina,99123,2024-8-27,Leggera
+5973,7,Diarrea,Femmina,22637,2024-8-07,Leggera
+7878,11,Varicella,Maschio,37042,2024-8-09,Grave
+5539,15,Mal di gola,Femmina,42814,2024-8-20,Grave
+1304,14,Asma,Femmina,5290,2024-8-21,Moderata
+3559,6,Asma,Femmina,26125,2024-8-09,Moderata
+4254,1,Bronchite,Maschio,22701,2024-8-04,Grave
+7776,3,Diarrea,Femmina,42810,2024-8-20,Leggera
+3058,13,Influenza,Maschio,22713,2024-8-04,Leggera
+2233,14,Allergia,Maschio,824,2024-8-10,Leggera
+9879,14,Bronchite,Maschio,2170,2024-8-31,Grave
+8009,0,Bronchite,Femmina,43409,2024-8-11,Leggera
+2666,5,Diarrea,Femmina,26330,2024-8-08,Grave
+3640,6,Raffreddore,Femmina,16643,2024-8-06,Grave
+9165,14,Varicella,Femmina,24183,2024-8-15,Leggera
+9209,11,Varicella,Maschio,2169,2024-8-19,Leggera
+7926,0,Diarrea,Maschio,22701,2024-8-24,Moderata
+6900,15,Otite,Femmina,22684,2024-8-13,Leggera
+3660,10,Allergia,Maschio,24470,2024-8-07,Grave
+9774,10,Asma,Femmina,41514,2024-8-25,Grave
+6896,8,Influenza,Maschio,24027,2024-8-27,Moderata
+9757,1,Varicella,Maschio,50857,2024-8-21,Moderata
+1437,6,Diarrea,Maschio,26002,2024-8-02,Moderata
+1787,6,Raffreddore,Femmina,19782,2024-8-09,Grave
+8073,2,Mal di gola,Maschio,46875,2024-8-28,Moderata
+3765,2,Mal di gola,Maschio,20447,2024-8-31,Moderata
+7267,5,Febbre,Maschio,24166,2024-8-04,Grave
+5563,1,Influenza,Femmina,37061,2024-8-30,Grave
+4504,9,Otite,Maschio,24470,2024-8-31,Leggera
+2596,12,Influenza,Maschio,9632,2024-8-15,Leggera
+3350,4,Raffreddore,Femmina,26027,2024-8-04,Moderata
+8306,15,Febbre,Maschio,18347,2024-8-01,Leggera
+5886,8,Varicella,Femmina,26330,2024-8-07,Moderata
+5083,13,Otite,Femmina,43409,2024-8-09,Grave
+5504,4,Raffreddore,Femmina,43409,2024-8-19,Leggera
+4080,2,Diarrea,Maschio,19679,2024-8-23,Moderata
+5054,7,Varicella,Femmina,50387,2024-8-03,Grave
+4953,11,Diarrea,Femmina,50857,2024-8-29,Grave
+1035,7,Otite,Maschio,41565,2024-8-11,Grave
+2194,10,Allergia,Maschio,22684,2024-8-04,Leggera
+5141,10,Mal di gola,Maschio,22637,2024-8-20,Grave
+3395,8,Allergia,Femmina,99123,2024-8-25,Moderata
+9668,9,Varicella,Femmina,24164,2024-8-27,Moderata
+8881,15,Mal di gola,Femmina,48324,2024-8-10,Moderata
+6467,7,Otite,Maschio,24534,2024-8-31,Leggera
+7476,8,Febbre,Femmina,38012,2024-8-22,Leggera
+2139,11,Raffreddore,Femmina,32437,2024-8-14,Grave
+5883,11,Influenza,Femmina,50954,2024-8-12,Leggera
+6257,10,Bronchite,Maschio,19679,2024-8-12,Moderata
+1245,9,Febbre,Maschio,16643,2024-8-21,Grave
+4835,11,Mal di gola,Femmina,7388,2024-8-14,Leggera
+7932,10,Diarrea,Femmina,22701,2024-8-23,Grave
+8785,3,Raffreddore,Maschio,31249,2024-8-21,Grave
+9439,8,Influenza,Maschio,49743,2024-8-12,Moderata
+9839,14,Influenza,Maschio,9632,2024-8-02,Moderata
+2097,15,Mal di gola,Femmina,7388,2024-8-28,Grave
+6563,11,Mal di gola,Maschio,824,2024-8-09,Moderata
+5353,13,Otite,Maschio,29803,2024-8-25,Grave
+3213,10,Varicella,Femmina,42728,2024-8-16,Moderata
+9852,9,Raffreddore,Maschio,22740,2024-8-15,Grave
+8804,12,Otite,Maschio,2323,2024-8-22,Moderata
+2879,8,Diarrea,Femmina,41514,2024-8-31,Grave
+9738,9,Otite,Femmina,4926,2024-8-30,Grave
+7247,14,Bronchite,Femmina,25763,2024-8-17,Grave
+1390,4,Bronchite,Maschio,41565,2024-8-06,Leggera
+2833,11,Bronchite,Femmina,22662,2024-8-31,Grave
+7966,1,Asma,Maschio,42728,2024-8-28,Grave
+7344,1,Varicella,Femmina,48208,2024-8-16,Grave
+8667,8,Asma,Femmina,20423,2024-8-16,Leggera
+5735,15,Varicella,Maschio,31249,2024-8-12,Leggera
+5518,3,Varicella,Maschio,7906,2024-8-30,Moderata
+9684,3,Febbre,Maschio,20447,2024-8-28,Leggera
+7689,5,Diarrea,Maschio,21168,2024-8-25,Moderata
+2246,8,Allergia,Femmina,50762,2024-8-31,Leggera
+2798,7,Asma,Femmina,477,2024-8-14,Moderata
+2205,10,Otite,Maschio,2323,2024-8-11,Leggera
+6972,6,Influenza,Maschio,48191,2024-8-07,Leggera
+9846,8,Influenza,Femmina,37042,2024-8-01,Leggera
+7102,5,Mal di gola,Maschio,20404,2024-8-29,Moderata
+6416,0,Influenza,Maschio,24572,2024-8-20,Leggera
+3516,10,Allergia,Femmina,36527,2024-8-03,Moderata
+5650,4,Mal di gola,Femmina,2169,2024-8-29,Leggera
+3559,13,Mal di gola,Femmina,477,2024-8-14,Leggera
+9911,4,Asma,Maschio,45369,2024-8-16,Leggera
+5670,6,Febbre,Femmina,24572,2024-8-27,Leggera
+5388,14,Febbre,Femmina,40126,2024-8-17,Grave
+7715,3,Raffreddore,Maschio,42971,2024-8-26,Grave
+4633,5,Mal di gola,Maschio,42971,2024-8-13,Moderata
+2587,9,Diarrea,Femmina,3875,2024-8-14,Grave
+9736,9,Diarrea,Femmina,26330,2024-8-10,Moderata
+6779,3,Raffreddore,Femmina,46906,2024-8-13,Moderata
+6186,3,Otite,Maschio,9879,2024-8-15,Leggera
+9872,12,Allergia,Maschio,36776,2024-8-20,Moderata
+7160,13,Influenza,Maschio,37042,2024-8-19,Leggera
+7596,10,Mal di gola,Femmina,34609,2024-8-03,Leggera
+3845,5,Raffreddore,Maschio,47338,2024-8-27,Leggera
+6653,9,Allergia,Femmina,7906,2024-8-02,Moderata
+9523,0,Otite,Femmina,45165,2024-8-02,Leggera
+8510,9,Varicella,Maschio,41481,2024-8-26,Leggera
+5575,1,Bronchite,Femmina,24164,2024-8-10,Grave
+3441,6,Influenza,Femmina,99123,2024-8-27,Grave
+7901,8,Bronchite,Femmina,22708,2024-8-27,Leggera
+2037,7,Mal di gola,Maschio,39828,2024-8-05,Grave
+2983,10,Varicella,Femmina,36776,2024-8-04,Leggera
+7452,11,Febbre,Femmina,45631,2024-8-03,Grave
+6982,9,Raffreddore,Femmina,50954,2024-8-05,Moderata
+3457,1,Bronchite,Femmina,22617,2024-8-16,Grave
+4207,13,Diarrea,Femmina,25027,2024-8-04,Grave
+4342,4,Varicella,Maschio,27538,2024-8-28,Grave
+9407,11,Febbre,Femmina,45244,2024-8-21,Moderata
+6226,9,Influenza,Femmina,24470,2024-8-02,Leggera
+9308,3,Otite,Maschio,4926,2024-8-21,Leggera
+2128,3,Raffreddore,Femmina,39743,2024-8-29,Grave
+3686,3,Otite,Femmina,36527,2024-8-26,Leggera
+9444,8,Asma,Femmina,37042,2024-8-29,Grave
+5310,15,Influenza,Maschio,16249,2024-8-21,Leggera
+6862,14,Asma,Maschio,22708,2024-8-26,Leggera
+1412,11,Febbre,Femmina,824,2024-8-07,Grave
+2614,7,Bronchite,Femmina,42526,2024-8-24,Leggera
+5831,1,Raffreddore,Maschio,50762,2024-8-20,Leggera
+6313,11,Raffreddore,Maschio,41350,2024-8-29,Grave
+5211,3,Varicella,Femmina,21168,2024-8-17,Grave
+7804,5,Diarrea,Femmina,45032,2024-8-17,Leggera
+1078,9,Asma,Femmina,7004,2024-8-05,Moderata
+9100,10,Febbre,Maschio,4926,2024-8-24,Grave
+8828,9,Varicella,Femmina,20404,2024-8-09,Grave
+4310,6,Asma,Maschio,45631,2024-8-22,Moderata
+2485,11,Otite,Femmina,2323,2024-8-20,Leggera
+7051,3,Raffreddore,Maschio,25027,2024-8-16,Leggera
+8590,15,Influenza,Maschio,16249,2024-8-07,Moderata
+5033,5,Febbre,Femmina,7527,2024-8-03,Moderata
+5021,12,Influenza,Maschio,50857,2024-8-05,Moderata
+7857,2,Diarrea,Maschio,47338,2024-8-18,Grave
+6677,4,Mal di gola,Maschio,22662,2024-8-07,Grave
+6624,8,Mal di gola,Maschio,24165,2024-8-24,Grave
+5118,5,Varicella,Femmina,22637,2024-8-23,Leggera
+3780,9,Varicella,Maschio,2821,2024-8-04,Moderata
+7939,11,Allergia,Femmina,20404,2024-8-12,Grave
+7651,13,Otite,Femmina,24164,2024-8-31,Leggera
+1007,8,Influenza,Maschio,973,2024-8-15,Grave
+6005,11,Otite,Maschio,6160,2024-8-30,Moderata
+1752,0,Raffreddore,Maschio,37061,2024-8-07,Leggera
+1538,12,Raffreddore,Femmina,25027,2024-8-23,Grave
+1025,8,Diarrea,Femmina,49743,2024-8-31,Leggera
+8542,10,Asma,Maschio,18347,2024-8-15,Leggera
+6847,14,Diarrea,Maschio,50762,2024-8-22,Leggera
+8678,8,Influenza,Femmina,50954,2024-8-03,Leggera
+5531,14,Allergia,Maschio,50954,2024-8-03,Leggera
+9381,11,Bronchite,Maschio,24470,2024-8-24,Leggera
+4237,6,Raffreddore,Maschio,25027,2024-8-16,Moderata
+4121,5,Otite,Femmina,18419,2024-8-11,Moderata
+5153,11,Varicella,Maschio,22701,2024-8-15,Grave
+5206,1,Otite,Femmina,18347,2024-8-21,Grave
+5331,7,Influenza,Maschio,39761,2024-8-03,Grave
+8502,14,Influenza,Maschio,42810,2024-8-06,Leggera
+5446,5,Varicella,Maschio,39828,2024-8-17,Moderata
+5160,3,Influenza,Femmina,42728,2024-8-01,Leggera
+9401,9,Diarrea,Maschio,29803,2024-8-27,Grave
+9796,3,Varicella,Maschio,9879,2024-8-29,Moderata
+9490,12,Allergia,Femmina,22662,2024-8-13,Moderata
+5902,15,Diarrea,Femmina,45032,2024-8-10,Grave
+9665,8,Diarrea,Maschio,48683,2024-8-04,Moderata
+5130,4,Asma,Femmina,18347,2024-8-11,Moderata
+4451,6,Febbre,Maschio,4926,2024-8-31,Leggera
+6398,13,Allergia,Femmina,25763,2024-8-28,Leggera
+6917,5,Febbre,Maschio,51207,2024-8-19,Leggera
+1782,8,Varicella,Femmina,7388,2024-8-19,Moderata
+1594,11,Asma,Maschio,40090,2024-8-06,Moderata
+9457,15,Allergia,Femmina,40090,2024-8-19,Moderata
+7807,2,Diarrea,Femmina,50954,2024-8-30,Leggera
+8454,13,Allergia,Femmina,22701,2024-8-29,Leggera
+9854,7,Varicella,Femmina,99123,2024-8-05,Grave
+7879,4,Diarrea,Femmina,48683,2024-8-28,Leggera
+9168,13,Asma,Maschio,40090,2024-8-07,Leggera
+9943,3,Varicella,Maschio,24183,2024-8-21,Leggera
+8098,15,Allergia,Femmina,4926,2024-8-25,Moderata
+4943,2,Mal di gola,Femmina,25763,2024-8-14,Leggera
+7389,7,Influenza,Femmina,9632,2024-8-19,Leggera
+3694,13,Allergia,Femmina,22740,2024-8-08,Moderata
+9115,1,Asma,Femmina,26002,2024-8-03,Leggera
+7819,4,Mal di gola,Femmina,50762,2024-8-24,Grave
+5960,10,Allergia,Maschio,51207,2024-8-11,Moderata
+2199,7,Allergia,Maschio,36650,2024-8-06,Moderata
+7895,12,Influenza,Femmina,9632,2024-8-08,Leggera
+1970,15,Allergia,Maschio,50762,2024-8-06,Leggera
+1433,15,Diarrea,Maschio,46875,2024-8-08,Moderata
+4104,9,Allergia,Femmina,36650,2024-8-31,Grave
+1338,7,Asma,Femmina,27374,2024-8-17,Grave
+5500,7,Influenza,Femmina,50762,2024-8-12,Moderata
+9872,7,Asma,Maschio,27374,2024-8-27,Grave
+4227,10,Febbre,Femmina,27538,2024-8-14,Moderata
+4437,15,Allergia,Femmina,42814,2024-8-13,Leggera
+5028,8,Raffreddore,Femmina,29803,2024-8-27,Leggera
+3471,9,Otite,Femmina,42814,2024-8-24,Moderata
+8602,11,Otite,Femmina,40090,2024-8-01,Moderata
+5256,8,Otite,Femmina,7527,2024-8-14,Leggera
+5767,12,Mal di gola,Maschio,48324,2024-8-22,Moderata
+9962,5,Raffreddore,Maschio,24490,2024-8-27,Grave
+7663,9,Influenza,Femmina,50954,2024-8-06,Grave
+9108,4,Asma,Maschio,48683,2024-8-11,Grave
+8639,11,Allergia,Maschio,477,2024-8-16,Leggera
+2550,0,Allergia,Maschio,7087,2024-8-10,Moderata
+6826,3,Otite,Maschio,42810,2024-8-30,Moderata
+6183,15,Allergia,Femmina,38012,2024-8-04,Leggera
+1807,13,Allergia,Maschio,24183,2024-8-30,Grave
+1812,1,Mal di gola,Femmina,38012,2024-8-04,Moderata
+9351,1,Influenza,Femmina,20404,2024-8-04,Moderata
+5371,6,Bronchite,Maschio,1870,2024-8-25,Moderata
+9883,2,Diarrea,Maschio,2821,2024-8-23,Grave
+1445,12,Bronchite,Maschio,39743,2024-8-15,Moderata
+2863,6,Asma,Femmina,1870,2024-8-06,Moderata
+8320,3,Varicella,Femmina,41514,2024-8-10,Leggera
+3938,15,Influenza,Maschio,24027,2024-8-20,Moderata
+1653,13,Varicella,Femmina,24165,2024-8-22,Leggera
+3439,4,Diarrea,Femmina,18419,2024-8-29,Moderata
+5497,13,Influenza,Femmina,7087,2024-8-24,Leggera
+1341,5,Otite,Femmina,2323,2024-8-02,Moderata
+4253,0,Otite,Femmina,16643,2024-8-13,Grave
+9919,3,Raffreddore,Femmina,50481,2024-8-25,Grave
+8520,10,Mal di gola,Maschio,7004,2024-8-04,Moderata
+9886,12,Bronchite,Femmina,6186,2024-8-03,Leggera
+1058,9,Bronchite,Femmina,22637,2024-8-27,Leggera
+3493,6,Allergia,Femmina,824,2024-8-04,Leggera
+2834,7,Febbre,Femmina,36776,2024-8-24,Grave
+3256,12,Mal di gola,Maschio,3875,2024-8-16,Grave
+9933,15,Allergia,Femmina,39828,2024-8-17,Grave
+1662,3,Varicella,Femmina,19782,2024-8-05,Moderata
+6444,0,Varicella,Maschio,45631,2024-8-14,Leggera
+5439,5,Otite,Maschio,41481,2024-8-10,Grave
+1359,1,Febbre,Maschio,37061,2024-8-06,Moderata
+5232,9,Varicella,Maschio,24183,2024-8-01,Leggera
+5437,7,Diarrea,Maschio,9632,2024-8-13,Leggera
+3991,10,Influenza,Maschio,30648,2024-8-29,Leggera
+3904,3,Asma,Maschio,824,2024-8-24,Moderata
+3367,13,Asma,Maschio,48113,2024-8-21,Leggera
+2962,6,Raffreddore,Maschio,18419,2024-8-27,Moderata
+1052,3,Raffreddore,Femmina,22617,2024-8-06,Moderata
+7236,14,Allergia,Femmina,1456,2024-8-04,Grave
+1599,12,Febbre,Femmina,51207,2024-8-27,Grave
+2410,12,Raffreddore,Femmina,42526,2024-8-07,Leggera
+5911,9,Bronchite,Femmina,24165,2024-8-26,Leggera
+9876,3,Bronchite,Maschio,34609,2024-8-16,Leggera
+2814,8,Asma,Maschio,35387,2024-8-19,Leggera
+8633,1,Febbre,Femmina,5290,2024-8-21,Moderata
+5941,1,Otite,Femmina,44816,2024-8-02,Grave
+6568,12,Raffreddore,Femmina,9632,2024-8-31,Leggera
+1734,0,Bronchite,Femmina,40583,2024-8-26,Leggera
+5204,3,Febbre,Maschio,37922,2024-8-17,Leggera
+7564,5,Raffreddore,Maschio,42810,2024-8-15,Grave
+5103,7,Febbre,Femmina,46909,2024-8-27,Grave
+7825,4,Otite,Femmina,37061,2024-8-23,Leggera
+2558,11,Mal di gola,Maschio,44816,2024-8-03,Grave
+7418,1,Febbre,Maschio,24470,2024-8-12,Leggera
+6222,2,Raffreddore,Maschio,50954,2024-8-05,Moderata
+2068,5,Varicella,Femmina,38048,2024-8-16,Grave
+5720,0,Asma,Maschio,16643,2024-8-24,Grave
+6631,12,Febbre,Femmina,24166,2024-8-19,Leggera
+8539,7,Raffreddore,Maschio,24470,2024-8-11,Moderata
+8342,12,Diarrea,Femmina,51207,2024-8-14,Grave
+8689,10,Raffreddore,Femmina,48208,2024-8-12,Grave
+9138,13,Diarrea,Maschio,2323,2024-8-03,Leggera
+2701,15,Varicella,Femmina,26330,2024-8-07,Grave
+9125,14,Asma,Maschio,42728,2024-8-27,Grave
+1677,0,Varicella,Femmina,45631,2024-8-23,Leggera
+1802,13,Influenza,Maschio,36650,2024-8-19,Grave
+4058,4,Bronchite,Femmina,35387,2024-8-03,Leggera
+5118,4,Otite,Femmina,42767,2024-8-17,Leggera
+4125,6,Otite,Maschio,19679,2024-8-17,Leggera
+2482,0,Mal di gola,Femmina,7527,2024-8-08,Leggera
+9128,1,Otite,Femmina,42526,2024-8-22,Moderata
+5325,11,Influenza,Femmina,9879,2024-8-12,Moderata
+8247,0,Varicella,Maschio,7087,2024-8-18,Leggera
+4951,15,Allergia,Femmina,39761,2024-8-13,Grave
+1603,12,Influenza,Femmina,18419,2024-8-11,Leggera
+6272,14,Otite,Femmina,26330,2024-8-07,Moderata
+5783,13,Febbre,Femmina,24027,2024-8-22,Leggera
+4011,10,Varicella,Maschio,973,2024-8-16,Moderata
+9278,6,Asma,Femmina,973,2024-8-26,Moderata
+8546,10,Asma,Femmina,29803,2024-8-15,Moderata
+4182,12,Allergia,Femmina,24490,2024-8-31,Moderata
+5178,15,Bronchite,Maschio,24183,2024-8-31,Grave
+3619,12,Asma,Maschio,24027,2024-8-15,Moderata
+1238,13,Bronchite,Maschio,22740,2024-8-24,Grave
+2489,10,Asma,Maschio,48113,2024-8-07,Leggera
+4345,1,Bronchite,Maschio,50387,2024-8-11,Leggera
+3268,11,Mal di gola,Maschio,46736,2024-8-05,Grave
+9740,2,Bronchite,Maschio,46906,2024-8-23,Grave
+9862,4,Varicella,Maschio,2170,2024-8-11,Grave
+7192,0,Influenza,Maschio,18347,2024-8-21,Moderata
+9344,14,Mal di gola,Femmina,50954,2024-8-07,Leggera
+3407,7,Bronchite,Femmina,34609,2024-8-20,Leggera
+8215,12,Mal di gola,Femmina,26125,2024-8-07,Leggera
+5741,3,Influenza,Femmina,43409,2024-8-25,Moderata
+3890,7,Mal di gola,Maschio,36776,2024-8-06,Moderata
+8892,14,Febbre,Femmina,22713,2024-8-29,Leggera
+1242,3,Otite,Femmina,1870,2024-8-05,Grave
+6357,1,Otite,Maschio,42728,2024-8-25,Leggera
+6611,12,Otite,Maschio,22637,2024-8-13,Moderata
+4067,2,Raffreddore,Femmina,2169,2024-8-04,Grave
+3519,14,Bronchite,Femmina,50857,2024-8-27,Leggera
+3776,15,Febbre,Femmina,28378,2024-8-10,Grave
+5311,4,Febbre,Maschio,39761,2024-8-23,Moderata
+8278,11,Diarrea,Maschio,42814,2024-8-23,Leggera
+8816,0,Varicella,Femmina,19679,2024-8-23,Leggera
+5708,14,Asma,Maschio,19782,2024-8-29,Grave
+7324,12,Mal di gola,Femmina,39761,2024-8-08,Leggera
+6332,2,Febbre,Femmina,50954,2024-8-09,Grave
+1376,8,Allergia,Maschio,48683,2024-8-18,Leggera
+6578,10,Febbre,Femmina,36776,2024-8-14,Leggera
+3012,4,Allergia,Femmina,2170,2024-8-02,Moderata
+4802,15,Febbre,Femmina,5290,2024-8-27,Grave
+8212,12,Bronchite,Femmina,38048,2024-8-08,Leggera
+8510,2,Varicella,Maschio,22637,2024-8-21,Grave
+2469,8,Asma,Femmina,48191,2024-8-16,Moderata
+9356,7,Raffreddore,Maschio,24572,2024-8-29,Grave
+6274,2,Mal di gola,Femmina,7527,2024-8-07,Grave
+2427,11,Raffreddore,Maschio,6186,2024-8-28,Leggera
+7968,10,Raffreddore,Maschio,48113,2024-8-02,Leggera
+8319,7,Varicella,Femmina,44816,2024-8-14,Grave
+4954,0,Allergia,Maschio,24534,2024-8-18,Moderata
+4588,0,Mal di gola,Femmina,5290,2024-8-06,Leggera
+1773,0,Otite,Femmina,50857,2024-8-08,Leggera
+3043,5,Otite,Femmina,43409,2024-8-13,Leggera
+5110,0,Allergia,Maschio,40583,2024-8-31,Grave
+4365,8,Raffreddore,Femmina,7388,2024-8-28,Moderata
+7917,0,Mal di gola,Maschio,46416,2024-8-06,Moderata
+4529,4,Raffreddore,Maschio,39828,2024-8-06,Leggera
+6458,4,Raffreddore,Maschio,47748,2024-8-20,Moderata
+2510,2,Allergia,Femmina,19679,2024-8-05,Moderata
+7011,4,Asma,Maschio,24470,2024-8-04,Leggera
+6508,0,Diarrea,Maschio,6160,2024-8-09,Grave
+3658,8,Asma,Maschio,49743,2024-8-01,Leggera
+6964,15,Otite,Maschio,42971,2024-8-19,Moderata
+9161,7,Allergia,Femmina,824,2024-8-09,Grave
+9153,2,Diarrea,Femmina,42810,2024-8-09,Grave
+6023,12,Bronchite,Femmina,24027,2024-8-18,Moderata
+5243,8,Bronchite,Maschio,48121,2024-8-22,Leggera
+5220,7,Allergia,Femmina,39743,2024-8-20,Grave
+6630,9,Varicella,Maschio,46736,2024-8-30,Leggera
+2554,9,Bronchite,Femmina,47748,2024-8-01,Grave
+3217,9,Diarrea,Maschio,42728,2024-8-16,Grave
+9455,15,Allergia,Maschio,22713,2024-8-22,Grave
+6229,13,Bronchite,Femmina,4926,2024-8-23,Moderata
+2178,13,Bronchite,Femmina,46909,2024-8-10,Moderata
+3615,11,Allergia,Femmina,32437,2024-8-08,Moderata
+9390,2,Bronchite,Femmina,39761,2024-8-30,Leggera
+6796,3,Bronchite,Maschio,45369,2024-8-06,Moderata
+2585,13,Bronchite,Femmina,41350,2024-8-27,Grave
+5565,5,Raffreddore,Femmina,7004,2024-8-26,Moderata
+5437,3,Varicella,Maschio,20447,2024-8-26,Leggera
+7209,7,Mal di gola,Femmina,37042,2024-8-22,Moderata
+9598,11,Raffreddore,Maschio,35387,2024-8-18,Moderata
+1416,12,Influenza,Femmina,9632,2024-8-22,Moderata
+3213,3,Asma,Femmina,7388,2024-8-29,Grave
+7269,8,Varicella,Femmina,38012,2024-8-15,Grave
+4427,10,Varicella,Femmina,31249,2024-8-08,Leggera
+2323,1,Influenza,Maschio,46906,2024-8-07,Moderata
+5887,12,Varicella,Femmina,39761,2024-8-24,Leggera
+3113,12,Bronchite,Maschio,3875,2024-8-18,Leggera
+3251,2,Asma,Maschio,50857,2024-8-30,Moderata
+2100,7,Otite,Maschio,22701,2024-8-25,Leggera
+4450,14,Otite,Maschio,36650,2024-8-20,Moderata
+1466,13,Raffreddore,Femmina,24027,2024-8-28,Leggera
+7172,9,Asma,Maschio,2323,2024-8-16,Grave
+2260,6,Otite,Maschio,45244,2024-8-07,Grave
+1362,15,Mal di gola,Femmina,28378,2024-8-15,Leggera
+4790,15,Otite,Maschio,39761,2024-8-23,Moderata
+5336,8,Mal di gola,Femmina,22740,2024-8-02,Grave
+1061,7,Diarrea,Femmina,20423,2024-8-30,Leggera
+8194,14,Varicella,Maschio,19679,2024-8-02,Moderata
+3183,1,Diarrea,Maschio,7004,2024-8-08,Moderata
+8365,5,Allergia,Maschio,36527,2024-8-27,Leggera
+6335,5,Febbre,Maschio,19679,2024-8-16,Leggera
+8518,13,Diarrea,Maschio,22708,2024-8-02,Moderata
+1951,6,Mal di gola,Femmina,48683,2024-8-23,Moderata
+7440,11,Febbre,Femmina,50954,2024-8-06,Moderata
+9529,9,Allergia,Femmina,32437,2024-8-02,Moderata
+9056,4,Influenza,Maschio,45631,2024-8-20,Leggera
+8841,13,Allergia,Femmina,41481,2024-8-19,Leggera
+7733,1,Varicella,Maschio,1456,2024-8-31,Leggera
+5925,2,Otite,Maschio,50762,2024-8-10,Grave
+6459,14,Mal di gola,Maschio,42728,2024-8-21,Moderata
+6650,2,Diarrea,Maschio,24183,2024-8-16,Moderata
+4894,2,Bronchite,Femmina,18347,2024-8-13,Grave
+8556,0,Influenza,Maschio,26125,2024-8-25,Moderata
+2298,9,Asma,Maschio,7004,2024-8-23,Moderata
+8890,5,Otite,Maschio,45631,2024-8-27,Leggera
+6804,1,Diarrea,Femmina,38048,2024-8-16,Leggera
+5554,8,Influenza,Maschio,45369,2024-8-17,Grave
+6325,3,Raffreddore,Maschio,24470,2024-8-14,Leggera
+5417,14,Allergia,Maschio,49743,2024-8-15,Leggera
+2636,14,Varicella,Maschio,44816,2024-8-14,Leggera
+7133,8,Influenza,Maschio,40583,2024-8-18,Moderata
+2662,2,Febbre,Maschio,26330,2024-8-13,Moderata
+8727,12,Allergia,Femmina,42971,2024-8-09,Leggera
+6695,13,Varicella,Maschio,50387,2024-8-08,Grave
+9312,2,Mal di gola,Maschio,39761,2024-8-24,Moderata
+7340,2,Febbre,Femmina,25027,2024-8-14,Grave
+7132,12,Asma,Maschio,7087,2024-8-17,Leggera
+8020,1,Asma,Femmina,27538,2024-8-12,Moderata
+3729,4,Otite,Maschio,22637,2024-8-13,Moderata
+7511,3,Otite,Femmina,6186,2024-8-11,Leggera
+9895,13,Bronchite,Femmina,28378,2024-8-05,Moderata
+2802,8,Varicella,Femmina,41565,2024-8-13,Grave
+1848,1,Mal di gola,Maschio,37042,2024-8-18,Moderata
+2346,0,Allergia,Femmina,39743,2024-8-20,Leggera
