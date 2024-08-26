@@ -5,6 +5,11 @@ import pandas as pd
 # Supponiamo che tu abbia un file CSV contenente i codici dei medici
 df = pd.read_csv("medici_pulito.csv")
 
+# Definiamo alcune liste di malattie e sintomi pediatrici comuni
+malattie = ["Influenza", "Varicella", "Otite", "Asma", "Allergia", "Bronchite", "Raffreddore", "Febbre", "Diarrea", "Mal di gola"]
+generi = ["Maschio", "Femmina"]
+severita = ["Leggera", "Moderata", "Grave"]
+
 # Lista dei codici medici dal CSV
 codici_medici = df['CodiceRegionaleMedico'].tolist()
 
