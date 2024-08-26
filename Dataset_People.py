@@ -18,13 +18,13 @@ codici_medici_filtrati = [codice for codice in codici_medici if codice in codici
 
 # Creiamo nuovamente il dataset di pazienti con solo i codici dei medici filtrati
 pazienti_filtrati = []
-for _ in range(300):
+for _ in range(945):
     id_paziente = random.randint(1000, 9999)
     eta_paziente = random.randint(0, 15)
     malattia = random.choice(malattie)
     genere = random.choice(generi)
     codice_medico = random.choice(codici_medici_filtrati)
-    data_visita = f"{random.randint(2022, 2024)}-{random.randint(1, 12):02d}-{random.randint(1, 28):02d}"
+    data_visita = f"{random.randint(2024)}-{random.randint(1, 12):02d}-{random.randint(1, 28):02d}"
     livello_severita = random.choice(severita)
     
     pazienti_filtrati.append([id_paziente, eta_paziente, malattia, genere, codice_medico, data_visita, livello_severita])
