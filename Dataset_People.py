@@ -24,7 +24,7 @@ for _ in range(945):
     malattia = random.choice(malattie)
     genere = random.choice(generi)
     codice_medico = random.choice(codici_medici_filtrati)
-    data_visita = f"{random.randint(2024)}-{random.randint(1, 12):02d}-{random.randint(1, 28):02d}"
+    data_visita = f"{random.randint(2024)}-{random.randint(8):02d}-{random.randint(1, 31):02d}"
     livello_severita = random.choice(severita)
     
     pazienti_filtrati.append([id_paziente, eta_paziente, malattia, genere, codice_medico, data_visita, livello_severita])
