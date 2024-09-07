@@ -1,8 +1,7 @@
-# Progetto di Data Analysis: Pediatri Attivi a Milano (Agosto)
+# HEALTHCARE: Frelance Pediatricians
+## Project Description
 
-## Descrizione del progetto
-
-Questo progetto mira a raccogliere, pulire e caricare dati riguardanti i pediatri attivi nel comune di Milano nel mese di agosto. I dati sono stati scaricati dal sito ufficiale del Comune di Milano e analizzati attraverso una pipeline Python.
+This project aims to collect, clean and upload data regarding pediatricians active in the municipality of Milan in the month of August. The data were downloaded from the official website of the Municipality of Milan and analyzed through a Python pipeline.
 
 Il progetto è suddiviso in tre fasi principali:
 
