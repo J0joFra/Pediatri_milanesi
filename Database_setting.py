@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 # Dettagli della connessione al database
 db_host = '127.0.0.1'      # Indirizzo del server MySQL
 db_user = 'root'     # Nome utente del database
-db_password = 'GigiTrottolino24' # Password del database
+db_password = '################' # Password del database
 db_name = 'pediatri' # Nome del database
 
 # Percorso del file CSV
