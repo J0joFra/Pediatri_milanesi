@@ -2,7 +2,7 @@ import random
 import csv
 import pandas as pd
 
-# Supponiamo che tu abbia un file CSV contenente i codici dei medici
+# file CSV contenente i codici dei medici
 df = pd.read_csv("medici_pulito.csv")
 
 # Definiamo alcune liste di malattie e sintomi pediatrici comuni
