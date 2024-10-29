@@ -35,8 +35,18 @@ df = df.rename(columns={
     "ID_Nil": "ID_zone",
     "Long_x_4326": "Long",
     "Lat_y_4326": "Lat",
-    "codice_regionale_medico": "Code_med",
+    "Codice_regionale_medico": "Code_med",
     'dataNascita' : "Age",
 })
 
 print(f"{df}\n{df.columns}")
+
+df = df.rename(columns={
+    "Tipomedico": "Type_med",
+    "Attivo": "Open",
+    "Ambulatorioprincipale": "Main_amb",
+})
+
+print(f"{df}\n{df.columns}")
+
+
