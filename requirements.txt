@@ -1,9 +1,15 @@
+certifi==2024.8.30
+geopandas==1.0.1
 greenlet==3.1.1
 numpy==2.1.2
+packaging==24.1
 pandas==2.2.3
 PyMySQL==1.1.1
+pyogrio==0.10.0
+pyproj==3.7.0
 python-dateutil==2.9.0.post0
 pytz==2024.2
+shapely==2.0.6
 six==1.16.0
 SQLAlchemy==2.0.36
 typing_extensions==4.12.2
