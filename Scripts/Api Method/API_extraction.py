@@ -49,23 +49,25 @@ df['Address'] = df.apply(create_address, axis=1).str.title()
 # Elimina colonne non necessarie
 df = df.drop(['_id', 'Via', 'Civico', 'L_ambul', 'Location'], axis=1)
 
-# Carica il file GeoJSON con le aree di Milano
-geojson_path = "Datasets/MilanCity.geojson"
-gdf_zones = gpd.read_file(geojson_path)
-
 # Crea una colonna di geometria nel dataset basata sulle coordinate
 geometry = [Point(xy) for xy in zip(df['Long'], df['Lat'])]
 gdf_data = gpd.GeoDataFrame(df, geometry=geometry)
 
-# Imposta il sistema di riferimento (assicurati che sia corretto per entrambi i file)
-gdf_data = gdf_data.set_crs("EPSG:4326")  # Imposta il CRS a WGS84
-gdf_zones = gdf_zones.to_crs("EPSG:4326")  # Stesso CRS per il GeoJSON
+# Imposta il sistema di riferimento (CRS) a WGS84
+gdf_data = gdf_data.set_crs("EPSG:4326")
 
-# Effettua un join spaziale per trovare la zona per ogni punto in base al file GeoJSON
-gdf_joined = gpd.sjoin(gdf_data, gdf_zones, how="left", op="within")
+# Carica il file GeoJSON con le aree di Milano e imposta il CRS a WGS84
+geojson_path = "Datasets/MilanCity.geojson"
+gdf_zones = gpd.read_file(geojson_path).to_crs("EPSG:4326")
 
-# Aggiorna le zone del dataset con i nomi derivati dal GeoJSON
-df['Zone'] = gdf_joined['nome_zona_geojson'] 
+# Estrai e stampa tutti i valori unici della colonna 'name'
+unique_names = gdf_zones['name'].unique()
+print("Valori unici della colonna 'name':")
+print(unique_names)
 
-# Visualizza i dati aggiornati
-print(df[['ID_med', 'Name_med', 'Surname_med', 'Zone', 'Address', 'Long', 'Lat']])
+# Effettua un join spaziale per associare i punti ai poligoni e ottenere il nome della zona
+gdf_joined = gpd.sjoin(gdf_data, gdf_zones, how="left", predicate="within")
+
+# Aggiorna la colonna 'Zone' del DataFrame con il nome della zona dal GeoJSON
+df['Zone'] = gdf_joined['name']
+print(df.head())
