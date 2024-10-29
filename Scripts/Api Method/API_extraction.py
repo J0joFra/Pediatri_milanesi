@@ -50,10 +50,10 @@ df['Address'] = df.apply(create_address, axis=1).str.title()
 df = df.drop(['_id', 'Via', 'Civico', 'L_ambul', 'Location'], axis=1)
 
 # Carica il file GeoJSON con le aree di Milano
-geojson_path = "percorso/del/file.geojson"
+geojson_path = "Datasets/MilanCity.geojson"
 gdf_zones = gpd.read_file(geojson_path)
 
-# Crea una colonna di geometria (punti) nel dataset basata sulle coordinate
+# Crea una colonna di geometria nel dataset basata sulle coordinate
 geometry = [Point(xy) for xy in zip(df['Long'], df['Lat'])]
 gdf_data = gpd.GeoDataFrame(df, geometry=geometry)
 
