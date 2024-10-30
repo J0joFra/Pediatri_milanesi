@@ -18,7 +18,7 @@ def home():
             "$or": [
                 {"Name_med": {"$regex": query, "$options": "i"}},
                 {"Surname_med": {"$regex": query, "$options": "i"}},
-                {"Zone": {"$regex": query, "$options": "i"}}
+                {"Address": {"$regex": query, "$options": "i"}}
             ]
         })
     else:

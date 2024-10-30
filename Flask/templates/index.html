@@ -22,10 +22,8 @@
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Zona</th>
-                    <th>Specializzazione</th>
-                    <th>Contatti</th>
-                    <th>Disponibilità</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +31,7 @@
                 <tr>
                     <td>{{ pediatra['Name_med'] }}</td>
                     <td>{{ pediatra['Surname_med'] }}</td>
-                    <td>{{ pediatra['Zone'] }}</td>
-                    <td>{{ pediatra['Specialization'] }}</td>
+                    <td>{{ pediatra['Address'] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>            
