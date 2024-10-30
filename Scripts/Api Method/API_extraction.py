@@ -93,8 +93,10 @@ def create_mongo_db(dataframe):
     
     # Creazione di un database chiamato "Healthcare"
     db = client["Healthcare"]
-
     collection = db["Pediatri"]
+    
+    # Svuota la collezione se esiste
+    collection.delete_many({})
     
     # Converti il dataframe in un dizionario e inserisci nel database
     data_dict = dataframe.to_dict("records")
@@ -103,7 +105,7 @@ def create_mongo_db(dataframe):
     
 # Funzione principale per eseguire tutte le operazioni
 def main():
-    url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5'
+    url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef'
     geojson_path = "Datasets/MilanCity.geojson"
     
     # Carica il dataset
@@ -127,7 +129,6 @@ def main():
     gdf_data = spatial_join_update_zones(gdf_data, gdf_zones)
     
     dataframe = df
-    print(dataframe)
     create_mongo_db(dataframe)
 
 # Esegui la funzione principale
