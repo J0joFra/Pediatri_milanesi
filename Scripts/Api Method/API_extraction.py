@@ -86,6 +86,21 @@ def spatial_join_update_zones(gdf_data, gdf_zones):
     gdf_data['Zone'] = gdf_joined['name']
     return gdf_data
 
+# Funzione per creare un database MongoDB e inserire il dataframe
+def create_mongo_db(dataframe):
+    # Connessione al server MongoDB
+    client = pymongo.MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
+    
+    # Creazione di un database chiamato "Healthcare"
+    db = client["Healthcare"]
+
+    collection = db["Pediatri"]
+    
+    # Converti il dataframe in un dizionario e inserisci nel database
+    data_dict = dataframe.to_dict("records")
+    collection.insert_many(data_dict) 
+    print(f"Inseriti {len(data_dict)} documenti nella collezione 'Pediatri'.")
+    
 # Funzione principale per eseguire tutte le operazioni
 def main():
     url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5'
@@ -113,6 +128,7 @@ def main():
     
     dataframe = df
     print(dataframe)
+    create_mongo_db(dataframe)
 
 # Esegui la funzione principale
 main()
