@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medici Pediatrici a Milano</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
         <h1>Medici Pediatrici Attivi a Milano</h1>
         <p>Trova pediatri attivi nella tua zona e visualizza le loro informazioni.</p>
     </header>
-
     <div class="container">
         <div class="search-bar">
             <input type="text" id="search" placeholder="Cerca per nome, zona o specializzazione...">
@@ -36,13 +37,75 @@
                 {% endfor %}
             </tbody>            
         </table>
+
+        <div id="map" style="height: 600px; width: 100%;"></div>
     </div>
 
     <script>
-        function searchDoctors() {
-            const query = document.getElementById('search').value;
-            window.location.href = `/?search=${query}`;
+        // Inizializza la mappa e centra Milano
+        var map = L.map('map').setView([45.4642, 9.19], 12);
+
+        // Aggiungi il layer Tile di OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Stile di default per le zone
+        function style(feature) {
+            return {
+                fillColor: "blue",
+                weight: 2,
+                opacity: 1,
+                color: "white",
+                dashArray: "3",
+                fillOpacity: 0.4
+            };
         }
+
+        // Funzione per evidenziare la zona al passaggio del mouse
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 3,
+                color: "#666",
+                dashArray: "",
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
+        }
+
+        // Funzione per resettare lo stile quando il mouse esce dalla zona
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+        }
+
+        // Funzione per gestire il clic sulla zona
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: function(e) {
+                    map.fitBounds(e.target.getBounds());
+                    var popupContent = "<strong>Zona: </strong>" + feature.properties.name;
+                    layer.bindPopup(popupContent).openPopup();
+                }
+            });
+        }
+
+        // Carica il file GeoJSON della mappa di Milano da GitHub
+        fetch("https://raw.githubusercontent.com/J0joFra/Map-GeoJson/refs/heads/main/MilanCity.geojson")
+            .then(response => response.json())
+            .then(data => {
+                geojson = L.geoJSON(data, {
+                    style: style,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+            });
     </script>
 </body>
 </html>
