@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
+from datetime import datetime
 
 # Funzione per caricare il dataset JSON dai dati online
 def load_data(url):
@@ -26,12 +27,21 @@ def rename_columns(df):
         "Long_x_4326": "Long",
         "Lat_y_4326": "Lat",
         "Codice_regionale_medico": "Code_med",
-        'DataNascita': "Age",
+        'Datanascita': "Age",
         "Tipomedico": "Type_med",
         "Attivo": "Open",
         "Ambulatorioprincipale": "Main_amb",
         "Luogo_ambulatorio": "L_ambul"
     })
+
+# Funzione per creare la colonna 'Age' calcolata dalla data di nascita
+def calculate_age(df):
+    today = datetime.today()
+    df['Age'] = df['Age'].apply(lambda x: today.year - datetime.strptime(x.split("t")[0], '%Y-%m-%d').year - 
+                                 ((today.month, today.day) < (datetime.strptime(x.split("t")[0], '%Y-%m-%d').month,
+                                                              datetime.strptime(x.split("t")[0], '%Y-%m-%d').day)) 
+                                 if pd.notna(x) else None)
+    return df
 
 # Funzione per creare la colonna combinata 'Address'
 def create_address_column(df):
@@ -86,6 +96,7 @@ def main():
     # Preprocessa il dataset
     df = capitalize_columns_and_values(df)
     df = rename_columns(df)
+    df = calculate_age(df)
     df = create_address_column(df)
     df = drop_unnecessary_columns(df)
     
@@ -101,6 +112,8 @@ def main():
     
     # Stampa i primi record aggiornati
     print(gdf_data.head())
+    print(df.columns)
 
 # Esegui la funzione principale
 main()
+
