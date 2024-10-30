@@ -4,6 +4,7 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 from datetime import datetime
+import pymongo
 
 # Funzione per caricare il dataset JSON dai dati online
 def load_data(url):
@@ -110,9 +111,8 @@ def main():
     # Effettua il join spaziale e aggiorna le zone
     gdf_data = spatial_join_update_zones(gdf_data, gdf_zones)
     
-    # Stampa i primi record aggiornati
-    print(gdf_data.head())
-    print(df.columns)
+    dataframe = df
+    print(dataframe)
 
 # Esegui la funzione principale
 main()
