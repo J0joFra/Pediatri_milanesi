@@ -19,10 +19,26 @@ h1 {
 
 .container {
     padding: 2em;
-    max-width: 1000px;
+    max-width: 1200px; /* Maggiore larghezza per contenere la mappa */
     margin: auto;
 }
 
+.content {
+    display: flex; /* Usato per affiancare tabella e mappa */
+    flex-direction: row; /* Orientamento orizzontale */
+}
+
+.table-container {
+    flex: 1; /* La tabella occupa tutto lo spazio disponibile a sinistra */
+    margin-right: 20px; /* Margine destro per spazio tra tabella e mappa */
+}
+
+.map-container {
+    width: 300px; /* Larghezza fissa per la mappa */
+    height: 300px; /* Altezza fissa per la mappa */
+}
+
+/* Stile della barra di ricerca */
 .search-bar {
     margin: 1em 0;
     display: flex;
@@ -52,26 +68,25 @@ h1 {
     background-color: #0056b3;
 }
 
+/* Stile della tabella */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5em;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
 }
 
 th, td {
-    padding: 0.75em;
-    text-align: left;
+    padding: 10px; /* Padding per le celle */
+    text-align: left; /* Allineamento del testo */
+    border: 1px solid #ddd; /* Bordo delle celle */
 }
 
 th {
-    background-color: #007bff;
-    color: white;
+    background-color: #007bff; /* Colore di sfondo dell'intestazione */
+    color: white; /* Colore del testo dell'intestazione */
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Colore di sfondo delle righe pari */
 }
+

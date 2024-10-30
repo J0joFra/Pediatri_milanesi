@@ -15,11 +15,9 @@ def home():
     if query:
         # Cerca nei campi nome, zona, e specializzazione
         pediatri = collection.find({
-            "$or": [
-                {"Name_med": {"$regex": query, "$options": "i"}},
+            "$or": [{"Name_med": {"$regex": query, "$options": "i"}},
                 {"Surname_med": {"$regex": query, "$options": "i"}},
-                {"Address": {"$regex": query, "$options": "i"}}
-            ]
+                {"Address": {"$regex": query, "$options": "i"}}]
         })
     else:
         pediatri = collection.find()
