@@ -22,6 +22,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Codice</th>
                     <th>Nome</th>
                     <th>Cognome</th>
                     <th>Indirizzo</th>
@@ -30,6 +31,7 @@
             <tbody>
                 {% for pediatra in pediatri %}
                 <tr>
+                    <td>{{ pediatra['Code_med'] }}</td>
                     <td>{{ pediatra['Name_med'] }}</td>
                     <td>{{ pediatra['Surname_med'] }}</td>
                     <td>{{ pediatra['Address'] }}</td>
