@@ -13,9 +13,9 @@ def load_data(url):
     return pd.DataFrame(data["result"]["records"])
 
 # Funzione per capitalizzare le colonne e i valori stringa
-def capitalize_columns_and_values(df):
-    df.columns = [col.capitalize() for col in df.columns]
-    df = df.applymap(lambda x: x.capitalize() if isinstance(x, str) else x)
+def title_columns_and_values(df):
+    df.columns = [col.title() for col in df.columns]
+    df = df.applymap(lambda x: x.title() if isinstance(x, str) else x)
     return df
 
 # Funzione per rinominare le colonne
@@ -112,7 +112,7 @@ def main():
     df = load_data(url)
     
     # Preprocessa il dataset
-    df = capitalize_columns_and_values(df)
+    df = title_columns_and_values(df)
     df = rename_columns(df)
     df = calculate_age(df)
     df = create_address_column(df)
