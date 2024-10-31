@@ -4,6 +4,7 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import pymongo
 
 # Funzione per caricare il dataset JSON dai dati online
@@ -14,7 +15,7 @@ def load_data(url):
 
 # Funzione per capitalizzare le colonne e i valori stringa
 def title_columns_and_values(df):
-    df.columns = [col.title() for col in df.columns]
+    df.columns = [col.capitalize() for col in df.columns]
     df = df.applymap(lambda x: x.title() if isinstance(x, str) else x)
     return df
 
@@ -35,33 +36,38 @@ def rename_columns(df):
         "Luogo_ambulatorio": "L_ambul"
     })
 
-# Funzione per creare la colonna 'Age' calcolata dalla data di nascita
+# Funzione per calcolare l'età dal campo data di nascita
 def calculate_age(df):
-    today = datetime.today()
-    df['Age'] = df['Age'].apply(lambda x: today.year - datetime.strptime(x.split("t")[0], '%Y-%m-%d').year - 
-                                 ((today.month, today.day) < (datetime.strptime(x.split("t")[0], '%Y-%m-%d').month,
-                                                              datetime.strptime(x.split("t")[0], '%Y-%m-%d').day)) 
-                                 if pd.notna(x) else None)
+    today = datetime.today().date()
+
+    df['Age'] = df['Age'].apply(lambda x: datetime.strptime(x.split("T")[0], '%Y-%m-%d').date() if pd.notna(x) else None)
+    print(df['Age'])
+    df['Age'] = df['Age'].apply(lambda birth_date: relativedelta(today, birth_date).years if birth_date else None)
+    print(df['Age'])
+    
     return df
 
-# Funzione per creare la colonna combinata 'Address'
+# Funzione per creare la colonna combinata 'Address' 
 def create_address_column(df):
     def create_address(row):
         parts = []
-        if pd.notna(row['Via']) and row['Via']:
+        # Verifica la presenza delle colonne prima di accedere
+        if 'Via' in row and pd.notna(row['Via']):
             parts.append(row['Via'])
-        if pd.notna(row['Civico']) and row['Civico']:
+        if 'Civico' in row and pd.notna(row['Civico']):
             parts.append(row['Civico'])
-        if pd.notna(row['L_ambul']) and row['L_ambul']:
+        if 'L_ambul' in row and pd.notna(row['L_ambul']):
             parts.append(row['L_ambul'])
         return ', '.join(parts)
     
     df['Address'] = df.apply(create_address, axis=1).str.title()
     return df
 
-# Funzione per eliminare le colonne non necessarie
+# Procedi a eliminare le colonne solo dopo che sono state usate per creare l'indirizzo
 def drop_unnecessary_columns(df):
-    return df.drop(['_id', 'Via', 'Civico', 'L_ambul', 'Location'], axis=1)
+    columns_to_drop = ['_id', 'Via', 'Civico', 'L_ambul', 'Location']
+    existing_columns = [col for col in columns_to_drop if col in df.columns]
+    return df.drop(existing_columns, axis=1)
 
 # Funzione per creare la colonna geometrica nel dataset
 def create_geometry_column(df):
@@ -86,7 +92,6 @@ def spatial_join_update_zones(gdf_data, gdf_zones):
     gdf_data['Zone'] = gdf_joined['name']
     return gdf_data
 
-# Funzione per creare un database MongoDB e inserire il dataframe
 def create_mongo_db(dataframe):
     # Connessione al server MongoDB
     client = pymongo.MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
@@ -97,6 +102,9 @@ def create_mongo_db(dataframe):
     
     # Svuota la collezione se esiste
     collection.delete_many({})
+    
+    # Converti il dataframe in un dizionario e inserisci nel database
+    data_dict = dataframe.to_dict("records")
     
     # Converti il dataframe in un dizionario e inserisci nel database
     data_dict = dataframe.to_dict("records")
