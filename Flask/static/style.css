@@ -15,7 +15,7 @@ header {
 
 .container {
     padding: 2em;
-    max-width: 1200px; /* Maggiore larghezza per contenere la mappa */
+    max-width: 50%;
     margin: auto;
 }
 
