@@ -19,90 +19,88 @@
                 placeholder="Cerca per Nome, Cognome o Indirizzo...">
     </div>
     <div class="container">
-        <div class="content">
-            <div class="table-container">        
-                <table id="myTable">
-                    <thead>
-                        <tr class="header">
-                            <th>Codice</th>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Indirizzo</th>
-                        </tr>
-                    </thead>
-                    {% for pediatra in pediatri %}
-                    <tr>
-                        <td>{{ pediatra['Code_med'] }}</td>
-                        <td>{{ pediatra['Name_med'] }}</td>
-                        <td>{{ pediatra['Surname_med'] }}</td>
-                        <td>{{ pediatra['Address'] }}</td>
+        <div class="table-container">        
+            <table id="myTable">
+                <thead>
+                    <tr class="header">
+                        <th>Codice</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Indirizzo</th>
                     </tr>
-                    {% endfor %}           
-                </table>
-                <div id="map" class="map-container"></div>
-                <script>
-                    // Inizializza la mappa e centra Milano
-                    var map = L.map('map').setView([45.4642, 9.16], 10.5);
-            
-                    // Aggiungi il layer Tile di OpenStreetMap
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 12,
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(map);
+                </thead>
+                {% for pediatra in pediatri %}
+                <tr>
+                    <td>{{ pediatra['Code_med'] }}</td>
+                    <td>{{ pediatra['Name_med'] }}</td>
+                    <td>{{ pediatra['Surname_med'] }}</td>
+                    <td>{{ pediatra['Address'] }}</td>
+                </tr>
+                {% endfor %}           
+            </table>
+            <div id="map" class="map-container"></div>
+            <script>
+                // Inizializza la mappa e centra Milano
+                var map = L.map('map').setView([45.4642, 9.16], 10.5);
+        
+                // Aggiungi il layer Tile di OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 12,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-                    function style(feature) {
-                        return {
-                            fillColor: "green",
-                            weight: 2,
-                            opacity: 1,
-                            color: "white",
-                            dashArray: "3",
-                            fillOpacity: 0.4
-                        };
+                function style(feature) {
+                    return {
+                        fillColor: "green",
+                        weight: 2,
+                        opacity: 1,
+                        color: "white",
+                        dashArray: "3",
+                        fillOpacity: 0.4
+                    };
+                }
+
+                function highlightFeature(e) {
+                    var layer = e.target;
+        
+                    layer.setStyle({
+                        weight: 3,
+                        color: "#666",
+                        dashArray: "",
+                        fillOpacity: 0.7
+                    });
+        
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
                     }
+                }
 
-                    function highlightFeature(e) {
-                        var layer = e.target;
-            
-                        layer.setStyle({
-                            weight: 3,
-                            color: "#666",
-                            dashArray: "",
-                            fillOpacity: 0.7
-                        });
-            
-                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                            layer.bringToFront();
+                function resetHighlight(e) {
+                    geojson.resetStyle(e.target);
+                }
+
+                function onEachFeature(feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: function(e) {
+                            map.fitBounds(e.target.getBounds());
+                            var popupContent = "<strong>Zona: </strong>" + feature.properties.name;
+                            layer.bindPopup(popupContent).openPopup();
                         }
-                    }
-
-                    function resetHighlight(e) {
-                        geojson.resetStyle(e.target);
-                    }
-
-                    function onEachFeature(feature, layer) {
-                        layer.on({
-                            mouseover: highlightFeature,
-                            mouseout: resetHighlight,
-                            click: function(e) {
-                                map.fitBounds(e.target.getBounds());
-                                var popupContent = "<strong>Zona: </strong>" + feature.properties.name;
-                                layer.bindPopup(popupContent).openPopup();
-                            }
-                        });
-                    }
-            
-                    // Carica il file GeoJSON della mappa di Milano da GitHub
-                    fetch("https://raw.githubusercontent.com/J0joFra/Map-GeoJson/refs/heads/main/MilanCity.geojson")
-                        .then(response => response.json())
-                        .then(data => {
-                            geojson = L.geoJSON(data, {
-                                style: style,
-                                onEachFeature: onEachFeature
-                            }).addTo(map);
-                        });
-                </script>
-            </div>
+                    });
+                }
+        
+                // Carica il file GeoJSON della mappa di Milano da GitHub
+                fetch("https://raw.githubusercontent.com/J0joFra/Map-GeoJson/refs/heads/main/MilanCity.geojson")
+                    .then(response => response.json())
+                    .then(data => {
+                        geojson = L.geoJSON(data, {
+                            style: style,
+                            onEachFeature: onEachFeature
+                        }).addTo(map);
+                    });
+            </script>
         </div>
     </div>
 </body>
