@@ -6,7 +6,7 @@ function myFunction() {
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those that don't match the search query
-    for (i = 1; i < tr.length; i++) { // Inizia da 1 per saltare l'intestazione
+    for (i = 1; i < tr.length; i++) {
         tr[i].style.display = "none"; // Nasconde la riga per impostazione predefinita
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
