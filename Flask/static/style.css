@@ -68,22 +68,6 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Stile della barra di filtri */
-.filter-bar {
-    margin: 1em 0;
-    display: flex;
-    justify-content: center;
-}
-
-.filter-bar select {
-    padding: 0.5em;
-    font-size: 1em;
-    width: 50%; /* Larghezza del menu a discesa */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 1em; /* Spazio tra il menu e la tabella */
-}
-
 /* Stile della tabella */
 table {
     width: 100%; 
