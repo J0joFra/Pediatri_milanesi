@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- Aggiungi questo -->
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
     </head>    
 <body>
     <header>
@@ -15,8 +15,9 @@
         <p>Trova pediatri attivi nella tua zona e visualizza le loro informazioni.</p>
     </header>
     <div class="container">
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Cerca per nome, zona o specializzazione...">
+        <div class="search-bar"> <!-- id search da cambiare --> 
+            <input type="text" id="myInput" onkeyup="myFunction()" 
+                placeholder="Cerca per nome, zona o specializzazione...">
             <button onclick="searchDoctors()">Cerca</button>
         </div>
         <div class="filter-bar">
@@ -28,27 +29,26 @@
                 <!-- Aggiungi altre specializzazioni qui -->
             </select>
         </div>        
-        <table>
+        <table id="myTable">
             <thead>
-                <tr>
+                <tr class="header">
                     <th>Codice</th>
                     <th>Nome</th>
                     <th>Cognome</th>
                     <th>Indirizzo</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for pediatra in pediatri %}
-                <tr>
-                    <td>{{ pediatra['Code_med'] }}</td>
-                    <td>{{ pediatra['Name_med'] }}</td>
-                    <td>{{ pediatra['Surname_med'] }}</td>
-                    <td>{{ pediatra['Address'] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>            
+            {% for pediatra in pediatri %}
+            <tr>
+                <td>{{ pediatra['Code_med'] }}</td>
+                <td>{{ pediatra['Name_med'] }}</td>
+                <td>{{ pediatra['Surname_med'] }}</td>
+                <td>{{ pediatra['Address'] }}</td>
+            </tr>
+            {% endfor %}           
         </table>
-
+    </div>
+    <div>
         <div id="map" style="height: 300px; width: 30%;"></div>
         <script>
             // Inizializza la mappa e centra Milano
@@ -56,11 +56,10 @@
     
             // Aggiungi il layer Tile di OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 15,
+                maxZoom: 12,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-    
-            // Stile di default per le zone
+
             function style(feature) {
                 return {
                     fillColor: "blue",
@@ -71,8 +70,7 @@
                     fillOpacity: 0.4
                 };
             }
-    
-            // Funzione per evidenziare la zona al passaggio del mouse
+
             function highlightFeature(e) {
                 var layer = e.target;
     
@@ -87,13 +85,11 @@
                     layer.bringToFront();
                 }
             }
-    
-            // Funzione per resettare lo stile quando il mouse esce dalla zona
+
             function resetHighlight(e) {
                 geojson.resetStyle(e.target);
             }
-    
-            // Funzione per gestire il clic sulla zona
+
             function onEachFeature(feature, layer) {
                 layer.on({
                     mouseover: highlightFeature,
