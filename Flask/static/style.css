@@ -19,17 +19,17 @@ header {
     margin: 4% auto;
     display: flex;
     justify-content: space-between;
-    gap: 2%;
+    gap: 1%;
 }
 
 .table-container {
     flex: 2;
-    max-width: 50%; /* Assicura che occupi il 60% della larghezza */
+    max-width: 60%; /* Assicura che occupi il 60% della larghezza */
 }
 
 .map-container {
     flex: 1;
-    max-width: 40%;
+    max-width: 35%;
     height: 400px;
 }
 
