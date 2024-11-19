@@ -2,15 +2,27 @@ import streamlit as st
 from pymongo import MongoClient
 import folium
 from streamlit_folium import st_folium
-import json
-import requests
+import os
 
-# Connessione al database MongoDB
+# region Mongo DB
+# Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
 collection = db['Pediatri']
 
-# Funzione per caricare i pediatri (come nel codice originale)
+# Carica il CSS
+css_path = os.path.join(os.getcwd(), 'static', 'style.css')
+with open(css_path, 'r') as css_file:
+    css_content = css_file.read()
+st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+
+# Carica il file JavaScript (se necessario)
+js_path = os.path.join(os.getcwd(), 'static', 'script.js')
+with open(js_path, 'r') as js_file:
+    js_content = js_file.read()
+st.markdown(f"<script>{js_content}</script>", unsafe_allow_html=True)
+
+# Funzione principale per visualizzare i dati dei pediatri
 def load_pediatri():
     query = st.text_input("Cerca Pediatra", "")
     
@@ -20,11 +32,11 @@ def load_pediatri():
             "$or": [{"Name_med": {"$regex": query, "$options": "i"}},
                     {"Surname_med": {"$regex": query, "$options": "i"}},
                     {"Address": {"$regex": query, "$options": "i"}}]
-        }).limit(10)
+        }).limit(10)  # Limita a 10 risultati
     else:
         # Se non ci sono filtri, prendi solo i primi 10 pediatri
         pediatri = collection.find().limit(10)
-    
+
     return pediatri
 
 # Carica i pediatri e visualizzali
@@ -38,48 +50,17 @@ st.table([{
     'Indirizzo': pediatra['Address']
 } for pediatra in pediatri])
 
-# Carica il file GeoJSON della mappa di Milano da GitHub
-@st.cache_data
-def load_geojson():
-    url = "https://raw.githubusercontent.com/J0joFra/Map-GeoJson/refs/heads/main/MilanCity.geojson"
-    response = requests.get(url)
-    return response.json()
+# Aggiungi mappa
+st.subheader("Mappa dei Pediatri")
 
-geojson_data = load_geojson()
-
-# Crea la mappa con Folium
-st.subheader("Mappa delle Zone di Milano")
-
+# region Mappa
 # Inizializza la mappa
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
-# Funzione per visualizzare i marker dei pediatri
-def show_pediatri_on_map(zone_name):
-    zone_pediatri = collection.find({"Address": {"$regex": zone_name, "$options": "i"}})
-    
-    for pediatra in zone_pediatri:
-        folium.Marker(
-            [pediatra['Latitude'], pediatra['Longitude']],
-            popup=f"{pediatra['Name_med']} {pediatra['Surname_med']}<br>{pediatra['Address']}"
-        ).add_to(mymap)
+# Aggiungi un marker per ogni pediatra (se hai delle coordinate)
+for pediatra in pediatri:
+    folium.Marker([pediatra['Latitude'], pediatra['Longitude']], popup=pediatra['Name_med']).add_to(mymap)
 
-# Aggiungi GeoJSON sulla mappa
-def add_geojson_to_map(geojson_data):
-    geojson = folium.GeoJson(geojson_data, name='geojson')
-    
-    # Funzione per gestire il click su una zona
-    def on_zone_click(event):
-        zone_name = event['layer']['feature']['properties']['name']
-        st.write(f"Selezionata la zona: {zone_name}")
-        show_pediatri_on_map(zone_name)
-    
-    geojson.add_to(mymap)
-    
-    # Aggiungi un evento di click sulle zone del GeoJSON
-    geojson.on('click', on_zone_click)
-
-add_geojson_to_map(geojson_data)
-
-# Mostra la mappa con Streamlit
+# Visualizza la mappa in Streamlit
 st_folium(mymap, width=700, height=500)
