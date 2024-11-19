@@ -12,12 +12,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Carica il file JavaScript (se necessario)
-st.markdown(
-    f'<script src="static/script.js"></script>',
-    unsafe_allow_html=True
-)
-
 # Funzione principale per visualizzare i dati dei pediatri
 def load_pediatri():
     query = st.text_input("Cerca Pediatra", "")
@@ -38,19 +32,48 @@ def load_pediatri():
 # Carica i pediatri e visualizzali
 pediatri = load_pediatri()
 
-# Crea la tabella in Streamlit
-st.table([{
-    'Codice': pediatra['Code_med'],
-    'Nome': pediatra['Name_med'],
-    'Cognome': pediatra['Surname_med'],
-    'Indirizzo': pediatra['Address']
-} for pediatra in pediatri])
+# Crea la tabella in HTML
+table_html = '''
+<div class="container">
+    <div class="table-container">
+        <table id="myTable">
+            <thead>
+                <tr class="header">
+                    <th>Codice</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
+                </tr>
+            </thead>
+            <tbody>
+'''
+
+# Aggiungi ogni pediatra alla tabella
+for pediatra in pediatri:
+    table_html += f'''
+                <tr>
+                    <td>{pediatra['Code_med']}</td>
+                    <td>{pediatra['Name_med']}</td>
+                    <td>{pediatra['Surname_med']}</td>
+                    <td>{pediatra['Address']}</td>
+                </tr>
+    '''
+
+# Concludi la tabella
+table_html += '''
+            </tbody>
+        </table>
+    </div>
+    <div id="map" class="map-container"></div>
+</div>
+'''
+
+# Visualizza la tabella
+st.markdown(table_html, unsafe_allow_html=True)
 
 # Aggiungi mappa
 st.subheader("Mappa dei Pediatri")
 
-# Includi una mappa tramite Folium o altro metodo di visualizzazione
-# Esempio per mappa con Folium (se hai bisogno di una mappa interattiva)
 import folium
 from streamlit_folium import st_folium
 
