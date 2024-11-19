@@ -1,22 +1,26 @@
 import streamlit as st
 from pymongo import MongoClient
+import folium
+from streamlit_folium import st_folium
+import os
 
+# region Mongo DB
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
 collection = db['Pediatri']
 
 # Carica il CSS
-st.markdown(
-    f'<link href="static/style.css" rel="stylesheet">',
-    unsafe_allow_html=True
-)
+css_path = os.path.join(os.getcwd(), 'static', 'style.css')
+with open(css_path, 'r') as css_file:
+    css_content = css_file.read()
+st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 # Carica il file JavaScript (se necessario)
-st.markdown(
-    f'<script src="static/script.js"></script>',
-    unsafe_allow_html=True
-)
+js_path = os.path.join(os.getcwd(), 'static', 'script.js')
+with open(js_path, 'r') as js_file:
+    js_content = js_file.read()
+st.markdown(f"<script>{js_content}</script>", unsafe_allow_html=True)
 
 # Funzione principale per visualizzare i dati dei pediatri
 def load_pediatri():
@@ -49,11 +53,7 @@ st.table([{
 # Aggiungi mappa
 st.subheader("Mappa dei Pediatri")
 
-# Includi una mappa tramite Folium o altro metodo di visualizzazione
-# Esempio per mappa con Folium (se hai bisogno di una mappa interattiva)
-import folium
-from streamlit_folium import st_folium
-
+# region Mappa
 # Inizializza la mappa
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
