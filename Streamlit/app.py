@@ -28,9 +28,10 @@ def load_pediatri():
             "$or": [{"Name_med": {"$regex": query, "$options": "i"}},
                     {"Surname_med": {"$regex": query, "$options": "i"}},
                     {"Address": {"$regex": query, "$options": "i"}}]
-        })
+        }).limit(10)  # Limita a 10 risultati
     else:
-        pediatri = collection.find()
+        # Se non ci sono filtri, prendi solo i primi 10 pediatri
+        pediatri = collection.find().limit(10)
 
     return pediatri
 
