@@ -63,7 +63,18 @@ geojson_path = "MilanCity.geojson"
 if os.path.exists(geojson_path):
     with open(geojson_path, 'r') as f:
         geojson_data = json.load(f)
-    folium.GeoJson(geojson_data).add_to(mymap)
+
+    # Per ogni zona, applica un colore azzurrino di default
+    for feature in geojson_data['features']:
+        folium.GeoJson(
+            feature,
+            style_function=lambda x: {
+                'fillColor': '#00B4D8',  
+                'fillOpacity': 0.3,
+                'weight': 0.5,
+                'color': 'black'
+            }
+        ).add_to(mymap)
 else:
     st.error("Il file GeoJSON non è stato trovato.")
 
@@ -94,7 +105,7 @@ else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
 # Suggerimenti nella sidebar
-st.sidebar.info("""
+st.sidebar.info(""" 
 💡 **Suggerimenti di utilizzo:**  
 - Usa il campo di ricerca per filtrare i pediatri per nome, cognome o indirizzo.  
 - Seleziona una zona per visualizzare i pediatri di quell'area.  
