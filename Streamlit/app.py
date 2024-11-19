@@ -88,7 +88,7 @@ visualizzarli su una mappa interattiva e accedere ai dettagli degli indirizzi.
 
 # Filtri di ricerca
 st.sidebar.title("🔧 Filtri di Ricerca")
-query = st.sidebar.text_input("🔍 Cerca Pediatra", "Inserisci nome, cognome o indirizzo...")
+query = st.sidebar.text_input("🔍 Cerca Pediatra", "")
 zones = ["Tutte le Zone"] + get_zones()
 selected_zone = st.sidebar.selectbox("📍 Seleziona una Zona", zones)
 
