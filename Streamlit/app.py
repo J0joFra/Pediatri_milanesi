@@ -1,52 +1,65 @@
 import streamlit as st
-import pandas as pd
-import folium
 from pymongo import MongoClient
-from streamlit_folium import st_folium
 
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
 collection = db['Pediatri']
 
-# Recupera i dati
-pediatri = collection.find()
-df = pd.DataFrame(pediatri)
+# Carica il CSS
+st.markdown(
+    f'<link href="static/style.css" rel="stylesheet">',
+    unsafe_allow_html=True
+)
 
-# Titolo della pagina
-st.title("Medici Pediatrici Attivi a Milano")
-st.write("Trova pediatri attivi nella tua zona e visualizza le loro informazioni.")
+# Carica il file JavaScript (se necessario)
+st.markdown(
+    f'<script src="static/script.js"></script>',
+    unsafe_allow_html=True
+)
 
-# Aggiungi la ricerca
-query = st.text_input("Cerca per Nome, Cognome o Indirizzo")
+# Funzione principale per visualizzare i dati dei pediatri
+def load_pediatri():
+    query = st.text_input("Cerca Pediatra", "")
+    
+    if query:
+        # Cerca nei campi nome, zona, e specializzazione
+        pediatri = collection.find({
+            "$or": [{"Name_med": {"$regex": query, "$options": "i"}},
+                    {"Surname_med": {"$regex": query, "$options": "i"}},
+                    {"Address": {"$regex": query, "$options": "i"}}]
+        })
+    else:
+        pediatri = collection.find()
 
-if query:
-    pediatri = collection.find({
-        "$or": [{"Name_med": {"$regex": query, "$options": "i"}},
-                {"Surname_med": {"$regex": query, "$options": "i"}},
-                {"Address": {"$regex": query, "$options": "i"}}]
-    })
-    df = pd.DataFrame(pediatri)
+    return pediatri
 
-# Visualizza la tabella dei pediatri
-st.subheader("Lista dei Pediatri")
-st.dataframe(df[['Code_med', 'Name_med', 'Surname_med', 'Address']])
+# Carica i pediatri e visualizzali
+pediatri = load_pediatri()
 
-# Includi il file CSS
-with open("Streamlit/static/style.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# Crea la tabella in Streamlit
+st.table([{
+    'Codice': pediatra['Code_med'],
+    'Nome': pediatra['Name_med'],
+    'Cognome': pediatra['Surname_med'],
+    'Indirizzo': pediatra['Address']
+} for pediatra in pediatri])
 
-# Crea la mappa
-m = folium.Map(location=[45.4642, 9.16], zoom_start=12)
-
-# Aggiungi marker per ogni pediatra
-for _, pediatra in df.iterrows():
-    folium.Marker([45.4642, 9.16], popup=f"{pediatra['Name_med']} {pediatra['Surname_med']}").add_to(m)
-
-# Mostra la mappa
+# Aggiungi mappa
 st.subheader("Mappa dei Pediatri")
-st_folium(m, width=700, height=500)
 
-# Includi il file JavaScript (se necessario)
-with open("Streamlit/static/script.js") as f:
-    st.markdown(f"<script>{f.read()}</script>", unsafe_allow_html=True)
+# Includi una mappa tramite Folium o altro metodo di visualizzazione
+# Esempio per mappa con Folium (se hai bisogno di una mappa interattiva)
+import folium
+from streamlit_folium import st_folium
+
+# Inizializza la mappa
+map_center = [45.4642, 9.16]  # Milano
+mymap = folium.Map(location=map_center, zoom_start=12)
+
+# Aggiungi un marker per ogni pediatra (se hai delle coordinate)
+for pediatra in pediatri:
+    folium.Marker([pediatra['Latitude'], pediatra['Longitude']], popup=pediatra['Name_med']).add_to(mymap)
+
+# Visualizza la mappa in Streamlit
+st_folium(mymap, width=700, height=500)
