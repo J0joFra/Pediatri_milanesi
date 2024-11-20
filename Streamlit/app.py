@@ -90,12 +90,11 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-st_folium(mymap, width=1000, height=700)  # Maggiore larghezza e altezza
+st_folium(mymap, width=1000, height=700)
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
 if pediatri:
-    
     pediatri_df = pd.DataFrame([{
         'Codice': pediatra.get('Code_med'),
         'Nome': pediatra.get('Name_med'),
@@ -105,7 +104,16 @@ if pediatri:
     } for pediatra in pediatri])
 
     pediatri_df = pediatri_df.dropna()
-    st.dataframe(pediatri_df.head(10), height=500)
+    
+    st.markdown("""
+        <style>
+        .dataframe-table {
+            width: 100% !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.dataframe(pediatri_df, use_container_width=True)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
