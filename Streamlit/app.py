@@ -54,32 +54,29 @@ with st.sidebar:
 # Carica i pediatri in base alla ricerca e alla zona selezionata
 pediatri = load_pediatri(query, selected_zone)
 
-# Layout principale: Mappa e tabella
-col1, col2 = st.columns([1.5, 1])  # La mappa occupa più spazio
-
-# Inizializza la mappa con Milano come centro
+# Layout principale: Mappa
+st.subheader("🗺️ Mappa dei Pediatri")
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
 # Carica il file GeoJSON
 geojson_path = "MilanCity.geojson"
+geojson_data = None
 if os.path.exists(geojson_path):
     with open(geojson_path, 'r') as f:
         geojson_data = json.load(f)
-
-    # Evidenzia le zone sulla mappa
-    for feature in geojson_data['features']:
-        folium.GeoJson(
-            feature,
-            style_function=lambda x: {
-                'fillColor': '#00B4D8',
-                'fillOpacity': 0.3,
-                'weight': 0.5,
-                'color': 'black'
-            }
-        ).add_to(mymap)
+        for feature in geojson_data['features']:
+            folium.GeoJson(
+                feature,
+                style_function=lambda x: {
+                    'fillColor': '#00B4D8',
+                    'fillOpacity': 0.3,
+                    'weight': 0.5,
+                    'color': 'black'
+                }
+            ).add_to(mymap)
 else:
-    st.error("Il file GeoJSON non è stato trovato.")
+    st.warning("Il file GeoJSON non è stato trovato. La mappa sarà caricata senza zone evidenziate.")
 
 # Aggiungi marker per i pediatri
 for pediatra in pediatri:
@@ -93,37 +90,31 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-# Visualizza la mappa
-with col1:
-    st.subheader("🗺️ Mappa dei Pediatri")
-    st_folium(mymap, width=700, height=500)
+st_folium(mymap, width=700, height=500)
 
-# Elenco pediatri
-with col2:
-    st.subheader("📋 Elenco Pediatri")
-    if pediatri:
-        st.dataframe(pd.DataFrame([{
-            'Codice': pediatra['Code_med'],
-            'Nome': pediatra['Name_med'],
-            'Cognome': pediatra['Surname_med'],
-            'Indirizzo': pediatra['Address'],
-            'Zona': pediatra['Zone']
-        } for pediatra in pediatri]))
-    else:
-        st.write("Nessun pediatra trovato con i criteri selezionati.")
+# Tabella pediatri
+st.subheader("📋 Elenco Pediatri")
+if pediatri:
+    st.dataframe(pd.DataFrame([{
+        'Codice': pediatra['Code_med'],
+        'Nome': pediatra['Name_med'],
+        'Cognome': pediatra['Surname_med'],
+        'Indirizzo': pediatra['Address'],
+        'Zona': pediatra['Zone']
+    } for pediatra in pediatri]))
+else:
+    st.write("Nessun pediatra trovato con i criteri selezionati.")
 
 # Statistiche sui pediatri
 if pediatri:
+    st.subheader("📊 Statistiche")
     pediatri_df = pd.DataFrame(pediatri)
     zona_counts = pediatri_df['Zone'].value_counts().reset_index()
     zona_counts.columns = ['Zona', 'Numero Pediatri']
-
-    with st.sidebar:
-        st.subheader("📊 Statistiche")
-        fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
-                     title="Numero di Pediatri per Zona", 
-                     color='Zona', height=400)
-        st.plotly_chart(fig)
+    fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
+                 title="Numero di Pediatri per Zona", 
+                 color='Zona', height=400)
+    st.plotly_chart(fig)
 
 # Suggerimenti
 with st.sidebar:
