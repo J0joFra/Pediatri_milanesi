@@ -10,7 +10,7 @@ import os
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano", 
                    page_icon="👶", 
-                   layout="wide",
+                   layout="centered",
                    initial_sidebar_state="expanded")
 
 # Connessione a MongoDB
@@ -90,26 +90,26 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-st_folium(mymap, width=700, height=500)
+st_folium(mymap, width=800, height=600)
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
 if pediatri:
-    st.dataframe(pd.DataFrame([{
+    pediatri_df = pd.DataFrame([{
         'Codice': pediatra['Code_med'],
         'Nome': pediatra['Name_med'],
         'Cognome': pediatra['Surname_med'],
         'Indirizzo': pediatra['Address'],
         'Zona': pediatra['Zone']
-    } for pediatra in pediatri]))
+    } for pediatra in pediatri])
+    st.dataframe(pediatri_df, height=400)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
 # Statistiche sui pediatri
 if pediatri:
     st.subheader("📊 Statistiche")
-    pediatri_df = pd.DataFrame(pediatri)
-    zona_counts = pediatri_df['Zone'].value_counts().reset_index()
+    zona_counts = pediatri_df['Zona'].value_counts().reset_index()
     zona_counts.columns = ['Zona', 'Numero Pediatri']
     fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
                  title="Numero di Pediatri per Zona", 
