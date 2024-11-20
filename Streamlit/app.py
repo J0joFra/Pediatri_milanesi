@@ -39,22 +39,23 @@ def get_zones():
 
 # Intestazione della pagina
 st.title("👶 Healthcare: Pediatri a Milano")
-st.write("""
+st.markdown("""
 Benvenuti nel portale di ricerca pediatri a Milano. Qui puoi trovare informazioni sui pediatri freelance attivi nella tua zona, 
 visualizzarli su una mappa interattiva e accedere ai dettagli degli indirizzi.
 """)
 
 # Filtri di ricerca
-st.sidebar.title("🔧 Filtri di Ricerca")
-query = st.sidebar.text_input("🔍 Cerca Pediatra", "")
-zones = ["Tutte le Zone"] + get_zones()
-selected_zone = st.sidebar.selectbox("📍 Seleziona una Zona", zones)
+with st.sidebar:
+    st.title("🔧 Filtri di Ricerca")
+    query = st.text_input("🔍 Cerca Pediatra", "")
+    zones = ["Tutte le Zone"] + get_zones()
+    selected_zone = st.selectbox("📍 Seleziona una Zona", zones)
 
 # Carica i pediatri in base alla ricerca e alla zona selezionata
 pediatri = load_pediatri(query, selected_zone)
 
-# Mappa interattiva e Elenco Pediatri in colonne
-col1, col2 = st.columns([2, 1])  # La mappa prende 2/3 dello spazio
+# Layout principale: Mappa e tabella
+col1, col2 = st.columns([1.5, 1])  # La mappa occupa più spazio
 
 # Inizializza la mappa con Milano come centro
 map_center = [45.4642, 9.16]  # Milano
@@ -95,19 +96,19 @@ for pediatra in pediatri:
 # Visualizza la mappa
 with col1:
     st.subheader("🗺️ Mappa dei Pediatri")
-    st_folium(mymap, width=900, height=500)
+    st_folium(mymap, width=700, height=500)
 
 # Elenco pediatri
 with col2:
     st.subheader("📋 Elenco Pediatri")
     if pediatri:
-        st.table([{
+        st.dataframe(pd.DataFrame([{
             'Codice': pediatra['Code_med'],
             'Nome': pediatra['Name_med'],
             'Cognome': pediatra['Surname_med'],
             'Indirizzo': pediatra['Address'],
             'Zona': pediatra['Zone']
-        } for pediatra in pediatri])
+        } for pediatra in pediatri]))
     else:
         st.write("Nessun pediatra trovato con i criteri selezionati.")
 
@@ -117,30 +118,18 @@ if pediatri:
     zona_counts = pediatri_df['Zone'].value_counts().reset_index()
     zona_counts.columns = ['Zona', 'Numero Pediatri']
 
-    st.sidebar.subheader("📊 Statistiche")
-    fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
-                 title="Numero di Pediatri per Zona", 
-                 color='Zona', height=400)
-    st.sidebar.plotly_chart(fig)
-
-# Leggenda interattiva
-legend_html = """
-<div style="
-    position: fixed; 
-    bottom: 50px; left: 50px; width: 150px; height: 90px; 
-    background-color: white; z-index: 1000; font-size: 14px;
-    border:2px solid grey; padding: 10px; border-radius: 8px;">
-    <b>Legenda:</b><br>
-    <i style="background: #00B4D8; width: 10px; height: 10px; display: inline-block; margin-right: 5px;"></i> Zone<br>
-    <i style="background: black; width: 10px; height: 10px; display: inline-block; margin-right: 5px;"></i> Confini
-</div>
-"""
-mymap.get_root().html.add_child(folium.Element(legend_html))
+    with st.sidebar:
+        st.subheader("📊 Statistiche")
+        fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
+                     title="Numero di Pediatri per Zona", 
+                     color='Zona', height=400)
+        st.plotly_chart(fig)
 
 # Suggerimenti
-st.sidebar.info(""" 
-💡 **Suggerimenti di utilizzo:**  
-- Usa il campo di ricerca per filtrare i pediatri per nome, cognome o indirizzo.  
-- Seleziona una zona per visualizzare i pediatri di quell'area.  
-- Clicca sui marker della mappa per ulteriori dettagli.
-""")
+with st.sidebar:
+    st.info(""" 
+    💡 **Suggerimenti di utilizzo:**  
+    - Usa il campo di ricerca per filtrare i pediatri per nome, cognome o indirizzo.  
+    - Seleziona una zona per visualizzare i pediatri di quell'area.  
+    - Clicca sui marker della mappa per ulteriori dettagli.
+    """)
