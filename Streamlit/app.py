@@ -10,7 +10,7 @@ import os
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano", 
                    page_icon="👶", 
-                   layout="centered",
+                   layout="wide",  # Cambiato da "centered" a "wide"
                    initial_sidebar_state="expanded")
 
 # Connessione a MongoDB
@@ -90,7 +90,7 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-st_folium(mymap, width=800, height=600)
+st_folium(mymap, width=1000, height=700)  # Maggiore larghezza e altezza
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
@@ -102,7 +102,7 @@ if pediatri:
         'Indirizzo': pediatra['Address'],
         'Zona': pediatra['Zone']
     } for pediatra in pediatri])
-    st.dataframe(pediatri_df, height=400)
+    st.dataframe(pediatri_df.head(10), height=500)  # Mostra solo 10 righe iniziali
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
@@ -113,7 +113,7 @@ if pediatri:
     zona_counts.columns = ['Zona', 'Numero Pediatri']
     fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
                  title="Numero di Pediatri per Zona", 
-                 color='Zona', height=400)
+                 color='Zona', height=500)
     st.plotly_chart(fig)
 
 # Suggerimenti
