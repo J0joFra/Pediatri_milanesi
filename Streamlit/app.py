@@ -95,6 +95,7 @@ st_folium(mymap, width=1000, height=700)  # Maggiore larghezza e altezza
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
 if pediatri:
+    
     pediatri_df = pd.DataFrame([{
         'Codice': pediatra.get('Code_med'),
         'Nome': pediatra.get('Name_med'),
