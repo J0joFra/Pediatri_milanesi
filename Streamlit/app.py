@@ -60,7 +60,7 @@ map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
 # Carica il file GeoJSON
-geojson_path = "MilanCity.geojson"
+geojson_path = "Datasets/MilanCity.geojson"
 geojson_data = None
 if os.path.exists(geojson_path):
     with open(geojson_path, 'r') as f:
@@ -96,13 +96,15 @@ st_folium(mymap, width=1000, height=700)  # Maggiore larghezza e altezza
 st.subheader("📋 Elenco Pediatri")
 if pediatri:
     pediatri_df = pd.DataFrame([{
-        'Codice': pediatra['Code_med'],
-        'Nome': pediatra['Name_med'],
-        'Cognome': pediatra['Surname_med'],
-        'Indirizzo': pediatra['Address'],
-        'Zona': pediatra['Zone']
+        'Codice': pediatra.get('Code_med'),
+        'Nome': pediatra.get('Name_med'),
+        'Cognome': pediatra.get('Surname_med'),
+        'Indirizzo': pediatra.get('Address'),
+        'Zona': pediatra.get('Zone')
     } for pediatra in pediatri])
-    st.dataframe(pediatri_df.head(10), height=500)  # Mostra solo 10 righe iniziali
+
+    pediatri_df = pediatri_df.dropna()
+    st.dataframe(pediatri_df.head(10), height=500)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
