@@ -56,6 +56,7 @@ pediatri = load_pediatri(query, selected_zone)
 
 # Layout principale: Mappa
 st.subheader("🗺️ Mappa dei Pediatri")
+st.metric(label="Temperature", value="31 °C", delta="1.2 °C")
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
