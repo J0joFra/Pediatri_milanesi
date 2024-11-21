@@ -31,16 +31,8 @@ def get_weather_data():
 
 # Recupera i dati meteo
 temperature, humidity, weather_description = get_weather_data()
+col1, col2, col3 = st.columns(3)
 
-# Aggiungi le metriche in tempo reale (se i dati sono disponibili)
-if temperature is not None:
-    st.metric(label="Temperatura", value=f"{temperature} °C", delta="1.2 °C")
-    st.metric(label="Umidità", value=f"{humidity}%", delta="5%")
-    st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
-else:
-    st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
-
-# Il resto del tuo codice
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
@@ -84,7 +76,20 @@ pediatri = load_pediatri(query, selected_zone)
 
 # Layout principale: Mappa
 st.subheader("🗺️ Mappa dei Pediatri")
-st.metric(label="Temperature", value="31 °C", delta="1.2 °C")
+
+with col1:
+    if temperature is not None:
+        st.metric(label="Temperatura", value=f"{temperature} °C", delta="1.2 °C")
+    else:
+        st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
+
+with col2:
+    if humidity is not None:
+        st.metric(label="Umidità", value=f"{humidity}%", delta="5%")
+
+with col3:
+    if weather_description is not None:
+        st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
