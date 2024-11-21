@@ -29,10 +29,6 @@ def get_weather_data():
     else:
         return None, None, None
 
-# Recupera i dati meteo
-temperature, humidity, weather_description = get_weather_data()
-col1, col2, col3 = st.columns(3)
-
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
@@ -76,6 +72,9 @@ pediatri = load_pediatri(query, selected_zone)
 
 # Layout principale: Mappa
 st.subheader("🗺️ Mappa dei Pediatri")
+# Recupera i dati meteo
+temperature, humidity, weather_description = get_weather_data()
+col1, col2, col3 = st.columns(3)
 
 with col1:
     if temperature is not None:
