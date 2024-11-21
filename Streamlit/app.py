@@ -16,7 +16,7 @@ st.set_page_config(page_title="Healthcare - Pediatri Milano",
 
 # Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
 def get_weather_data():
-    api_key = "YOUR_API_KEY"  # Sostituisci con la tua chiave API
+    api_key = "155d1ef020301577c38d5347ed538061"
     city = "Milan"
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
