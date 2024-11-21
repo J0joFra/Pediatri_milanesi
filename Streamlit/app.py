@@ -4,6 +4,7 @@ import folium
 from streamlit_folium import st_folium
 import plotly.express as px
 import pandas as pd
+import requests
 import json
 import os
 
@@ -13,6 +14,33 @@ st.set_page_config(page_title="Healthcare - Pediatri Milano",
                    layout="wide",  # Cambiato da "centered" a "wide"
                    initial_sidebar_state="expanded")
 
+# Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
+def get_weather_data():
+    api_key = "YOUR_API_KEY"  # Sostituisci con la tua chiave API
+    city = "Milan"
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        temperature = data['main']['temp']
+        humidity = data['main']['humidity']
+        weather_description = data['weather'][0]['description']
+        return temperature, humidity, weather_description
+    else:
+        return None, None, None
+
+# Recupera i dati meteo
+temperature, humidity, weather_description = get_weather_data()
+
+# Aggiungi le metriche in tempo reale (se i dati sono disponibili)
+if temperature is not None:
+    st.metric(label="Temperatura", value=f"{temperature} °C", delta="1.2 °C")
+    st.metric(label="Umidità", value=f"{humidity}%", delta="5%")
+    st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
+else:
+    st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
+
+# Il resto del tuo codice
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
 db = client['Healthcare']
