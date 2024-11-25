@@ -147,7 +147,7 @@ else:
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
     
-    total_zones = len(get_zones())
+    total_zones = 85  # Numero totale delle zone da GeoJSON
     pediatri_per_zone = pediatri_df['Zona'].value_counts()
     zones_no_pediatri = total_zones - len(pediatri_per_zone)
 
@@ -170,7 +170,8 @@ if pediatri:
             names=stats.keys(),
             values=stats.values(),
             title="Distribuzione Zone per Pediatri",
-            hole=0.4
+            hole=0.4,
+            color_discrete_sequence=px.colors.qualitative.Set3
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
