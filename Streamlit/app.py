@@ -163,52 +163,45 @@ if pediatri:
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric(label="Totale Pediatri", value=total_pediatri)
+        st.markdown(f"### 🧑‍⚕️ Totale Pediatri\n**{total_pediatri}**")
     
     with col2:
-        st.metric(label="Zone Totali", value=unique_zones)
+        st.markdown(f"### 🗺️ Zone Totali Servite\n**{unique_zones}**")
     
     with col3:
-        st.metric(label=f"Zona più frequentata: {most_popular_zone}", value=f"{pediatri_in_popular_zone} pediatri")
+        st.markdown(f"### 🏆 Zona più Frequentata\n**{most_popular_zone}** ({pediatri_in_popular_zone} pediatri)")
     
-    # Grafico a barre: Numero di pediatri per zona
-    zona_counts = pediatri_df['Zona'].value_counts().reset_index()
-    zona_counts.columns = ['Zona', 'Numero Pediatri']
+    # Distribuzione pediatri per zona
+    zona_counts = pediatri_df['Zona'].value_counts()
     
-    col1, col2 = st.columns(2)
+    # Crea categorie per il grafico a torta
+    zone_distribution = pd.DataFrame({
+        'Categoria': ['Zone senza pediatri', 'Zone con 1 pediatra', 'Zone con 2 pediatri', 'Zone con più di 2 pediatri'],
+        'Numero Zone': [
+            len(zona_counts[zona_counts == 0]),
+            len(zona_counts[zona_counts == 1]),
+            len(zona_counts[zona_counts == 2]),
+            len(zona_counts[zona_counts > 2])
+        ]
+    })
     
-    with col1:
-        fig_bar = px.bar(
-            zona_counts,
-            x='Zona',
-            y='Numero Pediatri',
-            title="Numero di Pediatri per Zona",
-            color='Zona',
-            text='Numero Pediatri',
-            height=500
-        )
-        fig_bar.update_layout(showlegend=False)
-        st.plotly_chart(fig_bar, use_container_width=True)
+    fig_pie = px.pie(
+        zone_distribution,
+        values='Numero Zone',
+        names='Categoria',
+        title="Distribuzione delle Zone in base al numero di Pediatri",
+        hole=0.4
+    )
+    st.plotly_chart(fig_pie, use_container_width=True)
     
-    # Grafico a torta: Distribuzione pediatri per zona
-    with col2:
-        fig_pie = px.pie(
-            zona_counts,
-            values='Numero Pediatri',
-            names='Zona',
-            title="Distribuzione Pediatri per Zona",
-            hole=0.4
-        )
-        st.plotly_chart(fig_pie, use_container_width=True)
-
     # Ulteriori dettagli e suggerimenti
     st.markdown("""
     🔍 **Analisi delle Zone:**  
-    - **Totale pediatri:** Valore complessivo.  
-    - **Zone totali:** Quante aree sono servite.  
-    - **Zona più frequentata:** La zona con il maggior numero di pediatri.
+    - **Zone senza pediatri:** Zone completamente sguarnite.  
+    - **Zone con 1 pediatra:** Aree con un servizio minimo.  
+    - **Zone con 2 pediatri:** Aree con una moderata copertura.  
+    - **Zone con più di 2 pediatri:** Zone con buona copertura pediatrica.
     """)
-
 
 st.download_button(
     label="📥 Scarica come CSV",
