@@ -74,7 +74,30 @@ pediatri = load_pediatri(query, selected_zone)
 st.subheader("🗺️ Mappa dei Pediatri")
 # Recupera i dati meteo
 temperature, humidity, weather_description = get_weather_data()
-col1, col2, col3 = st.columns(3)
+
+# Centrare le metriche con riquadri colorati
+st.markdown("""
+    <style>
+    .metric-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        background-color: #f0f2f6; /* Colore di sfondo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Effetto ombra */
+    }
+    .metric-box .metric-title {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Creazione delle metriche con riquadri
+st.markdown('<div class="metric-box">', unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 1, 1])
 
 with col1:
     if temperature is not None:
@@ -89,6 +112,9 @@ with col2:
 with col3:
     if weather_description is not None:
         st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Centrare la mappa
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
@@ -123,7 +149,9 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
+st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
 st_folium(mymap, width=1000, height=700)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
