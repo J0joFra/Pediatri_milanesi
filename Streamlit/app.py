@@ -169,9 +169,30 @@ if pediatri:
         fig_pie = px.pie(
             names=stats.keys(),
             values=stats.values(),
-            title="Distribuzione Zone per Pediatri",
+            title="<b>Distribuzione Zone per Pediatri</b>",
             hole=0.4,
-            color_discrete_sequence=px.colors.qualitative.Set3
+            color_discrete_sequence=px.colors.sequential.RdBu  # Palette di colori migliorata
+        )
+        fig_pie.update_traces(
+            textinfo='percent+label',  # Mostra percentuali e etichette
+            textfont_size=14,  # Aumenta la dimensione del testo
+            marker=dict(
+                line=dict(color='#000000', width=1.5)  # Contorni più visibili
+            )
+        )
+        fig_pie.update_layout(
+            title=dict(
+                font_size=20,  # Dimensione maggiore del titolo
+                x=0.5  # Centra il titolo
+            ),
+            legend=dict(
+                font=dict(size=14),  # Aumenta la dimensione della legenda
+                orientation="h",  # Dispone la legenda in orizzontale
+                x=0.5,
+                xanchor='center',
+                y=-0.1
+            ),
+            margin=dict(t=50, b=30, l=10, r=10)  # Riduce i margini inutili
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
