@@ -161,9 +161,9 @@ if pediatri:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.metric(label="🏥 Totale Pediatri", value=len(pediatri_df), textfont_size=20)
-        st.metric(label="📍 Zone Coperte", value=len(pediatri_per_zone), textfont_size=20)
-        st.metric(label="🚫 Zone Senza Pediatri", value=zones_no_pediatri, textfont_size=20)
+        st.metric(label="🏥 Totale Pediatri", value=len(pediatri_df))
+        st.metric(label="📍 Zone Coperte", value=len(pediatri_per_zone))
+        st.metric(label="🚫 Zone Senza Pediatri", value=zones_no_pediatri)
 
     with col2:
         fig_pie = px.pie(
