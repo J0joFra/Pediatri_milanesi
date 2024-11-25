@@ -74,30 +74,7 @@ pediatri = load_pediatri(query, selected_zone)
 st.subheader("🗺️ Mappa dei Pediatri")
 # Recupera i dati meteo
 temperature, humidity, weather_description = get_weather_data()
-
-# Centrare le metriche con riquadri colorati
-st.markdown("""
-    <style>
-    .metric-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        background-color: #f0f2f6; /* Colore di sfondo */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Effetto ombra */
-    }
-    .metric-box .metric-title {
-        font-weight: bold;
-        font-size: 18px;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Creazione delle metriche con riquadri
-st.markdown('<div class="metric-box">', unsafe_allow_html=True)
-col1, col2, col3 = st.columns([1, 1, 1])
+col1, col2, col3 = st.columns(3)
 
 with col1:
     if temperature is not None:
@@ -112,9 +89,6 @@ with col2:
 with col3:
     if weather_description is not None:
         st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Centrare la mappa
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
@@ -149,9 +123,7 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
 st_folium(mymap, width=1000, height=700)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
@@ -178,21 +150,69 @@ if pediatri:
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
-# Statistiche sui pediatri
+# Statistiche sui pediatri con una mini-dashboard
 if pediatri:
-    st.subheader("📊 Statistiche")
+    st.subheader("📊 Statistiche sui Pediatri")
+    
+    # KPI principali
+    total_pediatri = len(pediatri_df)
+    unique_zones = pediatri_df['Zona'].nunique()
+    most_popular_zone = pediatri_df['Zona'].mode()[0]
+    pediatri_in_popular_zone = pediatri_df['Zona'].value_counts().iloc[0]
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric(label="Totale Pediatri", value=total_pediatri)
+    
+    with col2:
+        st.metric(label="Zone Totali", value=unique_zones)
+    
+    with col3:
+        st.metric(label=f"Zona più frequentata: {most_popular_zone}", value=f"{pediatri_in_popular_zone} pediatri")
+    
+    # Grafico a barre: Numero di pediatri per zona
     zona_counts = pediatri_df['Zona'].value_counts().reset_index()
     zona_counts.columns = ['Zona', 'Numero Pediatri']
-    fig = px.bar(zona_counts, x='Zona', y='Numero Pediatri', 
-                 title="Numero di Pediatri per Zona", 
-                 color='Zona', height=500)
-    st.plotly_chart(fig)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        fig_bar = px.bar(
+            zona_counts,
+            x='Zona',
+            y='Numero Pediatri',
+            title="Numero di Pediatri per Zona",
+            color='Zona',
+            text='Numero Pediatri',
+            height=500
+        )
+        fig_bar.update_layout(showlegend=False)
+        st.plotly_chart(fig_bar, use_container_width=True)
+    
+    # Grafico a torta: Distribuzione pediatri per zona
+    with col2:
+        fig_pie = px.pie(
+            zona_counts,
+            values='Numero Pediatri',
+            names='Zona',
+            title="Distribuzione Pediatri per Zona",
+            hole=0.4
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
 
-# Suggerimenti
-with st.sidebar:
-    st.info(""" 
-    💡 **Suggerimenti di utilizzo:**  
-    - Usa il campo di ricerca per filtrare i pediatri per nome, cognome o indirizzo.  
-    - Seleziona una zona per visualizzare i pediatri di quell'area.  
-    - Clicca sui marker della mappa per ulteriori dettagli.
+    # Ulteriori dettagli e suggerimenti
+    st.markdown("""
+    🔍 **Analisi delle Zone:**  
+    - **Totale pediatri:** Valore complessivo.  
+    - **Zone totali:** Quante aree sono servite.  
+    - **Zona più frequentata:** La zona con il maggior numero di pediatri.
     """)
+
+
+st.download_button(
+    label="📥 Scarica come CSV",
+    data=pediatri_df.to_csv(index=False).encode('utf-8'),
+    file_name='pediatri_milano.csv',
+    mime='text/csv'
+)
