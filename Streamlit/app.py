@@ -154,7 +154,7 @@ if pediatri:
     stats = {
         '1 Pediatra': (pediatri_per_zone == 1).sum(),
         '2 Pediatri': (pediatri_per_zone == 2).sum(),
-        'Più di 2 Pediatri': (pediatri_per_zone > 2).sum(),
+        '2 o più Pediatri': (pediatri_per_zone > 2).sum(),
         'Senza Pediatri': zones_no_pediatri
     }
 
@@ -183,7 +183,7 @@ if pediatri:
         fig_pie.update_layout(
             title=dict(
                 font_size=20,
-                x=0.5  # Centra il titolo
+                x=0  # Centra il titolo
             ),
             legend=dict(
                 font=dict(size=14), 
