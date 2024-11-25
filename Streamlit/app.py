@@ -9,9 +9,9 @@ import json
 import os
 
 # Configura il layout di Streamlit
-st.set_page_config(page_title="Healthcare - Pediatri Milano", 
-                   page_icon="👶", 
-                   layout="wide",  # Cambiato da "centered" a "wide"
+st.set_page_config(page_title="Healthcare - Pediatri Milano",
+                   page_icon="👶",
+                   layout="wide",
                    initial_sidebar_state="expanded")
 
 # Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
@@ -78,17 +78,18 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     if temperature is not None:
-        st.metric(label="Temperatura", value=f"{temperature} °C", delta="1.2 °C")
+        st.metric(label="🌡️ Temperatura", value=f"{temperature} °C")
     else:
         st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
 
 with col2:
     if humidity is not None:
-        st.metric(label="Umidità", value=f"{humidity}%", delta="5%")
+        st.metric(label="💧 Umidità", value=f"{humidity}%")
 
 with col3:
     if weather_description is not None:
-        st.metric(label="Condizioni Meteo", value=weather_description.capitalize())
+        st.metric(label="☁️ Condizioni Meteo", value=weather_description.capitalize())
+
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
@@ -116,7 +117,7 @@ for pediatra in pediatri:
     lat = pediatra.get('Lat')
     long = pediatra.get('Long')
     if lat and long:
-        icon = folium.Icon(color='blue', icon='user-md', prefix='fa')  # Icona personalizzata
+        icon = folium.Icon(color='blue', icon='user-md', prefix='fa')
         folium.Marker(
             [lat, long], 
             popup=f"<b>{pediatra['Name_med']} {pediatra['Surname_med']}</b><br>{pediatra['Address']}<br><i>{pediatra['Zone']}</i>",
@@ -138,14 +139,6 @@ if pediatri:
 
     pediatri_df = pediatri_df.dropna()
     
-    st.markdown("""
-        <style>
-        .dataframe-table {
-            width: 100% !important;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
     st.dataframe(pediatri_df, use_container_width=True)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
@@ -154,54 +147,32 @@ else:
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
     
-    # KPI principali
-    total_pediatri = len(pediatri_df)
-    unique_zones = pediatri_df['Zona'].nunique()
-    most_popular_zone = pediatri_df['Zona'].mode()[0]
-    pediatri_in_popular_zone = pediatri_df['Zona'].value_counts().iloc[0]
-    
-    col1, col2, col3 = st.columns(3)
+    total_zones = len(get_zones())
+    pediatri_per_zone = pediatri_df['Zona'].value_counts()
+    zones_no_pediatri = total_zones - len(pediatri_per_zone)
+
+    stats = {
+        '1 Pediatra': (pediatri_per_zone == 1).sum(),
+        '2 Pediatri': (pediatri_per_zone == 2).sum(),
+        'Più di 2 Pediatri': (pediatri_per_zone > 2).sum(),
+        'Senza Pediatri': zones_no_pediatri
+    }
+
+    col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown(f"### 🧑‍⚕️ Totale Pediatri\n**{total_pediatri}**")
-    
+        st.metric(label="🏥 Totale Pediatri", value=len(pediatri_df))
+        st.metric(label="📍 Zone Coperte", value=len(pediatri_per_zone))
+        st.metric(label="🚫 Zone Senza Pediatri", value=zones_no_pediatri)
+
     with col2:
-        st.markdown(f"### 🗺️ Zone Totali Servite\n**{unique_zones}**")
-    
-    with col3:
-        st.markdown(f"### 🏆 Zona più Frequentata\n**{most_popular_zone}** ({pediatri_in_popular_zone} pediatri)")
-    
-    # Distribuzione pediatri per zona
-    zona_counts = pediatri_df['Zona'].value_counts()
-    
-    # Crea categorie per il grafico a torta
-    zone_distribution = pd.DataFrame({
-        'Categoria': ['Zone senza pediatri', 'Zone con 1 pediatra', 'Zone con 2 pediatri', 'Zone con più di 2 pediatri'],
-        'Numero Zone': [
-            len(zona_counts[zona_counts == 0]),
-            len(zona_counts[zona_counts == 1]),
-            len(zona_counts[zona_counts == 2]),
-            len(zona_counts[zona_counts > 2])
-        ]
-    })
-    
-    fig_pie = px.pie(
-        zone_distribution,
-        values='Numero Zone',
-        names='Categoria',
-        title="Distribuzione delle Zone in base al numero di Pediatri",
-        hole=0.4
-    )
-    st.plotly_chart(fig_pie, use_container_width=True)
-    
-    # Ulteriori dettagli e suggerimenti
-    st.markdown("""
-    🔍 **Analisi delle Zone:**  
-    - **Zone senza pediatri:** Zone completamente sguarnite.  
-    - **Zone con 1 pediatra:** Aree con un servizio minimo.  
-    - **Zone con 2 pediatri:** Aree con una moderata copertura.  
-    - **Zone con più di 2 pediatri:** Zone con buona copertura pediatrica.
-    """)
+        fig_pie = px.pie(
+            names=stats.keys(),
+            values=stats.values(),
+            title="Distribuzione Zone per Pediatri",
+            hole=0.4
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
 
 st.download_button(
     label="📥 Scarica come CSV",
