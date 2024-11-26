@@ -169,10 +169,11 @@ if pediatri:
         fig_pie = px.pie(
             names=stats.keys(),
             values=stats.values(),
-            title="<b>Distribuzione Zone per Pediatri</b>",
-            hole=0.4,
-            color_discrete_sequence=px.colors.sequential.Aggrnyl
+            title="<b>Distribuzione Zone</b>",
+            color_discrete_sequence=px.colors.sequential.Teal
         )
+
+        # Configurazione per centrare titolo, grafico e legenda
         fig_pie.update_traces(
             textinfo='percent',
             textfont_size=20,
@@ -182,17 +183,32 @@ if pediatri:
         )
         fig_pie.update_layout(
             title=dict(
-                font_size=20,
-                x=0.2  # Centra il titolo
+                text="<b>Distribuzione Zone</b>",
+                font=dict(size=20),
+                x=0.5,  # Centra il titolo orizzontalmente
+                xanchor='center'
             ),
             legend=dict(
                 font=dict(size=14), 
-                orientation="h",
-                x=0.2,
+                orientation="h",  # Legenda orizzontale
+                x=0.5,  # Centra la legenda
                 xanchor='center',
-                y=-0.1
+                y=-0.2  # Posiziona la legenda più in basso per allineamento estetico
             ),
-            margin=dict(t=50, b=30, l=10, r=10) 
+            margin=dict(t=50, b=50, l=50, r=50),  # Margini del grafico per un centraggio migliore
+            plot_bgcolor='rgba(0,0,0,0)',  # Rende lo sfondo trasparente
+            paper_bgcolor='rgba(0,0,0,0)'  # Rende il contorno trasparente
+        )
+        fig_pie.update_layout(
+            annotations=[
+                dict(
+                    text='',  # Testo aggiuntivo opzionale
+                    showarrow=False,
+                    x=0.5,  # Centro orizzontale
+                    y=0.5,  # Centro verticale
+                    font=dict(size=14)
+                )
+            ]
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
