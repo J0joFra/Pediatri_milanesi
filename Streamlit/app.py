@@ -158,12 +158,33 @@ if pediatri:
         'Senza Pediatri': zones_no_pediatri
     }
 
-    col1, col2 = st.columns(2)
-    
+    # Funzione per creare box colorati con HTML
+    def colored_box(label, value, color):
+        box_html = f"""
+        <div style="
+            background-color: {color};
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;">
+            <h4 style="margin: 0; font-size: 18px;">{label}</h4>
+            <p style="margin: 0; font-size: 24px; font-weight: bold;">{value}</p>
+        </div>
+        """
+        return box_html
+
+    # Layout delle metriche con box colorati
+    col1, col2, col3 = st.columns(3)
+
     with col1:
-        st.metric(label="🏥 Totale Pediatri", value=len(pediatri_df))
-        st.metric(label="📍 Zone Coperte", value=len(pediatri_per_zone))
-        st.metric(label="🚫 Zone Senza Pediatri", value=zones_no_pediatri)
+        st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#4CAF50"), unsafe_allow_html=True)
+
+    with col2:
+        st.markdown(colored_box("📍 Zone Coperte", len(pediatri_per_zone), "#2196F3"), unsafe_allow_html=True)
+
+    with col3:
+        st.markdown(colored_box("🚫 Zone Senza Pediatri", zones_no_pediatri, "#F44336"), unsafe_allow_html=True)
 
     with col2:
         fig_pie = px.pie(
@@ -178,7 +199,7 @@ if pediatri:
             textinfo='percent',
             textfont_size=20,
             marker=dict(
-                line=dict(color='#000000', width=1.5)
+                line=dict(color='#012A4A', width=1.5)
             )
         )
         fig_pie.update_layout(
