@@ -66,10 +66,11 @@ def metrics_html(label, value, color):
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         text-align: center;
         color: white;
+        margin-bottom: 2px;
     ">
         <h4 style="margin: 0; font-size: 14px;">{label}</h4>
         <p style="margin: 0; font-size: 18px; font-weight: bold;">{value}</p>
-</div>
+    </div>
     """
 
 # Intestazione della pagina
@@ -86,8 +87,6 @@ with col1:
     - 📋 **Consultare un elenco aggiornato** con informazioni chiave come indirizzo, zona e disponibilità.  
     - 📊 **Esplorare statistiche** sulla distribuzione dei pediatri nelle diverse aree urbane, incluse le zone meno coperte.  
     - 📥 **Scaricare i dati in formato CSV**, per un utilizzo più approfondito e personalizzato.  
-
-    Il portale integra inoltre dati meteorologici aggiornati per la città di Milano, offrendoti una panoramica delle condizioni atmosferiche attuali per pianificare al meglio le tue visite.  
 
     Grazie a questo strumento, trovare il pediatra giusto non è mai stato così semplice e veloce. Inizia la tua ricerca e scopri il professionista che si prenderà cura del benessere dei tuoi piccoli!  
     """)
