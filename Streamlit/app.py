@@ -171,7 +171,7 @@ if pediatri:
             values=stats.values(),
             title="<b>Distribuzione Zone per Pediatri</b>",
             hole=0.4,
-            color_discrete_sequence=px.colors.sequential.Blues
+            color_discrete_sequence=px.colors.sequential.Aggrnyl
         )
         fig_pie.update_traces(
             textinfo='percent',
@@ -183,12 +183,12 @@ if pediatri:
         fig_pie.update_layout(
             title=dict(
                 font_size=20,
-                x=0  # Centra il titolo
+                x=0.2  # Centra il titolo
             ),
             legend=dict(
                 font=dict(size=14), 
                 orientation="h",
-                x=0.5,
+                x=0.2,
                 xanchor='center',
                 y=-0.1
             ),
