@@ -7,12 +7,24 @@ import pandas as pd
 import requests
 import json
 import os
+from datetime import datetime
+from data_processing import main as process_data  # Importa il modulo del secondo script
 
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano",
                    page_icon="👶",
                    layout="wide",
                    initial_sidebar_state="expanded")
+
+# Aggiorna il database MongoDB eseguendo il processo di caricamento e preparazione dati
+st.sidebar.subheader("⚙️ Aggiorna Database")
+if st.sidebar.button("Aggiorna i Dati"):
+    with st.spinner("Aggiornamento in corso..."):
+        try:
+            process_data()  # Esegue il processo di caricamento e preparazione dati
+            st.sidebar.success("Database aggiornato con successo!")
+        except Exception as e:
+            st.sidebar.error(f"Errore durante l'aggiornamento: {e}")
 
 # Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
 def get_weather_data():
