@@ -169,12 +169,16 @@ if pediatri:
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
-st.download_button(
-    label="📥 Scarica come CSV",
-    data=pediatri_df.to_csv(index=False).encode('utf-8'),
-    file_name='pediatri_milano.csv',
-    mime='text/csv'
-)
+if pediatri and not pediatri_df.empty:
+    st.download_button(
+        label="📥 Scarica come CSV",
+        data=pediatri_df.to_csv(index=False).encode('utf-8'),
+        file_name='pediatri_milano.csv',
+        mime='text/csv'
+    )
+else:
+    st.write("Nessun dato disponibile per il download.")
+
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
