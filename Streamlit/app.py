@@ -226,7 +226,7 @@ if st.button("🔄 Ricarica Dati"):
     temperature, humidity, weather_description = get_weather_data()
     
     # Carica i nuovi dati
-    url = "https://url-del-dataset.json"  # Aggiorna con l'URL del dataset
+    url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef'
     df = load_data(url)
     
     # Applica tutte le trasformazioni al dataframe
