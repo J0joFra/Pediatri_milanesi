@@ -109,6 +109,12 @@ with col3:
     if weather_description is not None:
         st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
 
+# Spazio tra le metriche e la mappa
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Layout principale: Mappa centrata
+st.subheader("🗺️ Mappa dei Pediatri")
+
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
@@ -143,7 +149,10 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-st_folium(mymap, width=1000, height=700)
+# Contenitore per centrare la mappa
+col1, col2, col3 = st.columns([1, 6, 1])
+with col2:
+    st_folium(mymap, width=1000, height=700)
 
 # Tabella pediatri
 st.subheader("📋 Elenco Pediatri")
