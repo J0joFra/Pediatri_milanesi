@@ -74,21 +74,39 @@ pediatri = load_pediatri(query, selected_zone)
 st.subheader("🗺️ Mappa dei Pediatri")
 # Recupera i dati meteo
 temperature, humidity, weather_description = get_weather_data()
+
+# Funzione per creare box colorati per le metriche
+def metrics_html(label, value, color):
+    return f"""
+    <div style="
+        background-color: {color};
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        color: black;
+    ">
+        <h4 style="margin: 0; font-size: 18px;">{label}</h4>
+        <p style="margin: 0; font-size: 24px; font-weight: bold;">{value}</p>
+    </div>
+    """
+
+# Layout delle metriche meteo
 col1, col2, col3 = st.columns(3)
 
 with col1:
     if temperature is not None:
-        st.metric(label="🌡️ Temperatura", value=f"{temperature} °C")
+        st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#5D737E"), unsafe_allow_html=True)
     else:
         st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
 
 with col2:
     if humidity is not None:
-        st.metric(label="💧 Umidità", value=f"{humidity}%")
+        st.markdown(metrics_html("💧 Umidità", f"{humidity}%", "#5D737E"), unsafe_allow_html=True)
 
 with col3:
     if weather_description is not None:
-        st.metric(label="☁️ Condizioni Meteo", value=weather_description.capitalize())
+        st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#5D737E"), unsafe_allow_html=True)
 
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
@@ -178,13 +196,13 @@ if pediatri:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#4CAF50"), unsafe_allow_html=True)
+        st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#CBC0D3"), unsafe_allow_html=True)
 
     with col2:
-        st.markdown(colored_box("📍 Zone Coperte", len(pediatri_per_zone), "#2196F3"), unsafe_allow_html=True)
+        st.markdown(colored_box("📍 Zone Coperte", len(pediatri_per_zone), "#D6EADF"), unsafe_allow_html=True)
 
     with col3:
-        st.markdown(colored_box("🚫 Zone Senza Pediatri", zones_no_pediatri, "#F44336"), unsafe_allow_html=True)
+        st.markdown(colored_box("🚫 Zone Senza Pediatri", zones_no_pediatri, "#BEE9E8"), unsafe_allow_html=True)
 
     with col2:
         fig_pie = px.pie(
