@@ -88,6 +88,7 @@ def metrics_html(label, value, color):
     ">
         <h4 style="margin: 0; font-size: 18px;">{label}</h4>
         <p style="margin: 0; font-size: 24px; font-weight: bold;">{value}</p>
+        <br>
     </div>
     """
 
@@ -96,17 +97,17 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     if temperature is not None:
-        st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#5D737E"), unsafe_allow_html=True)
+        st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     else:
         st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
 
 with col2:
     if humidity is not None:
-        st.markdown(metrics_html("💧 Umidità", f"{humidity}%", "#5D737E"), unsafe_allow_html=True)
+        st.markdown(metrics_html("💧 Umidità", f"{humidity}%", "#7796CB"), unsafe_allow_html=True)
 
 with col3:
     if weather_description is not None:
-        st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#5D737E"), unsafe_allow_html=True)
+        st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
 
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
@@ -121,7 +122,7 @@ if os.path.exists(geojson_path):
             folium.GeoJson(
                 feature,
                 style_function=lambda x: {
-                    'fillColor': '#00B4D8',
+                    'fillColor': '#FFC8DD',
                     'fillOpacity': 0.3,
                     'weight': 0.5,
                     'color': 'black'
@@ -196,7 +197,7 @@ if pediatri:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#CBC0D3"), unsafe_allow_html=True)
+        st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#E1E5F2"), unsafe_allow_html=True)
 
     with col2:
         st.markdown(colored_box("📍 Zone Coperte", len(pediatri_per_zone), "#D6EADF"), unsafe_allow_html=True)
