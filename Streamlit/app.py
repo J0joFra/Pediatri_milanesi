@@ -367,10 +367,3 @@ if pediatri:
             ]
         )
         st.plotly_chart(fig_pie, use_container_width=True)
-
-st.download_button(
-    label="📥 Scarica come CSV",
-    data=pediatri_df.to_csv(index=False).encode('utf-8'),
-    file_name='pediatri_milano.csv',
-    mime='text/csv'
-)
