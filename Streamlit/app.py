@@ -53,25 +53,6 @@ def load_pediatri(query="", selected_zone=None):
 def get_zones():
     return sorted(collection.distinct("Zone"))
 
-# Intestazione della pagina
-st.title("👶 Healthcare: Pediatri a Milano")
-st.markdown("""
-Benvenuti nel portale di ricerca pediatri a Milano. Qui puoi trovare informazioni sui pediatri freelance attivi nella tua zona, 
-visualizzarli su una mappa interattiva e accedere ai dettagli degli indirizzi.
-""")
-
-# Filtri di ricerca
-with st.sidebar:
-    st.title("🔧 Filtri di Ricerca")
-    query = st.text_input("🔍 Cerca Pediatra", "")
-    zones = ["Tutte le Zone"] + get_zones()
-    selected_zone = st.selectbox("📍 Seleziona una Zona", zones)
-
-# Carica i pediatri in base alla ricerca e alla zona selezionata
-pediatri = load_pediatri(query, selected_zone)
-
-# Layout principale: Mappa
-st.subheader("🗺️ Mappa dei Pediatri")
 # Recupera i dati meteo
 temperature, humidity, weather_description = get_weather_data()
 
@@ -92,22 +73,27 @@ def metrics_html(label, value, color):
     </div>
     """
 
-# Layout delle metriche meteo
-col1, col2, col3 = st.columns(3)
+# Intestazione della pagina
+st.title("👶 Healthcare: Pediatri a Milano")
+col1, col2 = st.columns([3, 1])
 
 with col1:
-    if temperature is not None:
-        st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
-    else:
-        st.warning("Impossibile ottenere i dati meteo. Riprova più tardi.")
+    st.markdown("""
+    Benvenuti nel portale di ricerca pediatri a Milano. Qui puoi trovare informazioni sui pediatri freelance attivi nella tua zona, 
+    visualizzarli su una mappa interattiva e accedere ai dettagli degli indirizzi.
+    """)
 
 with col2:
+    st.markdown("### 🏙️ Milano - Meteo")
+    if temperature is not None:
+        st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
         st.markdown(metrics_html("💧 Umidità", f"{humidity}%", "#7796CB"), unsafe_allow_html=True)
-
-with col3:
     if weather_description is not None:
         st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
+
+# Carica i pediatri in base alla ricerca e alla zona selezionata
+pediatri = load_pediatri(query, selected_zone)
 
 # Spazio tra le metriche e la mappa
 st.markdown("<br>", unsafe_allow_html=True)
