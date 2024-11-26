@@ -92,7 +92,7 @@ def metrics_html(label, value, color):
     </div>
     """
 
-# Layout delle metriche meteo
+# Layout delle metriche meteo con separatore e mappa centrata
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -109,58 +109,43 @@ with col3:
     if weather_description is not None:
         st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
 
-map_center = [45.4642, 9.16]  # Milano
+# Aggiungi uno spazio vuoto tra i box e la mappa
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Sezione: Mappa dei Pediatri
+st.subheader("🗺️ Mappa dei Pediatri")
+map_center = [45.4642, 9.19]  # Coordinate di Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
 
 # Carica il file GeoJSON
 geojson_path = "Datasets/MilanCity.geojson"
-geojson_data = None
 if os.path.exists(geojson_path):
     with open(geojson_path, 'r') as f:
         geojson_data = json.load(f)
-        for feature in geojson_data['features']:
-            folium.GeoJson(
-                feature,
-                style_function=lambda x: {
-                    'fillColor': '#FFC8DD',
-                    'fillOpacity': 0.3,
-                    'weight': 0.5,
-                    'color': 'black'
-                }
-            ).add_to(mymap)
+        folium.GeoJson(
+            geojson_data,
+            style_function=lambda x: {
+                'fillColor': '#FFAFCC',
+                'fillOpacity': 0.3,
+                'weight': 0.5,
+                'color': 'black'
+            }
+        ).add_to(mymap)
 else:
     st.warning("Il file GeoJSON non è stato trovato. La mappa sarà caricata senza zone evidenziate.")
 
-# Aggiungi marker per i pediatri
+# Aggiungi marker per ogni pediatra
 for pediatra in pediatri:
     lat = pediatra.get('Lat')
     long = pediatra.get('Long')
     if lat and long:
-        icon = folium.Icon(color='blue', icon='user-md', prefix='fa')
         folium.Marker(
-            [lat, long], 
+            location=[lat, long],
             popup=f"<b>{pediatra['Name_med']} {pediatra['Surname_med']}</b><br>{pediatra['Address']}<br><i>{pediatra['Zone']}</i>",
-            icon=icon
+            icon=folium.Icon(color='blue', icon='user-md', prefix='fa')
         ).add_to(mymap)
 
 st_folium(mymap, width=1000, height=700)
-
-# Tabella pediatri
-st.subheader("📋 Elenco Pediatri")
-if pediatri:
-    pediatri_df = pd.DataFrame([{
-        'Codice': pediatra.get('Code_med'),
-        'Nome': pediatra.get('Name_med'),
-        'Cognome': pediatra.get('Surname_med'),
-        'Indirizzo': pediatra.get('Address'),
-        'Zona': pediatra.get('Zone')
-    } for pediatra in pediatri])
-
-    pediatri_df = pediatri_df.dropna()
-    
-    st.dataframe(pediatri_df, use_container_width=True)
-else:
-    st.write("Nessun pediatra trovato con i criteri selezionati.")
 
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
