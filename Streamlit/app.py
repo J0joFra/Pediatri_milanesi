@@ -193,7 +193,6 @@ with col1:
     """)
 
 with col2:
-    st.markdown("### 🏙️ Milano - Meteo")
     if temperature is not None:
         st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
@@ -213,30 +212,45 @@ pediatri = load_pediatri(query, selected_zone)
 # Spazio tra le metriche e la mappa
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Layout principale: Mappa centrata
-st.subheader("🗺️ Mappa dei Pediatri")
+# Bottone per aggiornare i dati
+if st.button("🔄 Ricarica Dati"):
+    # Funzione per ricaricare e aggiornare il dataset
+    st.write("🚀 Ricaricamento in corso...")
+    
+    # Ottieni nuovamente i dati meteo
+    temperature, humidity, weather_description = get_weather_data()
+    
+    # Carica i nuovi dati
+    url = "https://url-del-dataset.json"  # Aggiorna con l'URL del dataset
+    df = load_data(url)
+    
+    # Applica tutte le trasformazioni al dataframe
+    df = title_columns_and_values(df)
+    df = rename_columns(df)
+    df = calculate_age(df)
+    df = create_address_column(df)
+    df = drop_unnecessary_columns(df)
+    gdf = create_geometry_column(df)
+    
+    # Aggiorna le zone con il file GeoJSON
+    geojson_path = "Datasets/MilanCity.geojson"  # Aggiorna con il path corretto
+    if os.path.exists(geojson_path):
+        gdf_zones = load_geojson(geojson_path)
+        gdf = spatial_join_update_zones(gdf, gdf_zones)
 
+    # Carica i dati in MongoDB
+    create_mongo_db(gdf)
+    
+    # Ricarica i pediatri dal MongoDB
+    pediatri = load_pediatri(query, selected_zone)
+    
+    # Mostra messaggio di successo
+    st.success("✅ Dati ricaricati con successo!")
+
+# Aggiorna la visualizzazione della mappa, tabella e statistiche
+st.subheader("🗺️ Mappa dei Pediatri")
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
-
-# Carica il file GeoJSON
-geojson_path = "Datasets/MilanCity.geojson"
-geojson_data = None
-if os.path.exists(geojson_path):
-    with open(geojson_path, 'r') as f:
-        geojson_data = json.load(f)
-        for feature in geojson_data['features']:
-            folium.GeoJson(
-                feature,
-                style_function=lambda x: {
-                    'fillColor': '#FFAFCC',
-                    'fillOpacity': 0.3,
-                    'weight': 0.5,
-                    'color': 'black'
-                }
-            ).add_to(mymap)
-else:
-    st.warning("Il file GeoJSON non è stato trovato. La mappa sarà caricata senza zone evidenziate.")
 
 # Aggiungi marker per i pediatri
 for pediatra in pediatri:
@@ -250,7 +264,7 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-# Contenitore per centrare la mappa
+# Visualizza la mappa
 col1, col2, col3 = st.columns([1, 6, 1])
 with col2:
     st_folium(mymap, width=1000, height=700)
@@ -278,6 +292,7 @@ st.download_button(
     file_name='pediatri_milano.csv',
     mime='text/csv'
 )
+
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
@@ -365,5 +380,5 @@ if pediatri:
                     font=dict(size=14)
                 )
             ]
-        )
+        )   
         st.plotly_chart(fig_pie, use_container_width=True)
