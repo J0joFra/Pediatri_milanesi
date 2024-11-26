@@ -84,7 +84,7 @@ def metrics_html(label, value, color):
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         text-align: center;
-        color: black;
+        color: white;
     ">
         <h4 style="margin: 0; font-size: 18px;">{label}</h4>
         <p style="margin: 0; font-size: 24px; font-weight: bold;">{value}</p>
@@ -193,15 +193,15 @@ if pediatri:
         return box_html
 
     # Layout delle metriche con box colorati
-    col4, col5, col6 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
-    with col4:
+    with col1:
         st.markdown(colored_box("🏥 Totale Pediatri", len(pediatri_df), "#CBC0D3"), unsafe_allow_html=True)
 
-    with col5:
+    with col2:
         st.markdown(colored_box("📍 Zone Coperte", len(pediatri_per_zone), "#D6EADF"), unsafe_allow_html=True)
 
-    with col6:
+    with col3:
         st.markdown(colored_box("🚫 Zone Senza Pediatri", zones_no_pediatri, "#BEE9E8"), unsafe_allow_html=True)
 
     with col2:
