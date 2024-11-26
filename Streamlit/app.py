@@ -7,114 +7,6 @@ import pandas as pd
 import requests
 import json
 import os
-import urllib.request
-import geopandas as gpd
-from shapely.geometry import Point
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-import pymongo
-
-# Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
-def get_weather_data():
-    api_key = "155d1ef020301577c38d5347ed538061"
-    city = "Milan"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        temperature = data['main']['temp']
-        humidity = data['main']['humidity']
-        weather_description = data['weather'][0]['description']
-        return temperature, humidity, weather_description
-    else:
-        return None, None, None
-
-# Funzione per caricare il dataset JSON dai dati online
-def load_data(url):
-    try:
-        response = requests.get(url)
-        response.raise_for_status() 
-        data = response.json()
-        return pd.DataFrame(data["result"]["records"])
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error loading data: {e}")
-        return pd.DataFrame()
-
-# Funzione per capitalizzare le colonne e i valori stringa
-def title_columns_and_values(df):
-    df.columns = [col.capitalize() for col in df.columns]
-    df = df.applymap(lambda x: x.title() if isinstance(x, str) else x)
-    return df
-
-# Funzione per rinominare le colonne
-def rename_columns(df):
-    return df.rename(columns={
-        "Idmedico": "ID_med",
-        "Nomemedico": "Name_med",
-        "Cognomemedico": "Surname_med",
-        "Nil": "Zone",
-        "Long_x_4326": "Long",
-        "Lat_y_4326": "Lat",
-        "Codice_regionale_medico": "Code_med",
-        'Datanascita': "Age",
-        "Tipomedico": "Type_med",
-        "Attivo": "Open",
-        "Ambulatorioprincipale": "Main_amb",
-        "Luogo_ambulatorio": "L_ambul"
-    })
-
-# Funzione per calcolare l'età dal campo data di nascita
-def calculate_age(df):
-    today = datetime.today().date()
-    df['Age'] = df['Age'].apply(lambda x: datetime.strptime(x.split("T")[0], '%Y-%m-%d').date() if pd.notna(x) else None)
-    df['Age'] = df['Age'].apply(lambda birth_date: relativedelta(today, birth_date).years if birth_date else None)
-    return df
-
-# Funzione per creare la colonna combinata 'Address' 
-def create_address_column(df):
-    def create_address(row):
-        parts = []
-        if 'Via' in row and pd.notna(row['Via']):
-            parts.append(row['Via'])
-        if 'Civico' in row and pd.notna(row['Civico']):
-            parts.append(row['Civico'])
-        if 'L_ambul' in row and pd.notna(row['L_ambul']):
-            parts.append(row['L_ambul'])
-        return ', '.join(parts)
-    df['Address'] = df.apply(create_address, axis=1).str.title()
-    return df
-
-# Funzione per eliminare colonne non necessarie
-def drop_unnecessary_columns(df):
-    columns_to_drop = ['_id', 'Via', 'Civico', 'L_ambul', 'Location']
-    existing_columns = [col for col in columns_to_drop if col in df.columns]
-    return df.drop(existing_columns, axis=1)
-
-# Funzione per creare la colonna geometrica nel dataset
-def create_geometry_column(df):
-    geometry = [Point(xy) for xy in zip(df['Long'], df['Lat'])]
-    gdf = gpd.GeoDataFrame(df, geometry=geometry)
-    return gdf.set_crs("EPSG:4326")
-
-# Funzione per caricare il file GeoJSON con le aree di Milano
-def load_geojson(path):
-    return gpd.read_file(path).to_crs("EPSG:4326")
-
-# Funzione per effettuare il join spaziale e aggiornare le zone
-def spatial_join_update_zones(gdf_data, gdf_zones):
-    gdf_joined = gpd.sjoin(gdf_data, gdf_zones, how="left", predicate="within")
-    gdf_data['Zone'] = gdf_joined['name']
-    return gdf_data
-
-# Funzione per creare il database MongoDB
-def create_mongo_db(dataframe):
-    client = pymongo.MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
-    db = client["Healthcare"]
-    collection = db["Pediatri"]
-    collection.delete_many({})
-    data_dict = dataframe.to_dict("records")
-    collection.insert_many(data_dict) 
-    print(f"Inseriti {len(data_dict)} documenti nella collezione 'Pediatri'.")
 
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano",
@@ -198,6 +90,7 @@ with col1:
     """)
 
 with col2:
+    st.markdown("### 🏙️ Milano - Meteo")
     if temperature is not None:
         st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
@@ -217,42 +110,30 @@ pediatri = load_pediatri(query, selected_zone)
 # Spazio tra le metriche e la mappa
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Bottone per aggiornare i dati
-if st.button("🔄 Ricarica Dati"):
-    # Funzione per ricaricare e aggiornare il dataset
-    st.write("🚀 Ricaricamento in corso...")
-    
-    # Carica i nuovi dati
-    url = 'https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef'
-    df = load_data(url)
-    
-    # Applica tutte le trasformazioni al dataframe
-    df = title_columns_and_values(df)
-    df = rename_columns(df)
-    df = calculate_age(df)
-    df = create_address_column(df)
-    df = drop_unnecessary_columns(df)
-    gdf = create_geometry_column(df)
-    
-    # Aggiorna le zone con il file GeoJSON
-    geojson_path = "Datasets/MilanCity.geojson"  # Aggiorna con il path corretto
-    if os.path.exists(geojson_path):
-        gdf_zones = load_geojson(geojson_path)
-        gdf = spatial_join_update_zones(gdf, gdf_zones)
-
-    # Carica i dati in MongoDB
-    create_mongo_db(gdf)
-    
-    # Ricarica i pediatri dal MongoDB
-    pediatri = load_pediatri(query, selected_zone)
-    
-    # Mostra messaggio di successo
-    st.success("✅ Dati ricaricati con successo!")
-
-# Aggiorna la visualizzazione della mappa, tabella e statistiche
+# Layout principale: Mappa centrata
 st.subheader("🗺️ Mappa dei Pediatri")
+
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
+
+# Carica il file GeoJSON
+geojson_path = "Datasets/MilanCity.geojson"
+geojson_data = None
+if os.path.exists(geojson_path):
+    with open(geojson_path, 'r') as f:
+        geojson_data = json.load(f)
+        for feature in geojson_data['features']:
+            folium.GeoJson(
+                feature,
+                style_function=lambda x: {
+                    'fillColor': '#FFAFCC',
+                    'fillOpacity': 0.3,
+                    'weight': 0.5,
+                    'color': 'black'
+                }
+            ).add_to(mymap)
+else:
+    st.warning("Il file GeoJSON non è stato trovato. La mappa sarà caricata senza zone evidenziate.")
 
 # Aggiungi marker per i pediatri
 for pediatra in pediatri:
@@ -266,7 +147,7 @@ for pediatra in pediatri:
             icon=icon
         ).add_to(mymap)
 
-# Visualizza la mappa
+# Contenitore per centrare la mappa
 col1, col2, col3 = st.columns([1, 6, 1])
 with col2:
     st_folium(mymap, width=1000, height=700)
@@ -294,7 +175,6 @@ st.download_button(
     file_name='pediatri_milano.csv',
     mime='text/csv'
 )
-
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
@@ -382,5 +262,5 @@ if pediatri:
                     font=dict(size=14)
                 )
             ]
-        )   
+        )
         st.plotly_chart(fig_pie, use_container_width=True)
