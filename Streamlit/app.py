@@ -31,9 +31,14 @@ def get_weather_data():
 
 # Funzione per caricare il dataset JSON dai dati online
 def load_data(url):
-    fileobj = urllib.request.urlopen(url)
-    data = json.load(fileobj)
-    return pd.DataFrame(data["result"]["records"])
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        return pd.DataFrame(data["result"]["records"])
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
 
 # Funzione per capitalizzare le colonne e i valori stringa
 def title_columns_and_values(df):
