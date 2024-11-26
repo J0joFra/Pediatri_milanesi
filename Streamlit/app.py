@@ -61,16 +61,15 @@ def metrics_html(label, value, color):
     return f"""
     <div style="
         background-color: {color};
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         text-align: center;
         color: white;
     ">
-        <h4 style="margin: 0; font-size: 18px;">{label}</h4>
-        <p style="margin: 0; font-size: 24px; font-weight: bold;">{value}</p>
-        <br>
-    </div>
+        <h4 style="margin: 0; font-size: 14px;">{label}</h4>
+        <p style="margin: 0; font-size: 18px; font-weight: bold;">{value}</p>
+</div>
     """
 
 # Intestazione della pagina
@@ -79,8 +78,8 @@ col1, col2 = st.columns([3, 1])
 
 with col1:
     st.markdown("""
-    👶 **Healthcare: Pediatri a Milano**   
-    Questo strumento è stato progettato per fornire informazioni dettagliate sui pediatri freelance disponibili nelle diverse zone della città, aiutandoti a identificare rapidamente i professionisti più vicini alle tue esigenze. Grazie a un'interfaccia intuitiva e funzionalità avanzate, puoi:  
+    Questo strumento è stato progettato per fornire informazioni dettagliate sui pediatri freelance disponibili nelle diverse zone della città, aiutandoti a identificare rapidamente i professionisti più vicini alle tue esigenze.
+    Grazie a un'interfaccia intuitiva e funzionalità avanzate, puoi:  
 
     - 🔍 **Cercare pediatri** in base al nome, cognome, indirizzo o zona di appartenenza.  
     - 🗺️ **Visualizzare i pediatri su una mappa interattiva**, con dettagli sui luoghi e zone di servizio.  
