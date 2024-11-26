@@ -8,7 +8,7 @@ import requests
 import json
 import os
 from datetime import datetime
-from data_processing import main as process_data  # Importa il modulo del secondo script
+from data_processing import main as process_data
 
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano",
