@@ -67,6 +67,7 @@ def metrics_html(label, value, color):
         text-align: center;
         color: white;
         margin-bottom: 2px;
+
     ">
         <h4 style="margin: 0; font-size: 14px;">{label}</h4>
         <p style="margin: 0; font-size: 18px; font-weight: bold;">{value}</p>
@@ -81,11 +82,13 @@ with col1:
     st.markdown("""
     Questo strumento è stato progettato per fornire informazioni dettagliate sui pediatri freelance disponibili nelle diverse zone della città, aiutandoti a identificare rapidamente i professionisti più vicini alle tue esigenze.
     Grazie a un'interfaccia intuitiva e funzionalità avanzate, puoi:  
+
     - 🔍 **Cercare pediatri** in base al nome, cognome, indirizzo o zona di appartenenza.  
     - 🗺️ **Visualizzare i pediatri su una mappa interattiva**, con dettagli sui luoghi e zone di servizio.  
     - 📋 **Consultare un elenco aggiornato** con informazioni chiave come indirizzo, zona e disponibilità.  
     - 📊 **Esplorare statistiche** sulla distribuzione dei pediatri nelle diverse aree urbane, incluse le zone meno coperte.  
     - 📥 **Scaricare i dati in formato CSV**, per un utilizzo più approfondito e personalizzato.  
+
     Grazie a questo strumento, trovare il pediatra giusto non è mai stato così semplice e veloce. Inizia la tua ricerca e scopri il professionista che si prenderà cura del benessere dei tuoi piccoli!  
     """)
 
@@ -164,21 +167,15 @@ if pediatri:
     } for pediatra in pediatri])
 
     pediatri_df = pediatri_df.dropna()
-
+    
     st.dataframe(pediatri_df, use_container_width=True)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
 
-st.download_button(
-    label="📥 Scarica come CSV",
-    data=pediatri_df.to_csv(index=False).encode('utf-8'),
-    file_name='pediatri_milano.csv',
-    mime='text/csv'
-)
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
     st.subheader("📊 Statistiche sui Pediatri")
-
+    
     total_zones = 85  # Numero totale delle zone da GeoJSON
     pediatri_per_zone = pediatri_df['Zona'].value_counts()
     zones_no_pediatri = total_zones - len(pediatri_per_zone)
