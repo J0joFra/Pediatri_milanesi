@@ -92,7 +92,6 @@ with col1:
     """)
 
 with col2:
-    st.markdown("### 🏙️ Milano - Meteo")
     if temperature is not None:
         st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
@@ -170,6 +169,13 @@ if pediatri:
     st.dataframe(pediatri_df, use_container_width=True)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
+
+st.download_button(
+    label="📥 Scarica come CSV",
+    data=pediatri_df.to_csv(index=False).encode('utf-8'),
+    file_name='pediatri_milano.csv',
+    mime='text/csv'
+)
 
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
@@ -261,9 +267,3 @@ if pediatri:
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
-st.download_button(
-    label="📥 Scarica come CSV",
-    data=pediatri_df.to_csv(index=False).encode('utf-8'),
-    file_name='pediatri_milano.csv',
-    mime='text/csv'
-)
