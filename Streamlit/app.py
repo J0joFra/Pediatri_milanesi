@@ -92,7 +92,7 @@ def metrics_html(label, value, color):
     </div>
     """
 
-# Layout delle metriche meteo con separatore e mappa centrata
+# Layout delle metriche meteo
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -108,9 +108,6 @@ with col2:
 with col3:
     if weather_description is not None:
         st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
-
-# Aggiungi uno spazio vuoto tra i box e la mappa
-st.markdown("<br>", unsafe_allow_html=True)
 
 map_center = [45.4642, 9.16]  # Milano
 mymap = folium.Map(location=map_center, zoom_start=12)
