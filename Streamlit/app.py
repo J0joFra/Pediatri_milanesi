@@ -92,6 +92,12 @@ with col2:
     if weather_description is not None:
         st.markdown(metrics_html("☁️ Condizioni Meteo", weather_description.capitalize(), "#6798C0"), unsafe_allow_html=True)
 
+# Input per query e selezione zona
+st.sidebar.subheader("🔍 Ricerca")
+query = st.sidebar.text_input("Cerca pediatra (Nome, Cognome, Indirizzo):", "")
+zones = ["Tutte le Zone"] + get_zones()  
+selected_zone = st.sidebar.selectbox("Seleziona Zona:", zones)
+
 # Carica i pediatri in base alla ricerca e alla zona selezionata
 pediatri = load_pediatri(query, selected_zone)
 
