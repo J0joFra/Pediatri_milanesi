@@ -90,7 +90,6 @@ with col1:
     """)
 
 with col2:
-    st.markdown("### 🏙️ Milano - Meteo")
     if temperature is not None:
         st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
