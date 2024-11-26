@@ -7,24 +7,12 @@ import pandas as pd
 import requests
 import json
 import os
-from datetime import datetime
-from data_processing import main as process_data
 
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano",
                    page_icon="👶",
                    layout="wide",
                    initial_sidebar_state="expanded")
-
-# Aggiorna il database MongoDB eseguendo il processo di caricamento e preparazione dati
-st.sidebar.subheader("⚙️ Aggiorna Database")
-if st.sidebar.button("Aggiorna i Dati"):
-    with st.spinner("Aggiornamento in corso..."):
-        try:
-            process_data()  # Esegue il processo di caricamento e preparazione dati
-            st.sidebar.success("Database aggiornato con successo!")
-        except Exception as e:
-            st.sidebar.error(f"Errore durante l'aggiornamento: {e}")
 
 # Funzione per ottenere i dati meteo di Milano da OpenWeatherMap
 def get_weather_data():
@@ -79,6 +67,7 @@ def metrics_html(label, value, color):
         text-align: center;
         color: white;
         margin-bottom: 2px;
+
     ">
         <h4 style="margin: 0; font-size: 14px;">{label}</h4>
         <p style="margin: 0; font-size: 18px; font-weight: bold;">{value}</p>
@@ -104,6 +93,7 @@ with col1:
     """)
 
 with col2:
+    st.markdown("### 🏙️ Milano - Meteo")
     if temperature is not None:
         st.markdown(metrics_html("🌡️ Temperatura", f"{temperature} °C", "#829CBC"), unsafe_allow_html=True)
     if humidity is not None:
@@ -181,13 +171,6 @@ if pediatri:
     st.dataframe(pediatri_df, use_container_width=True)
 else:
     st.write("Nessun pediatra trovato con i criteri selezionati.")
-
-st.download_button(
-    label="📥 Scarica come CSV",
-    data=pediatri_df.to_csv(index=False).encode('utf-8'),
-    file_name='pediatri_milano.csv',
-    mime='text/csv'
-)
 
 # Statistiche sui pediatri con una mini-dashboard
 if pediatri:
@@ -279,3 +262,9 @@ if pediatri:
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
+st.download_button(
+    label="📥 Scarica come CSV",
+    data=pediatri_df.to_csv(index=False).encode('utf-8'),
+    file_name='pediatri_milano.csv',
+    mime='text/csv'
+)
