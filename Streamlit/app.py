@@ -79,8 +79,18 @@ col1, col2 = st.columns([3, 1])
 
 with col1:
     st.markdown("""
-    Benvenuti nel portale di ricerca pediatri a Milano. Qui puoi trovare informazioni sui pediatri freelance attivi nella tua zona, 
-    visualizzarli su una mappa interattiva e accedere ai dettagli degli indirizzi.
+    👶 **Healthcare: Pediatri a Milano**   
+    Questo strumento è stato progettato per fornire informazioni dettagliate sui pediatri freelance disponibili nelle diverse zone della città, aiutandoti a identificare rapidamente i professionisti più vicini alle tue esigenze. Grazie a un'interfaccia intuitiva e funzionalità avanzate, puoi:  
+
+    - 🔍 **Cercare pediatri** in base al nome, cognome, indirizzo o zona di appartenenza.  
+    - 🗺️ **Visualizzare i pediatri su una mappa interattiva**, con dettagli sui luoghi e zone di servizio.  
+    - 📋 **Consultare un elenco aggiornato** con informazioni chiave come indirizzo, zona e disponibilità.  
+    - 📊 **Esplorare statistiche** sulla distribuzione dei pediatri nelle diverse aree urbane, incluse le zone meno coperte.  
+    - 📥 **Scaricare i dati in formato CSV**, per un utilizzo più approfondito e personalizzato.  
+
+    Il portale integra inoltre dati meteorologici aggiornati per la città di Milano, offrendoti una panoramica delle condizioni atmosferiche attuali per pianificare al meglio le tue visite.  
+
+    Grazie a questo strumento, trovare il pediatra giusto non è mai stato così semplice e veloce. Inizia la tua ricerca e scopri il professionista che si prenderà cura del benessere dei tuoi piccoli!  
     """)
 
 with col2:
