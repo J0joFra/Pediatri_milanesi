@@ -62,7 +62,7 @@ def process_and_load_data():
     df.dropna(subset=["Indirizzo"], inplace=True)
 
     # Inserimento in MongoDB
-    mongo_client = MongoClient("mongodb://localhost:27017/")
+    mongo_client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
     db = mongo_client["MilanoPediatri"]
     collection = db["Pediatri"]
     collection.delete_many({})
