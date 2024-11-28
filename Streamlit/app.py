@@ -49,11 +49,11 @@ def process_and_load_data():
         "NOME": "Nome",
         "COGNOME": "Cognome",
         "CODICE_FISCALE": "Codice_Fiscale",
-        "DATA_NASCITA": "Data_Nascita",
+        "DATA_NASCITA": "dataNascita",
     })
 
-    df["Data_Nascita"] = pd.to_datetime(df["Data_Nascita"], errors='coerce')
-    df["Età"] = df["Data_Nascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
+    df["dataNascita"] = pd.to_datetime(df["dataNascita"], errors='coerce')
+    df["Età"] = df["dataNascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
     df.dropna(subset=["Latitudine", "Longitudine"], inplace=True)
 
     # Inserimento in MongoDB
