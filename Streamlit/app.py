@@ -11,7 +11,7 @@ import os
 
 # Function to process data and load into MongoDB
 def process_and_load_data():
-    url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5"
+    url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef"
     response = requests.get(url)
 
     if response.status_code != 200:
