@@ -11,50 +11,55 @@ import os
 
 # Function to process data and load into MongoDB
 def process_and_load_data():
-    url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5&q=title:jones"
+    url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=22b05e1f-c5d2-4468-90e5-c098977856ef&limit=5"
     response = requests.get(url)
 
-    # Controlla lo stato della risposta
     if response.status_code != 200:
         st.error(f"Errore nell'accesso all'API: {response.status_code}")
-        st.stop()  # Termina l'esecuzione di Streamlit
+        st.stop()
 
     try:
-        # Prova a estrarre i dati
         data = response.json()
         if "result" in data and "records" in data["result"]:
             records = data["result"]["records"]
         else:
             st.error("La struttura della risposta API non è come previsto.")
-            st.stop()  # Termina l'esecuzione di Streamlit
+            st.stop()
     except Exception as e:
         st.error(f"Errore durante il parsing della risposta API: {e}")
-        st.stop()  # Termina l'esecuzione di Streamlit
+        st.stop()
 
-    # Crea il DataFrame
+    # Creazione DataFrame
     df = pd.DataFrame(records)
 
-    # Continua con la pulizia e l'inserimento in MongoDB
+    # Verifica della struttura del DataFrame
+    if df.empty:
+        st.error("I dati ricevuti dall'API sono vuoti.")
+        st.stop()
+
+    # Rinomina le colonne basandoti sui nomi restituiti dall'API
     df = df.rename(columns={
         "_id": "ID",
-        "CODICE_STRUTTURA": "Codice_Struttura",
-        "CODICE_ASL": "Codice_ASL",
-        "DISTRETTO": "Distretto",
-        "SEDE": "Sede",
-        "INDIRIZZO": "Indirizzo",
+        "idMedico": "ID_Medico",
+        "nomeMedico": "Nome_Medico",
+        "cognomeMedico": "Cognome_Medico",
+        "codice_regionale_medico": "Codice_Regionale",
+        "dataNascita": "Data_Nascita",
+        "via": "Indirizzo",
+        "civico": "Civico",
         "CAP": "CAP",
-        "LAT_Y_4326": "Latitudine",
-        "LONG_X_4326": "Longitudine",
-        "CIVICO": "Civico",
-        "NOME": "Nome",
-        "COGNOME": "Cognome",
-        "CODICE_FISCALE": "Codice_Fiscale",
-        "DATA_NASCITA": "dataNascita",
+        "MUNICIPIO": "Municipio",
+        "tipoMedico": "Tipo_Medico",
+        "attivo": "Attivo",
+        "ambulatorioPrincipale": "Ambulatorio_Principale",
     })
 
-    df["dataNascita"] = pd.to_datetime(df["dataNascita"], errors='coerce')
-    df["Età"] = df["dataNascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
-    df.dropna(subset=["Latitudine", "Longitudine"], inplace=True)
+    # Gestione del campo Data_Nascita
+    df["Data_Nascita"] = pd.to_datetime(df["Data_Nascita"], errors='coerce')
+    df["Età"] = df["Data_Nascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
+
+    # Pulizia dei dati: rimuove le righe senza coordinate
+    df.dropna(subset=["Indirizzo"], inplace=True)
 
     # Inserimento in MongoDB
     mongo_client = MongoClient("mongodb://localhost:27017/")
