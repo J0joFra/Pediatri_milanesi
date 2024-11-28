@@ -13,11 +13,28 @@ import os
 def process_and_load_data():
     url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=f6a273ed-33bb-4692-8ac5-dcbd28b3f66c&limit=10000"
     response = requests.get(url)
-    data = response.json()["result"]["records"]
 
-    df = pd.DataFrame(data)
+    # Controlla lo stato della risposta
+    if response.status_code != 200:
+        st.error(f"Errore nell'accesso all'API: {response.status_code}")
+        st.stop()  # Termina l'esecuzione di Streamlit
 
-    # Data Cleaning
+    try:
+        # Prova a estrarre i dati
+        data = response.json()
+        if "result" in data and "records" in data["result"]:
+            records = data["result"]["records"]
+        else:
+            st.error("La struttura della risposta API non è come previsto.")
+            st.stop()  # Termina l'esecuzione di Streamlit
+    except Exception as e:
+        st.error(f"Errore durante il parsing della risposta API: {e}")
+        st.stop()  # Termina l'esecuzione di Streamlit
+
+    # Crea il DataFrame
+    df = pd.DataFrame(records)
+
+    # Continua con la pulizia e l'inserimento in MongoDB
     df = df.rename(columns={
         "_id": "ID",
         "CODICE_STRUTTURA": "Codice_Struttura",
@@ -36,9 +53,10 @@ def process_and_load_data():
     })
 
     df["Data_Nascita"] = pd.to_datetime(df["Data_Nascita"], errors='coerce')
-    df["Et\u00e0"] = df["Data_Nascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
+    df["Età"] = df["Data_Nascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
     df.dropna(subset=["Latitudine", "Longitudine"], inplace=True)
 
+    # Inserimento in MongoDB
     mongo_client = MongoClient("mongodb://localhost:27017/")
     db = mongo_client["MilanoPediatri"]
     collection = db["Pediatri"]
