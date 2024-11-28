@@ -94,7 +94,7 @@ def get_weather_data():
 
 # Connessione a MongoDB
 client = MongoClient("mongodb+srv://jofrancalanci:Cf8m2xsQdZgll1hz@element.2o7dxct.mongodb.net/")
-db = client['Healthcare']
+db = client['MilanoPediatri']
 collection = db['Pediatri']
 
 # Funzione per visualizzare i dati dei pediatri
