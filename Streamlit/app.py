@@ -1,12 +1,52 @@
-import streamlit as st
+import requests
+import pandas as pd
+import json
 from pymongo import MongoClient
 import folium
 from streamlit_folium import st_folium
+import streamlit as st
 import plotly.express as px
-import pandas as pd
-import requests
-import json
+from datetime import date
 import os
+
+# Function to process data and load into MongoDB
+def process_and_load_data():
+    url = "https://dati.comune.milano.it/api/3/action/datastore_search?resource_id=f6a273ed-33bb-4692-8ac5-dcbd28b3f66c&limit=10000"
+    response = requests.get(url)
+    data = response.json()["result"]["records"]
+
+    df = pd.DataFrame(data)
+
+    # Data Cleaning
+    df = df.rename(columns={
+        "_id": "ID",
+        "CODICE_STRUTTURA": "Codice_Struttura",
+        "CODICE_ASL": "Codice_ASL",
+        "DISTRETTO": "Distretto",
+        "SEDE": "Sede",
+        "INDIRIZZO": "Indirizzo",
+        "CAP": "CAP",
+        "LAT_Y_4326": "Latitudine",
+        "LONG_X_4326": "Longitudine",
+        "CIVICO": "Civico",
+        "NOME": "Nome",
+        "COGNOME": "Cognome",
+        "CODICE_FISCALE": "Codice_Fiscale",
+        "DATA_NASCITA": "Data_Nascita",
+    })
+
+    df["Data_Nascita"] = pd.to_datetime(df["Data_Nascita"], errors='coerce')
+    df["Et\u00e0"] = df["Data_Nascita"].apply(lambda x: date.today().year - x.year if pd.notnull(x) else None)
+    df.dropna(subset=["Latitudine", "Longitudine"], inplace=True)
+
+    mongo_client = MongoClient("mongodb://localhost:27017/")
+    db = mongo_client["MilanoPediatri"]
+    collection = db["Pediatri"]
+    collection.delete_many({})
+    collection.insert_many(df.to_dict("records"))
+
+# Call data processing function
+process_and_load_data()
 
 # Configura il layout di Streamlit
 st.set_page_config(page_title="Healthcare - Pediatri Milano",
